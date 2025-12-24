@@ -79,7 +79,7 @@
     <script>
         function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
 async function cargarFeeds() {
-const config = [
+    const config = [
         { txt: 'txt-tijuana', rss: 'https://reportetijuana.com/feed/' },
         { txt: 'txt-seguridad', rss: 'https://codigorojomx.info/feed/' },
         { txt: 'txt-cocina', rss: 'https://lacocinademexico.com/feed/' },
@@ -89,28 +89,23 @@ const config = [
         { txt: 'txt-salud', rss: 'https://saludmexico.info/feed/' },
         { txt: 'txt-cultura', rss: 'https://culturamexico.info/feed/' }
     ];
+
     for (const item of config) {
         try {
-            // Usamos un proxy secundario para evitar el error 400
-            const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(item.rss)}`);
-            if (!res.ok) throw new Error('Proxy error');
+            // Usamos rss2json que es más amigable con los navegadores
+            const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(item.rss)}`);
             const data = await res.json();
             
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(data.contents, "text/xml");
-            const firstItem = xmlDoc.querySelector("item");
-            
-            if (firstItem) {
-                const title = firstItem.querySelector("title").textContent;
-                document.getElementById(item.txt).innerText = title;
+            if (data.status === 'ok') {
+                document.getElementById(item.txt).innerText = data.items[0].title;
+            } else {
+                throw new Error();
             }
         } catch (e) {
-            document.getElementById(item.txt).innerText = "Noticia no disponible";
+            document.getElementById(item.txt).innerText = "Ver últimas noticias en el sitio";
         }
     }
 }
-
-
 window.onload = cargarFeeds;
     </script>
 </body>
