@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -68,24 +69,23 @@
 
     <script>
         function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
-
-      async function cargarFeeds() {
+async function cargarFeeds() {
     const config = [
-        { txt: 'txt-tijuana', card: 'card-tijuana', rss: 'https://reportetijuana.com/feed/' },
-        { txt: 'txt-seguridad', card: 'card-seguridad', rss: 'https://codigorojomx.info/feed/' },
-        { txt: 'txt-cocina', card: 'card-cocina', rss: 'https://lacocinademexico.com/feed/' },
-        { txt: 'txt-directorios', card: 'card-directorios', rss: 'https://directoriosdemexico.com/feed/' },
-        { txt: 'txt-turismo', card: 'card-turismo', rss: 'https://turismomx.info/feed/' },
-        { txt: 'txt-emergencias', card: 'card-emergencias', rss: 'https://emergenciasmexico.com/feed/' }
+        { txt: 'txt-tijuana', rss: 'https://reportetijuana.com/feed/' },
+        { txt: 'txt-seguridad', rss: 'https://codigorojomx.info/feed/' },
+        { txt: 'txt-cocina', rss: 'https://lacocinademexico.com/feed/' },
+        { txt: 'txt-directorios', rss: 'https://directoriosdemexico.com/feed/' },
+        { txt: 'txt-turismo', rss: 'https://turismomx.info/feed/' },
+        { txt: 'txt-emergencias', rss: 'https://emergenciasmexico.com/feed/' }
     ];
 
     for (const item of config) {
         try {
-            // Usamos un proxy alternativo más estable
+            // Usamos un proxy secundario para evitar el error 400
             const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(item.rss)}`);
+            if (!res.ok) throw new Error('Proxy error');
             const data = await res.json();
             
-            // Parseamos el XML del RSS directamente
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(data.contents, "text/xml");
             const firstItem = xmlDoc.querySelector("item");
@@ -93,20 +93,14 @@
             if (firstItem) {
                 const title = firstItem.querySelector("title").textContent;
                 document.getElementById(item.txt).innerText = title;
-                
-                // Intentar sacar la imagen si existe
-                const content = firstItem.querySelector("description")?.textContent || "";
-                const imgMatch = content.match(/src="([^"]+)"/);
-                if (imgMatch) {
-                    document.getElementById(item.card).style.backgroundImage = `url('${imgMatch[1]}')`;
-                }
             }
         } catch (e) {
-            console.error("Error cargando:", item.rss);
-            document.getElementById(item.txt).innerText = "Contenido temporalmente no disponible";
+            document.getElementById(item.txt).innerText = "Noticia no disponible";
         }
     }
 }
+
+
 window.onload = cargarFeeds;
     </script>
 </body>
