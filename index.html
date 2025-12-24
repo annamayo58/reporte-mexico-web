@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte México</title>
+    <style>
+        :root { --purpura: #800080; }
+        body { background: #000; color: #fff; font-family: Arial, sans-serif; margin: 0; }
+        nav { background: #1a1a1a; border-bottom: 2px solid var(--purpura); position: sticky; top: 0; z-index: 1000; padding: 10px 20px; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .menu-links { display: flex; gap: 15px; }
+        .nav-link { color: #fff; text-decoration: none; font-weight: bold; font-size: 13px; text-transform: uppercase; }
+        .hamburguesa { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .hamburguesa div { width: 25px; height: 3px; background: #fff; }
+        header { background: var(--purpura); padding: 30px; text-align: center; border-bottom: 1px solid #fff; }
+        .grid-portada { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; padding: 20px; max-width: 1200px; margin: 0 auto; }
+        .card { background: #1a1a1a; border: 1px solid var(--purpura); border-radius: 8px; height: 220px; position: relative; overflow: hidden; display: flex; align-items: flex-end; text-decoration: none; color: white; background-size: cover; background-position: center; }
+        .card-info { background: rgba(0,0,0,0.85); width: 100%; padding: 12px; font-size: 0.9em; border-top: 1px solid var(--purpura); }
+        .tag { position: absolute; top: 10px; left: 10px; background: #fff; color: var(--purpura); padding: 4px 10px; font-weight: bold; font-size: 0.75em; border-radius: 4px; z-index: 10; }
+        footer { background: #1a1a1a; padding: 25px; border-top: 2px solid var(--purpura); text-align: center; font-size: 13px; }
+        @media (max-width: 850px) {
+            .hamburguesa { display: flex; }
+            .menu-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #1a1a1a; padding: 20px 0; }
+            .menu-links.active { display: flex; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div style="font-weight: bold; color: var(--purpura); background: white; padding: 2px 8px; border-radius: 3px;">RM</div>
+            <div class="hamburguesa" onclick="toggleMenu()"><div></div><div></div><div></div></div>
+            <div class="menu-links" id="navLinks">
+                <a href="/" class="nav-link">Inicio</a>
+                <a href="/seccion/?s=nacion" class="nav-link">Nación</a>
+                <a href="/seccion/?s=estados" class="nav-link">Estados</a>
+                <a href="/seccion/?s=bienestar" class="nav-link">Bienestar</a>
+                <a href="/seccion/?s=internacional" class="nav-link">Internacional</a>
+                <a href="/seccion/?s=columnistas" class="nav-link">Columnistas</a>
+                <a href="/seccion/?s=cultura" class="nav-link">Cultura y Espectáculos</a>
+            </div>
+        </div>
+    </nav>
+
+    <header><h1>REPORTE MÉXICO</h1></header>
+
+    <div class="grid-portada">
+        <a href="https://reportetijuana.com" class="card" id="card-tijuana"><span class="tag">TIJUANA</span><div class="card-info" id="txt-tijuana">Cargando...</div></a>
+        
+        <a href="/red" style="background:#222; border:2px solid var(--purpura); text-decoration:none; color:white; border-radius:8px; display:flex; flex-direction:column; justify-content:center; align-items:center; height:220px; text-align:center;">
+            <h2 style="margin:0;">LA RED</h2>
+            <small>10 SITIOS CONECTADOS</small>
+        </a>
+
+        <a href="https://codigorojomx.info" class="card" id="card-seguridad"><span class="tag">SEGURIDAD</span><div class="card-info" id="txt-seguridad">Cargando...</div></a>
+        <a href="https://lacocinademexico.com" class="card" id="card-cocina"><span class="tag">COCINA</span><div class="card-info" id="txt-cocina">Cargando...</div></a>
+        
+        <a href="https://directoriosdemexico.com" class="card" id="card-directorios"><span class="tag">DIRECTORIOS</span><div class="card-info" id="txt-directorios">Cargando...</div></a>
+        <a href="https://turismomx.info" class="card" id="card-turismo"><span class="tag">TURISMO</span><div class="card-info" id="txt-turismo">Cargando...</div></a>
+        <a href="https://emergenciasmexico.com" class="card" id="card-emergencias"><span class="tag">EMERGENCIAS</span><div class="card-info" id="txt-emergencias">Cargando...</div></a>
+    </div>
+
+    <footer>
+        <strong>Contacto:</strong> prensamexico5.8@gmail.com | <strong>WhatsApp:</strong> 564 575 8105<br><br>
+        <small style="color: #aaa;">Licencia Creative Commons (CC) 4.0 BY-NC-SA © 2025</small>
+    </footer>
+
+    <script>
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+
+        async function cargarFeeds() {
+            const config = [
+                { txt: 'txt-tijuana', card: 'card-tijuana', rss: 'https://reportetijuana.com/feed/' },
+                { txt: 'txt-seguridad', card: 'card-seguridad', rss: 'https://codigorojomx.info/feed/' },
+                { txt: 'txt-cocina', card: 'card-cocina', rss: 'https://lacocinademexico.com/feed/' },
+                { txt: 'txt-directorios', card: 'card-directorios', rss: 'https://directoriosdemexico.com/feed/' },
+                { txt: 'txt-turismo', card: 'card-turismo', rss: 'https://turismomx.info/feed/' },
+                { txt: 'txt-emergencias', card: 'card-emergencias', rss: 'https://emergenciasmexico.com/feed/' }
+            ];
+            for (const item of config) {
+                try {
+                    const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(item.rss)}`);
+                    const data = await res.json();
+                    if (data.status === 'ok') {
+                        document.getElementById(item.txt).innerText = data.items[0].title;
+                        if (data.items[0].thumbnail) {
+                            document.getElementById(item.card).style.backgroundImage = `url('${data.items[0].thumbnail}')`;
+                        }
+                    }
+                } catch (e) { console.error("Error", item.rss); }
+            }
+        }
+        window.onload = cargarFeeds;
+    </script>
+</body>
+</html>

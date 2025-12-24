@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>La Red - Reporte México</title>
+    <style>
+        :root { --purpura: #800080; }
+        body { background: #000; color: #fff; font-family: Arial, sans-serif; margin: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        nav { background: #1a1a1a; padding: 12px 0; border-bottom: 2px solid var(--purpura); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; }
+        .nav-link { color: #fff; text-decoration: none; font-weight: bold; font-size: 13px; text-transform: uppercase; }
+        header { background: var(--purpura); padding: 30px; text-align: center; }
+        .main-content { flex: 1; padding: 40px; }
+        .contenedor-red { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        .btn-sitio { background: #1a1a1a; border: 1px solid var(--purpura); padding: 20px; border-radius: 10px; color: #fff; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .btn-sitio:hover { background: var(--purpura); }
+        footer { background: #1a1a1a; padding: 30px 20px; border-top: 2px solid var(--purpura); text-align: center; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="nav-link">Inicio</a>
+            <a href="#" class="nav-link">Nación</a>
+            <a href="#" class="nav-link">Estados</a>
+            <a href="#" class="nav-link">Bienestar</a>
+            <a href="#" class="nav-link">Internacional</a>
+            <a href="#" class="nav-link">Columnistas</a>
+            <a href="#" class="nav-link">Cultura y Espectáculos</a>
+        </div>
+    </nav>
+    <header><h1>LA RED - SITIOS ALIADOS</h1></header>
+    <div class="main-content">
+        <div class="contenedor-red">
+            <a href="https://reportemexico.info/" class="btn-sitio">Reporte México</a>
+            <a href="https://reportetijuana.com/" class="btn-sitio">Reporte Tijuana</a>
+            <a href="https://directoriosdemexico.com/" class="btn-sitio">Directorios de México</a>
+            <a href="https://directorioscdmx.com/" class="btn-sitio">Directorios CDMX</a>
+            <a href="https://directoriostijuana.com/" class="btn-sitio">Directorios Tijuana</a>
+            <a href="https://lacocinademexico.com/" class="btn-sitio">La Cocina de México</a>
+            <a href="https://lacocinadetijuana.com/" class="btn-sitio">La Cocina de Tijuana</a>
+            <a href="https://emergenciasmexico.com/" class="btn-sitio">Emergencias México</a>
+            <a href="https://codigorojomx.info/" class="btn-sitio">Código Rojo MX</a>
+            <a href="https://turismomx.info/" class="btn-sitio">Turismo MX</a>
+        </div>
+    </div>
+    <footer>
+        <div style="font-size: 14px;">
+            <strong>Contacto:</strong> prensamexico5.8@gmail.com | <strong>WhatsApp:</strong> 564 575 8105<br><br>
+            <small style="color: #aaa;">Licencia Creative Commons (CC) 4.0 BY-NC-SA © 2025</small>
+        </div>
+    </footer>
+</body>
+</html>
