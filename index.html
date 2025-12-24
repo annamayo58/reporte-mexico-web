@@ -60,7 +60,16 @@
         <a href="https://directoriosdemexico.com" class="card" id="card-directorios"><span class="tag">DIRECTORIOS</span><div class="card-info" id="txt-directorios">Cargando...</div></a>
         <a href="https://turismomx.info" class="card" id="card-turismo"><span class="tag">TURISMO</span><div class="card-info" id="txt-turismo">Cargando...</div></a>
         <a href="https://emergenciasmexico.com" class="card" id="card-emergencias"><span class="tag">EMERGENCIAS</span><div class="card-info" id="txt-emergencias">Cargando...</div></a>
-    </div>
+       <a href="https://saludmexico.info" class="card" id="card-salud">
+    <span class="tag">SALUD</span>
+    <div class="card-info" id="txt-salud">Cargando...</div>
+</a>
+
+<a href="https://culturamexico.info" class="card" id="card-cultura">
+    <span class="tag">CULTURA</span>
+    <div class="card-info" id="txt-cultura">Cargando...</div>
+</a>   
+ </div>
 
     <footer>
         <strong>Contacto:</strong> prensamexico5.8@gmail.com | <strong>WhatsApp:</strong> 564 575 8105<br><br>
@@ -70,15 +79,16 @@
     <script>
         function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
 async function cargarFeeds() {
-    const config = [
+const config = [
         { txt: 'txt-tijuana', rss: 'https://reportetijuana.com/feed/' },
         { txt: 'txt-seguridad', rss: 'https://codigorojomx.info/feed/' },
         { txt: 'txt-cocina', rss: 'https://lacocinademexico.com/feed/' },
         { txt: 'txt-directorios', rss: 'https://directoriosdemexico.com/feed/' },
         { txt: 'txt-turismo', rss: 'https://turismomx.info/feed/' },
-        { txt: 'txt-emergencias', rss: 'https://emergenciasmexico.com/feed/' }
+        { txt: 'txt-emergencias', rss: 'https://emergenciasmexico.com/feed/' },
+        { txt: 'txt-salud', rss: 'https://saludmexico.info/feed/' },
+        { txt: 'txt-cultura', rss: 'https://culturamexico.info/feed/' }
     ];
-
     for (const item of config) {
         try {
             // Usamos un proxy secundario para evitar el error 400
