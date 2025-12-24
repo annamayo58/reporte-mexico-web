@@ -69,29 +69,45 @@
     <script>
         function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
 
-        async function cargarFeeds() {
-            const config = [
-                { txt: 'txt-tijuana', card: 'card-tijuana', rss: 'https://reportetijuana.com/feed/' },
-                { txt: 'txt-seguridad', card: 'card-seguridad', rss: 'https://codigorojomx.info/feed/' },
-                { txt: 'txt-cocina', card: 'card-cocina', rss: 'https://lacocinademexico.com/feed/' },
-                { txt: 'txt-directorios', card: 'card-directorios', rss: 'https://directoriosdemexico.com/feed/' },
-                { txt: 'txt-turismo', card: 'card-turismo', rss: 'https://turismomx.info/feed/' },
-                { txt: 'txt-emergencias', card: 'card-emergencias', rss: 'https://emergenciasmexico.com/feed/' }
-            ];
-            for (const item of config) {
-                try {
-                    const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(item.rss)}`);
-                    const data = await res.json();
-                    if (data.status === 'ok') {
-                        document.getElementById(item.txt).innerText = data.items[0].title;
-                        if (data.items[0].thumbnail) {
-                            document.getElementById(item.card).style.backgroundImage = `url('${data.items[0].thumbnail}')`;
-                        }
-                    }
-                } catch (e) { console.error("Error", item.rss); }
+      async function cargarFeeds() {
+    const config = [
+        { txt: 'txt-tijuana', card: 'card-tijuana', rss: 'https://reportetijuana.com/feed/' },
+        { txt: 'txt-seguridad', card: 'card-seguridad', rss: 'https://codigorojomx.info/feed/' },
+        { txt: 'txt-cocina', card: 'card-cocina', rss: 'https://lacocinademexico.com/feed/' },
+        { txt: 'txt-directorios', card: 'card-directorios', rss: 'https://directoriosdemexico.com/feed/' },
+        { txt: 'txt-turismo', card: 'card-turismo', rss: 'https://turismomx.info/feed/' },
+        { txt: 'txt-emergencias', card: 'card-emergencias', rss: 'https://emergenciasmexico.com/feed/' }
+    ];
+
+    for (const item of config) {
+        try {
+            // Usamos un proxy alternativo más estable
+            const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(item.rss)}`);
+            const data = await res.json();
+            
+            // Parseamos el XML del RSS directamente
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(data.contents, "text/xml");
+            const firstItem = xmlDoc.querySelector("item");
+            
+            if (firstItem) {
+                const title = firstItem.querySelector("title").textContent;
+                document.getElementById(item.txt).innerText = title;
+                
+                // Intentar sacar la imagen si existe
+                const content = firstItem.querySelector("description")?.textContent || "";
+                const imgMatch = content.match(/src="([^"]+)"/);
+                if (imgMatch) {
+                    document.getElementById(item.card).style.backgroundImage = `url('${imgMatch[1]}')`;
+                }
             }
+        } catch (e) {
+            console.error("Error cargando:", item.rss);
+            document.getElementById(item.txt).innerText = "Contenido temporalmente no disponible";
         }
-        window.onload = cargarFeeds;
+    }
+}
+window.onload = cargarFeeds;
     </script>
 </body>
 </html>
