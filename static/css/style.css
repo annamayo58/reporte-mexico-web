@@ -1,6 +1,195 @@
+/* =========================================================
+   1. RESET Y REGLAS GLOBALES (CORRIGE DESBORDE DE FOTOS)
+   ========================================================= */
+* {
+  box-sizing: border-box; /* Evita que el padding sume al ancho */
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor de la imagen dentro de la tarjeta */
+.img-placeholder {
+  width: 100%;
+  height: 200px; /* Altura fija para que todas las noticias se vean iguales */
+  overflow: hidden; /* ¡CLAVE! Corta lo que se salga del recuadro */
+  display: block;
+}
+
+/* La imagen real */
+.img-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ¡CLAVE! Ajusta la foto al cuadro sin deformarla */
+  object-position: center; /* Centra la parte importante de la foto */
+}
+
+/* Refuerzo para la tarjeta */
+.card {
+  background: #111;
+  border-radius: 8px;
+  overflow: hidden; /* Asegura que las esquinas redondeadas corten la foto */
+  display: flex;
+  flex-direction: column;
+}
+
 body {
-    background-color: #0f172a;
-    color: white;
-    margin: 0;
-    font-family: sans-serif;
+  background-color: #000;
+  font-family: Arial, sans-serif;
+  color: white;
+  overflow-x: hidden; /* Evita el scroll horizontal */
+}
+
+/* =========================================================
+   2. CABECERA Y BUSCADOR
+   ========================================================= */
+.main-header {
+  text-align: center;
+  padding: 20px;
+  background-color: #000;
+}
+
+.main-header h1 {
+  font-size: 2.2rem;
+  text-transform: uppercase;
+}
+
+.search-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.search-bar input {
+  width: 90%;
+  max-width: 400px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid #444;
+  background: #222;
+  color: white;
+}
+
+/* =========================================================
+   3. NAVEGACIÓN Y BOTÓN BLANCO (FORZADO)
+   ========================================================= */
+.nav-bar {
+  background-color: #1a1a1a;
+  width: 100%;
+  min-height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.nav-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Botón Hamburguesa */
+.menu-toggle {
+  display: none; /* Oculto en PC */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  z-index: 100;
+}
+
+/* Las rayitas blancas */
+.bar {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: #ffffff !important; /* BLANCO PURO */
+  margin: 5px auto;
+  transition: 0.3s;
+}
+
+/* Animación a X */
+.menu-toggle.is-active .bar:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.is-active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.is-active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   4. REJILLA DE NOTICIAS (GRID)
+   ========================================================= */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden; /* CORTA CUALQUER COSA QUE SE SALGA */
+}
+
+.img-placeholder {
+  width: 100%;
+  height: 200px;
+  background-color: #333;
+  background-size: cover;
+  background-position: center;
+}
+
+/* =========================================================
+   5. MÓVIL (MEDIA QUERY)
+   ========================================================= */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* Muestra el botón */
+  }
+
+  .nav-menu {
+    display: none; /* Esconde la lista */
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    background: #1a1a1a;
+    padding: 10px 0;
+  }
+
+  .nav-menu.active {
+    display: flex; /* Muestra la lista al abrir */
+  }
+
+  .nav-menu li {
+    padding: 15px;
+    border-bottom: 1px solid #333;
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr; /* Una noticia por fila en móvil */
+  }
 }

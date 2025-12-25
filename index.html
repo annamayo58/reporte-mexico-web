@@ -1,58 +1,88 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reporte México</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="static/css/style.css" />
+  </head>
+  <body>
+    <<header class="main-header">
+    <h1>REPORTE MÉXICO</h1>
+</header>
 
-    <header class="main-header">
-        <h1>REPORTE MÉXICO</h1>
-        <nav class="nav-bar">BARRA DE NAVEGACIÓN</nav>
-        <div class="search-bar">BUSCADOR</div>
+<nav class="nav-bar">
+    <div class="nav-container">
+        <button class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <ul class="nav-menu" id="nav-links">
+            <li><a href="#" class="nav-link">Inicio</a></li>
+            <li><a href="#" class="nav-link">Nacional</a></li>
+            <li><a href="#" class="nav-link">Estados</a></li>
+            <li><a href="#" class="nav-link">Columnistas</a></li>
+            <li><a href="#" class="nav-link">Cultura</a></li>
+        </ul>
+    </div>
+</nav>
+
+      <div class="search-bar">
+        <input type="text" placeholder="Buscar noticias en Reporte México..." />
+      </div>
     </header>
 
     <main class="grid-container">
-        <div class="card purple">
-            <span class="tag">NOTICIA</span>
-            <div class="img-placeholder">IMAGEN</div>
+      <div class="card">
+        <span class="tag">Nacional</span>
+        <div
+          class="img-placeholder"
+          style="background-image: url('static/images/reportemexico1.png')"
+        ></div>
+        <div class="card-content">
+          <h2>Título de la Noticia</h2>
+          <p>Aquí va un breve resumen de lo que está pasando en México...</p>
         </div>
-        <div class="card gray">
-            <h2>LA RED</h2>
-            <p>ZONAS DE ENLACES</p>
-        </div>
+      </div>
 
-        <div class="card purple full-text">
-            <span class="tag">NOTICIA</span>
-        </div>
-        <div class="card purple">
-            <span class="tag">NOTICIA</span>
-            <div class="img-placeholder">IMAGEN</div>
-        </div>
+      <div class="card purple full-text">
+        <span class="tag">NOTICIA</span>
+      </div>
+      <div class="card purple">
+        <span class="tag">NOTICIA</span>
+        <div class="img-placeholder">IMAGEN</div>
+      </div>
 
-        <div class="card purple">
-            <span class="tag">NOTICIA</span>
-            <div class="img-placeholder">IMAGEN</div>
-        </div>
-        <div class="card purple">
-            <span class="tag">NOTICIA</span>
-            <div class="img-placeholder small">IMAGEN</div>
-        </div>
+      <div class="card purple">
+        <span class="tag">NOTICIA</span>
+        <div class="img-placeholder">IMAGEN</div>
+      </div>
+      <div class="card purple">
+        <span class="tag">NOTICIA</span>
+        <div class="img-placeholder small">IMAGEN</div>
+      </div>
 
-        <div class="card purple full-text">
-            <span class="tag">NOTICIA</span>
-        </div>
-        <div class="card purple">
-            <span class="tag">NOTICIA</span>
-            <div class="img-placeholder">IMAGEN</div>
-        </div>
+      <div class="card purple full-text">
+        <span class="tag">NOTICIA</span>
+      </div>
+      <div class="card purple">
+        <span class="tag">NOTICIA</span>
+        <div class="img-placeholder">IMAGEN</div>
+      </div>
     </main>
+    <footer class="main-footer">FOOTER</footer>
 
-    <footer class="main-footer">
-        FOOTER
-    </footer>
+    <script>
+      const menuBtn = document.querySelector("#mobile-menu");
+      const menuLinks = document.querySelector("#nav-links");
 
-</body>
+      menuBtn.addEventListener("click", () => {
+        // Intercambia la clase para la animación de las barras
+        menuBtn.classList.toggle("is-active");
+        // Intercambia la clase para mostrar/ocultar el menú
+        menuLinks.classList.toggle("active");
+      });
+    </script>
+  </body>
 </html>
