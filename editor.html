@@ -1,234 +1,142 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editor de Noticias V2.0 - REPORTE MÉXICO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      body {
-        background-color: #111827;
-      }
-      .preview-card {
-        transition: all 0.3s ease;
-      }
+        body { background-color: #111827; }
+        .preview-card { transition: all 0.3s ease; }
     </style>
-  </head>
-  <body class="p-4 md:p-8">
+</head>
+<body class="p-4 md:p-8">
     <div class="max-w-6xl mx-auto">
-      <h1
-        class="text-3xl font-black text-white mb-8 border-b-4 border-purple-600 inline-block uppercase tracking-tighter"
-      >
-        Editor de Noticias V2.0
-      </h1>
+        <header class="flex justify-between items-center mb-8 border-b-4 border-purple-600 pb-4">
+            <h1 class="text-3xl font-black text-white uppercase tracking-tighter">Editor de Noticias V2.0</h1>
+            <span class="text-purple-400 font-bold text-xs bg-purple-900/30 px-3 py-1 rounded-full border border-purple-500/50">REPORTE MÉXICO</span>
+        </header>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-gray-800 p-6 rounded-xl shadow-2xl space-y-4 border border-gray-700">
+                <div>
+                    <label for="titulo" class="block text-purple-400 text-xs font-bold mb-2 uppercase">Título de la Noticia</label>
+                    <input type="text" id="titulo" placeholder="Ej: MÉXICO: Avances en infraestructura..." 
+                           class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none transition-all">
+                </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div class="bg-gray-800 p-6 rounded-xl shadow-2xl space-y-4">
-          <div>
-            <label
-              for="titulo"
-              class="block text-purple-400 text-xs font-bold mb-2 uppercase"
-              >Título de la Noticia</label
-            >
-            <input
-              type="text"
-              id="titulo"
-              placeholder="Ej: TIJUANA: Nuevo proyecto de salud..."
-              class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none"
-            />
-          </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="seccion" class="block text-purple-400 text-xs font-bold mb-2 uppercase">Sección</label>
+                        <input type="text" id="seccion" placeholder="NACIONAL" 
+                               class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none">
+                    </div>
+                    <div>
+                        <label for="urlDestino" class="block text-purple-400 text-xs font-bold mb-2 uppercase">Ruta de la Nota (HTML)</label>
+                        <input type="text" id="urlDestino" placeholder="content/estados/nota.html" 
+                               class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none">
+                    </div>
+                </div>
 
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label
-                for="seccion"
-                class="block text-purple-400 text-xs font-bold mb-2 uppercase"
-                >Sección</label
-              >
-              <input
-                type="text"
-                id="seccion"
-                placeholder="NACIONAL"
-                class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none"
-              />
+                <div>
+                    <label for="nombreImagen" class="block text-purple-400 text-xs font-bold mb-2 uppercase">Nombre del archivo de imagen (Ej: foto.jpg)</label>
+                    <input type="text" id="nombreImagen" placeholder="claudia-sheinbaum.png" 
+                           class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none">
+                </div>
+
+                <div>
+                    <label for="fileInput" class="block text-purple-400 text-xs font-bold mb-2 uppercase">Subir para Vista Previa</label>
+                    <input type="file" id="fileInput" accept="image/*" title="Seleccionar imagen"
+                           class="w-full p-2 rounded bg-gray-900 text-gray-400 border border-gray-700 focus:border-purple-500 outline-none cursor-pointer">
+                </div>
+
+                <div>
+                    <label for="resumen" class="block text-purple-400 text-xs font-bold mb-2 uppercase">Resumen de la Noticia</label>
+                    <textarea id="resumen" rows="4" placeholder="Escribe un resumen breve..." 
+                              class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none"></textarea>
+                </div>
             </div>
-            <div>
-              <label
-                for="urlDestino"
-                class="block text-purple-400 text-xs font-bold mb-2 uppercase"
-                >URL del Archivo (HTML)</label
-              >
-              <input
-                type="text"
-                id="urlDestino"
-                placeholder="content/bienestar/nota.html"
-                class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none"
-              />
+
+            <div class="space-y-6">
+                <h2 class="text-purple-400 font-bold uppercase text-sm tracking-widest flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> Vista Previa en Vivo
+                </h2>
+                
+                <div id="cardPreview">
+                    <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300">
+                        <img id="imgPreview" src="" alt="Vista previa" class="hidden w-full h-48 object-cover rounded-lg mb-3 shadow-md">
+                        <span id="pSeccion" class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">SECCIÓN</span>
+                        <h2 id="pTitulo" class="text-xl font-black text-white leading-tight">Título de la Noticia</h2>
+                        <p id="pResumen" class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">El resumen aparecerá aquí...</p>
+                        <span id="pFecha" class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter"></span>
+                    </article>
+                </div>
+
+                <div class="relative">
+                    <label for="htmlOutput" class="block text-green-400 text-xs font-bold mb-2 uppercase">Código para pegar en INDEX.HTML</label>
+                    <textarea id="htmlOutput" readonly class="w-full h-44 p-3 rounded bg-black text-green-500 font-mono text-[10px] border border-green-900 outline-none scrollbar-hide" title="Código generado"></textarea>
+                    <button onclick="copyCode()" class="absolute bottom-2 right-2 bg-green-600 hover:bg-green-500 text-white text-[10px] px-3 py-1 rounded font-bold uppercase transition-colors">Copiar</button>
+                </div>
             </div>
-          </div>
-
-          <div>
-            <label
-              for="nombreImagen"
-              class="block text-purple-400 text-xs font-bold mb-2 uppercase"
-              >Nombre de la Foto (Ej: foto1.jpg)</label
-            >
-            <input
-              type="text"
-              id="nombreImagen"
-              placeholder="mi-noticia.jpg"
-              class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none"
-            />
-          </div>
-
-          <div>
-            <label
-              for="fileInput"
-              class="block text-purple-400 text-xs font-bold mb-2 uppercase"
-              >Previsualizar Imagen Local</label
-            >
-            <input
-              type="file"
-              id="fileInput"
-              accept="image/*"
-              title="Subir para vista previa"
-              class="w-full p-2 rounded bg-gray-900 text-gray-400 border border-gray-700 focus:border-purple-500 outline-none"
-            />
-          </div>
-
-          <div>
-            <label
-              for="resumen"
-              class="block text-purple-400 text-xs font-bold mb-2 uppercase"
-              >Resumen / Cuerpo Corto</label
-            >
-            <textarea
-              id="resumen"
-              rows="4"
-              placeholder="Escribe un breve resumen..."
-              class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none"
-            ></textarea>
-          </div>
         </div>
-
-        <div class="space-y-6">
-          <h2
-            class="text-purple-400 font-bold uppercase text-sm tracking-widest"
-          >
-            Vista Previa Real
-          </h2>
-
-          <div id="cardPreview">
-            <article
-              class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300"
-            >
-              <img
-                id="imgPreview"
-                src=""
-                alt="Vista previa"
-                class="hidden w-full h-48 object-cover rounded-lg mb-3 shadow-md"
-              />
-              <span
-                id="pSeccion"
-                class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase"
-                >SECCIÓN</span
-              >
-              <h2 id="pTitulo" class="text-xl font-black text-white">
-                Título de la Noticia
-              </h2>
-              <p
-                id="pResumen"
-                class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2"
-              >
-                Resumen...
-              </p>
-              <span
-                id="pFecha"
-                class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter"
-              ></span>
-            </article>
-          </div>
-
-          <div class="relative">
-            <label
-              for="htmlOutput"
-              class="block text-green-400 text-xs font-bold mb-2 uppercase"
-              >Código para pegar en INDEX.HTML</label
-            >
-            <textarea
-              id="htmlOutput"
-              readonly
-              class="w-full h-48 p-3 rounded bg-black text-green-500 font-mono text-[10px] border border-green-900 outline-none"
-              title="Código generado"
-            ></textarea>
-          </div>
-        </div>
-      </div>
     </div>
 
     <script>
-      const inputs = [
-        "titulo",
-        "seccion",
-        "resumen",
-        "urlDestino",
-        "nombreImagen",
-      ];
+        const inputs = ['titulo', 'seccion', 'resumen', 'urlDestino', 'nombreImagen'];
+        
+        function getFecha() {
+            return new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+        }
 
-      function getFecha() {
-        return new Date().toLocaleDateString("es-ES", {
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-        });
-      }
+        function copyCode() {
+            const copyText = document.getElementById("htmlOutput");
+            copyText.select();
+            document.execCommand("copy");
+            alert("¡Código copiado!");
+        }
 
-      function update() {
-        const titulo =
-          document.getElementById("titulo").value || "Título de la Noticia";
-        const seccion = document.getElementById("seccion").value || "GENERAL";
-        const resumen =
-          document.getElementById("resumen").value ||
-          "El resumen aparecerá aquí...";
-        const url = document.getElementById("urlDestino").value || "#";
-        const foto =
-          document.getElementById("nombreImagen").value ||
-          "imagen-pendiente.jpg";
-        const fecha = getFecha();
+        function update() {
+            const titulo = document.getElementById('titulo').value || 'Título de la Noticia';
+            const seccion = document.getElementById('seccion').value || 'GENERAL';
+            const resumen = document.getElementById('resumen').value || 'El resumen aparecerá aquí...';
+            const url = document.getElementById('urlDestino').value || '#';
+            const foto = document.getElementById('nombreImagen').value || 'foto-pendiente.jpg';
+            const fecha = getFecha();
 
-        document.getElementById("pTitulo").innerText = titulo;
-        document.getElementById("pSeccion").innerText = seccion;
-        document.getElementById("pResumen").innerText = resumen;
-        document.getElementById("pFecha").innerText = fecha;
+            document.getElementById('pTitulo').innerText = titulo;
+            document.getElementById('pSeccion').innerText = seccion;
+            document.getElementById('pResumen').innerText = resumen;
+            document.getElementById('pFecha').innerText = fecha;
 
-        const html = `<a href="${url}" target="_blank" rel="noopener" class="block group">
-    <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:scale-[1.01] hover:shadow-2xl">
-        <img src="static/images/noticias/${foto}" alt="${titulo}" class="w-full h-auto rounded-lg mb-3 shadow-md">
-        <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase">${seccion}</span>
+            const html = `<article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
+    <a href="${url}" target="_blank" rel="noopener" class="block group">
+        <img src="static/images/noticias/${foto}" alt="${titulo}" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/8700a8/ffffff?text=IMAGEN+NO+DISPONIBLE'">
+        <div class="mb-3">
+            <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">${seccion}</span>
+        </div>
         <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">${titulo}</h2>
         <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">${resumen}</p>
         <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">${fecha}</span>
-    </article>
-</a>`;
-        document.getElementById("htmlOutput").value = html;
-      }
+        <div class="text-center mt-4">
+            <span class="text-purple-400 text-xs font-bold border border-purple-400 px-4 py-1 rounded-full hover:bg-purple-400 hover:text-white transition-all uppercase">Leer nota completa</span>
+        </div>
+    </a>
+</article>`;
+            document.getElementById('htmlOutput').value = html;
+        }
 
-      document
-        .getElementById("fileInput")
-        .addEventListener("change", function (e) {
-          const reader = new FileReader();
-          reader.onload = function () {
-            const img = document.getElementById("imgPreview");
-            img.src = reader.result;
-            img.classList.remove("hidden");
-          };
-          if (e.target.files[0]) reader.readAsDataURL(e.target.files[0]);
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const img = document.getElementById('imgPreview');
+                img.src = reader.result;
+                img.classList.remove('hidden');
+            };
+            if(e.target.files[0]) reader.readAsDataURL(e.target.files[0]);
         });
 
-      inputs.forEach((id) =>
-        document.getElementById(id).addEventListener("input", update)
-      );
-      window.onload = update;
+        inputs.forEach(id => document.getElementById(id).addEventListener('input', update));
+        window.onload = update;
     </script>
-  </body>
+</body>
 </html>
