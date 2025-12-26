@@ -3,84 +3,459 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reporte México</title>
-    <link rel="stylesheet" href="static/css/style.css" />
+    <title>PRESIDENTA SHEINBAUM: “Que la solidaridad que nos define y el amor por nuestra tierra nos den mucha fuerza. Que el orgullo de ser mexicanos nos acompañe hoy y siempre"</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+            /* Definición de la fuente principal */
+            body {
+              background-color: #111827; /* Fondo gris muy oscuro (Dark Mode) */
+      color: #1f2937; color: #f3f4f6; /* Color de texto claro */
+            }
+
+            /* --- ESTILOS PARA NOTICIAS DESTACADAS (Soluciona el problema de "no enlazan") --- */
+
+            /* El contenedor de la noticia debe ser relativo para que el enlace principal se posicione */
+            .link-expansivo {
+              position: relative;
+            }
+
+            /* El enlace principal que cubre toda la tarjeta */
+            .enlace-principal {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              z-index: 10; /* Asegura que esté por encima de otros elementos */
+              background-color: transparent; /* Es invisible */
+            }
+
+            /* Estilo para el botón de acción (visual) */
+            .boton-accion {
+              display: inline-block;
+              background-color: #8700a8; /* Púrpura */
+              color: white;
+              font-weight: bold;
+              padding: 0.5rem 1rem;
+              border-radius: 0.375rem; /* rounded-md */
+              margin-top: 0.5rem;
+              transition: background-color 0.15s ease-in-out;
+              pointer-events: none; /* Crucial: Previene que este span intercepte el clic */
+            }
+
+            /* Efecto hover en el botón dentro de la tarjeta */
+            .link-expansivo:hover .boton-accion {
+              background-color: #6d28d9; /* Púrpura más oscuro en hover */
+            }
+            /* --- FIN DE ESTILOS ADICIONALES --- */
+    </style>
   </head>
-  <body>
-    <<header class="main-header">
-    <h1>REPORTE MÉXICO</h1>
+
+  <header class="bg-purple-600 py-8 shadow-md border-b-4 border-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase italic">
+            REPORTE MÉXICO
+        </h1>
+        <p class="text-purple-100 text-sm font-bold mt-2 tracking-widest uppercase">
+            Información en Tiempo Real
+        </p>
+    </div>
+    <div class="max-w-md mx-auto mt-6 px-4">
+    <form action="/buscar" method="GET" class="relative">
+        <input type="text" 
+               name="q" 
+               placeholder="Buscar noticias..." 
+               class="w-full bg-white text-purple-900 rounded-full py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-purple-400 shadow-lg border-none"
+               aria-label="Buscar en el sitio">
+        
+        <div class="absolute left-3 top-2.5 text-purple-600">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+        </div>
+        
+        <button type="submit" class="hidden">Buscar</button>
+    </form>
+</div>
 </header>
 
-<nav class="nav-bar">
-    <div class="nav-container">
-        <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </button>
-        <ul class="nav-menu" id="nav-links">
-            <li><a href="#" class="nav-link">Inicio</a></li>
-            <li><a href="#" class="nav-link">Nacional</a></li>
-            <li><a href="#" class="nav-link">Estados</a></li>
-            <li><a href="#" class="nav-link">Columnistas</a></li>
-            <li><a href="#" class="nav-link">Cultura</a></li>
-        </ul>
+  <!-- BARRA DE NAVEGACIÓN (MENÚ ACORDEÓN/COLAPSABLE RESPONSIVO) -->
+    <nav class="bg-purple-600 shadow-xl sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+
+            <a href="/" class="text-white text-xl font-extrabold tracking-wide hover:text-gray-200 transition duration-150">
+                INICIO
+            </a>
+            
+            <button id="menu-toggle" aria-label="Abrir menú principal" title="Menú">
+    <i class="fas fa-bars"></i>
+</button>
+            </button>
+        </div>
+    </div>
+
+    <div id="nav-links" class="hidden lg:block w-full"> 
+        <div class="flex flex-col lg:flex-row lg:space-x-4 px-2 pt-2 pb-3 space-y-1 sm:px-3 lg:space-y-0 lg:p-0 lg:mx-auto lg:max-w-7xl">
+
+            <a href="/informacion-total-tj.html" class="text-white font-semibold bg-red-700 hover:bg-red-800 px-3 py-2 rounded-md transition duration-150 text-center lg:w-auto my-1 lg:my-0">REPORTE TOTAL</a>
+            
+            <a href="/baja-california.html" class="text-white font-semibold bg-red-700 hover:bg-red-800 px-3 py-2 rounded-md transition duration-150 text-center lg:w-auto my-1 lg:my-0">NACIÓN</a>
+            
+            <a href="/desaparecidos.html" class="text-white font-semibold bg-red-700 hover:bg-red-800 px-3 py-2 rounded-md transition duration-150 text-center lg:w-auto my-1 lg:my-0">ESTADOS</a>
+            
+            <a href="/empleos.html" class="text-white font-semibold bg-red-700 hover:bg-red-800 px-3 py-2 rounded-md transition duration-150 text-center lg:w-auto my-1 lg:my-0">COLUMNISTAS</a>
+
+            <a href="/deportes.html" class="text-white font-semibold bg-red-700 hover:bg-red-800 px-3 py-2 rounded-md transition duration-150 text-center lg:w-auto my-1 lg:my-0">BIENESTAR</a>
+
+            <a href="/codigo-rojo-tijuana.html" class="text-white font-semibold bg-red-700 hover:bg-red-800 px-3 py-2 rounded-md transition duration-150 text-center lg:w-auto my-1 lg:my-0">CULTURA Y ESPECTACULO</a>
+
+            <a
+            href="/"
+            class="text-white font-semibold bg-red-700 hover:bg-red-800 px-3 py-2 rounded-md transition duration-150 text-center lg:w-auto my-1 lg:my-0"
+            >INTERNACIONAL</a>
+
+        </div>
     </div>
 </nav>
+    <!-- FIN BARRA DE NAVEGACIÓN -->
+    
+    <main class="flex-grow container mx-auto px-4 py-8 max-w-7xl">
+      
 
-      <div class="search-bar">
-        <input type="text" placeholder="Buscar noticias en Reporte México..." />
-      </div>
-    </header>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-    <main class="grid-container">
-      <div class="card">
-        <span class="tag">Nacional</span>
-        <div
-          class="img-placeholder">
+            <!--COPIAR-->
+                        
+            <article
+              class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 link-expansivo transition duration-300 hover:shadow-2xl hover:scale-[1.01]">
+              <a href="https://reportemexico.info/presidenta-sheinbaum-solidaridad-define-amor-nuestra-tierra-mucha-fuerza-orgullo-mexicanos-acompane-hoy-siempre"
+                class="enlace-principal"
+                aria-label="Leer la nota completa"></a>
+              <div class="mb-3">
+                <span
+                  class="inline-block bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded-full">
+                  PRESIDENTA SHEINBAUM: “Que la solidaridad que nos define y el amor por nuestra tierra nos den mucha fuerza. Que el orgullo de ser mexicanos nos acompañe hoy y siempre"
+                </span>
+              </div>
+              <img src="images/reportemexico1.png" alt="imagen"
+                class="w-full h-auto rounded-lg mb-3 shadow-md"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x200/8700a8/ffffff?text=IMAGEN+NO+DISPONIBLE';"/>
+
+              <div class="text-center">
+                <span class="boton-accion">LEER NOTA COMPLETA</span>
+              </div>
+            </article>
+
+            <!--PEGAR-->
+
+            <article
+              class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 link-expansivo transition duration-300 hover:shadow-2xl hover:scale-[1.01]"
+            >
+              <a
+                href="https://reportetijuana.com/COPARMEX_TIJUANA_Celebra_acuerdos_tripartitas_sobre_el_salario_minimo_2026_y_la_reduccion_gradual_de_la_jornada_laboral.html"
+                class="enlace-principal"
+                aria-label="Leer la nota completa sobre COPARMEX Tijuana"
+              ></a>
+
+              <div class="mb-3">
+                <span
+                  class="inline-block bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded-full"
+                >
+                  COPARMEX TIJUANA: Celebra acuerdos tripartitas sobre el
+                  salario mínimo 2026 y la reducción gradual de la jornada
+                  laboral
+                </span>
+              </div>
+
+              <img
+                src="imagenes/zz_04122025_tj01.png"
+                alt="Regidor Miguel Loza en programa"
+                class="w-full h-auto rounded-lg mb-3 shadow-md"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x200/8700a8/ffffff?text=IMAGEN+NO+DISPONIBLE';"
+              />
+
+              <div class="text-center">
+                <span class="boton-accion">LEER NOTA COMPLETA</span>
+              </div>
+            </article>
+
+            <article
+              class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 link-expansivo transition duration-300 hover:shadow-2xl hover:scale-[1.01]"
+            >
+              <a
+                href="https://reportetijuana.com/TIJUANA_Alcalde_presenta_proyecto_de_ingresos_2026_ante_comision_de_hacienda.html"
+                class="enlace-principal"
+                aria-label="Leer la nota completa sobre el proyecto de ingresos 2026 en Tijuana"
+              ></a>
+
+              <div class="mb-3">
+                <span
+                  class="inline-block bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded-full"
+                >
+                  TIJUANA: Alcalde presenta proyecto de ingresos 2026 ante
+                  comisión de hacienda
+                </span>
+              </div>
+
+              <img
+                src="imagenes/zz_03122025_tj08.png"
+                alt="Regidor Miguel Loza en programa"
+                class="w-full h-auto rounded-lg mb-3 shadow-md"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x200/8700a8/ffffff?text=IMAGEN+NO+DISPONIBLE';"
+              />
+
+              <div class="text-center">
+                <span class="boton-accion">LEER NOTA COMPLETA</span>
+              </div>
+            </article>
+
+            <article
+              class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 link-expansivo transition duration-300 hover:shadow-2xl hover:scale-[1.01]"
+            >
+              <a
+                href="https://reportetijuana.com/TECATE_Analiza_Congreso_proyecto_de_ley_de_ingreso_del_municipio_para_2026.html"
+                class="enlace-principal"
+                aria-label="Leer la nota completa sobre el proyecto de ley de ingreso del municipio de Tecate"
+              ></a>
+
+              <div class="mb-3">
+                <span
+                  class="inline-block bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded-full"
+                >
+                  TECATE: Analiza Congreso proyecto de ley de ingreso del
+                  municipio para 2026
+                </span>
+              </div>
+
+              <img
+                src="imagenes/zz_03122025_tj05.png"
+                alt="Regidor Miguel Loza en programa"
+                class="w-full h-auto rounded-lg mb-3 shadow-md"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x200/8700a8/ffffff?text=IMAGEN+NO+DISPONIBLE';"
+              />
+
+              <div class="text-center">
+                <span class="boton-accion">LEER NOTA COMPLETA</span>
+              </div>
+            </article>
+
+            <article
+              class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 link-expansivo transition duration-300 hover:shadow-2xl hover:scale-[1.01]"
+            >
+              <a
+                href="https://reportetijuana.com/PLAYAS_DE_ROSARITO_Proyecta_ingresos_de_1_mil_265_mdp_para_el_proximo_ano.html"
+                class="enlace-principal"
+                aria-label="Leer la nota completa sobre Playas de Rosarito y sus proyectos de ingresos"
+              ></a>
+
+              <div class="mb-3">
+                <span
+                  class="inline-block bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded-full"
+                >
+                  PLAYAS DE ROSARITO: Proyecta ingresos de 1 mil 265 mdp para el
+                  próximo año
+                </span>
+              </div>
+
+              <img
+                src="imagenes/zz_03122025_tj02.png"
+                alt="Regidor Miguel Loza en programa"
+                class="w-full h-auto rounded-lg mb-3 shadow-md"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x200/8700a8/ffffff?text=IMAGEN+NO+DISPONIBLE';"/>
+
+              <div class="text-center">
+                <span class="boton-accion">LEER NOTA COMPLETA</span>
+              </div>
+            </article>
+
+            <article
+              class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 link-expansivo transition duration-300 hover:shadow-2xl hover:scale-[1.01]"
+            >
+              <a
+                href="https://reportetijuana.com/REGIDOR_MIGUEL_LOZA_Mas_de_500_pares_de_lentes_entregados_en_2025_en_su_programa_Construyendo_con_vision.html"
+                class="enlace-principal"
+                aria-label="Leer la nota completa sobre el Regidor Miguel Loza y su programa de lentes"
+              ></a>
+
+              <div class="mb-3">
+                <span
+                  class="inline-block bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded-full"
+                >
+                  REGIDOR MIGUEL LOZA: Más de 500 pares de lentes entregados en
+                  2025 en su programa “Construyendo con visión”
+                </span>
+              </div>
+
+              <img
+                src="imagenes/zz_02122025_tj04.png"
+                alt="Regidor Miguel Loza en programa"
+                class="w-full h-auto rounded-lg mb-3 shadow-md"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x200/8700a8/ffffff?text=IMAGEN+NO+DISPONIBLE';"
+              />
+
+              <div class="text-center">
+                <span class="boton-accion">LEER NOTA COMPLETA</span>
+              </div>
+            </article>
+
+            <article
+              class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 link-expansivo transition duration-300 hover:shadow-2xl hover:scale-[1.01]"
+            >
+              <a
+                href="https://reportetijuana.com/BARRA_DE_ABOGADAS_LIC._MARIA_SANDOVAL_DE_ZARCO_Propone_la_sanciones_mas_severas_a_quienes_incumplan_con_proteccion_de_menores_en_el_estado.html"
+                class="enlace-principal"
+                aria-label="Leer la nota completa sobre la Barra de Abogadas Lic. María Sandoval de Zarco"
+              ></a>
+
+              <div class="mb-3">
+                <span
+                  class="inline-block bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded-full"
+                >
+                  BARRA DE ABOGADAS LIC. MARIA SANDOVAL DE ZARCO: Propone la
+                  sanciones mas severas a quienes incumplan con proteccion de
+                  menores en el estado
+                </span>
+              </div>
+
+              <img
+                src="imagenes/zz_02122025_tj02.png"
+                alt="Barra de Abogadas"
+                class="w-full h-auto rounded-lg mb-3 shadow-md"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x200/8700a8/ffffff?text=IMAGEN+NO+DISPONIBLE';"
+              />
+
+              <div class="text-center">
+                <span class="boton-accion">LEER NOTA COMPLETA</span>
+              </div>
+            </article>
+
+            <article
+              class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 link-expansivo transition duration-300 hover:shadow-2xl hover:scale-[1.01] flex flex-col justify-between"
+            >
+              <a
+                href="https://reportetijuana.com/DESFALCO_DEL_XXIV_AYUNTAMIENTO_DE_TIJUANA__Detienen_a_exfuncionario_del_XXIV_Ayuntamiento_de_Tijuana_por_presunto_desfalco_millonario.html"
+                class="enlace-principal"
+                aria-label="Leer la nota completa sobre el Desfalco del XXIV Ayuntamiento de Tijuana"
+              ></a>
+
+              <div class="mb-3">
+                <span
+                  class="inline-block bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded-full"
+                >
+                  DESFALCO DEL XXIV AYUNTAMIENTO DE TIJUANA: Detienen a
+                  exfuncionario del XXIV Ayuntamiento de Tijuana por presunto
+                  desfalco millonario
+                </span>
+              </div>
+
+              <img
+                src="imagenes/zz_reporte_tijuana_236x141.png"
+                alt="Barra de Abogadas"
+                class="w-full h-auto rounded-lg mb-3 shadow-md"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x200/8700a8/ffffff?text=IMAGEN+NO+DISPONIBLE';"
+              />
+
+              <div class="text-center">
+                <span class="boton-accion">LEER NOTA COMPLETA</span>
+              </div>
+            </article>
+
+            <article
+              class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 link-expansivo transition duration-300 hover:shadow-2xl hover:scale-[1.01]"
+            >
+              <a
+                href="https://reportetijuana.com/GRUPO_MADRUGADORES_DE_TIJUANA_Es_Hector_Santillan_el_Forjador_del_Ano_2025.html"
+                class="enlace-principal"
+                aria-label="Leer la nota completa sobre Grupo Madrugadores de Tijuana"
+              ></a>
+
+              <div class="mb-3">
+                <span
+                  class="inline-block bg-purple-100 text-purple-800 text-sm font-semibold px-3 py-1 rounded-full"
+                >
+                  GRUPO MADRUGADORES DE TIJUANA: Es Héctor Santillán el Forjador
+                  del Año 2025
+                </span>
+              </div>
+
+              <img
+                src="imagenes/zz_02122025_tj01.png"
+                alt="Héctor Santillán el Forjador del Año 2025"
+                class="w-full h-auto rounded-lg mb-3 shadow-md"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x200/8700a8/ffffff?text=IMAGEN+NO+DISPONIBLE';"/>
+
+              <div class="text-center">
+                <span class="boton-accion">LEER NOTA COMPLETA</span>
+              </div>
+            </article>
+          </div>
         </div>
-        <div class="card-content">
-          <h2>Título de la Noticia</h2>
-          <p>Aquí va un breve resumen de lo que está pasando en México...</p>
-        </div>
-      </div>
 
-      <div class="card purple full-text">
-        <span class="tag">NOTICIA</span>
-      </div>
-      <div class="card purple">
-        <span class="tag">NOTICIA</span>
-        <div class="img-placeholder">IMAGEN</div>
-      </div>
-
-      <div class="card purple">
-        <span class="tag">NOTICIA</span>
-        <div class="img-placeholder">IMAGEN</div>
-      </div>
-      <div class="card purple">
-        <span class="tag">NOTICIA</span>
-        <div class="img-placeholder small">IMAGEN</div>
-      </div>
-
-      <div class="card purple full-text">
-        <span class="tag">NOTICIA</span>
-      </div>
-      <div class="card purple">
-        <span class="tag">NOTICIA</span>
-        <div class="img-placeholder">IMAGEN</div>
-      </div>
+        
     </main>
-    <footer class="main-footer">FOOTER</footer>
+
+    <footer class="bg-gray-900 text-white mt-16 pt-10 pb-6 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap justify-between gap-8 text-sm">
+
+            <div class="w-full sm:w-1/2 lg:w-1/4 space-y-3">
+                <h3 class="text-xl font-extrabold text-red-500 mb-2">REPORTE MÉXICO</h3>
+                <p>Tu fuente de información confiable .</p>
+                <div class="space-y-1">
+                    <p class="flex items-center">
+                        <i class="fas fa-envelope mr-3 text-red-500"></i>
+                        <a href="mailto:prensametropoli@gmail.com" class="hover:underline">prensamexico5.8@gmail.com</a>
+                    </p>
+                    <p class="flex items-center">
+                        <i class="fab fa-whatsapp mr-3 text-green-400"></i>
+                        <span>WhatsApp: 564 575 8105</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="w-full sm:w-1/2 lg:w-1/4 space-y-2">
+                <h3 class="text-lg font-bold mb-3 border-b border-gray-700 pb-1">SECCIONES</h3>
+                <ul class="space-y-1">
+                    <li><a href="/" class="hover:text-red-500 transition duration-150">Inicio</a></li>
+                    <li><a href="/informacion-total-tj.html" class="hover:text-red-500 transition duration-150">Reporte Total</a></li>
+                    <li><a href="/codigo-rojo-tijuana.html" class="hover:text-red-500 transition duration-150">Columnistas</a></li>
+                    <li><a href="/desaparecidos.html" class="hover:text-red-500 transition duration-150">Estados</a></li>
+                </ul>
+            </div>
+
+            <div class="w-full lg:w-1/4 space-y-2">
+                <h3 class="text-lg font-bold mb-3 border-b border-gray-700 pb-1">INFORMACIÓN</h3>
+                <p class="text-xs opacity-75 leading-relaxed">
+                    &copy; 2025 reportemexico.info<br>
+                    Esta obra está bajo una licencia de Creative Commons Reconocimiento 4.0 Internacional.
+                    Se permite la reproducción citando la fuente.
+                </p>
+            </div>
+            
+        </div>
+    </div>
+    <div class="mt-8 pt-4 border-t border-gray-700 text-center text-xs">
+        <p class="opacity-75">Diseño y desarrollo | Reporte México</p>
+    </div>
+</footer>
 
     <script>
-      const menuBtn = document.querySelector("#mobile-menu");
-      const menuLinks = document.querySelector("#nav-links");
+      document.addEventListener("DOMContentLoaded", function () {
+        // Etiqueta 'DOMContentLoaded' completada
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.getElementById("nav-links");
 
-      menuBtn.addEventListener("click", () => {
-        // Intercambia la clase para la animación de las barras
-        menuBtn.classList.toggle("is-active");
-        // Intercambia la clase para mostrar/ocultar el menú
-        menuLinks.classList.toggle("active");
+        if (menuToggle && navLinks) {
+          menuToggle.addEventListener("click", () => {
+            // Alterna la clase 'hidden' para mostrar u ocultar el menú de enlaces
+            navLinks.classList.toggle("hidden");
+          });
+        }
       });
     </script>
   </body>
