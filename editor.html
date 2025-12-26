@@ -113,7 +113,9 @@
 
             if(videoID) {
                 videoBox.classList.remove('hidden');
-                iframe.src = `https://www.youtube.com/embed/${videoID}`;
+                // Dentro de tu función update, cambia la línea del iframe por esta:
+iframe.title = "Vista previa del video de YouTube"; 
+iframe.src = `https://www.youtube.com/embed/${videoID}`;
                 videoHtml = `\n    <div class="my-4 relative shadow-xl rounded-xl overflow-hidden border-2 border-purple-600 bg-black aspect-video">\n        <iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoID}" frameborder="0" allowfullscreen></iframe>\n    </div>`;
             } else {
                 videoBox.classList.add('hidden');
