@@ -21,7 +21,7 @@
             <div class="bg-gray-800 p-6 rounded-xl shadow-2xl space-y-4 border border-gray-700">
                 <div>
                     <label class="block text-purple-400 text-xs font-bold mb-2 uppercase">Título de la Noticia</label>
-                    <input type="text" id="titulo" placeholder="Ej: MÉXICO: Avances en infraestructura..." class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none">
+                    <input type="text" id="titulo" placeholder="Ej: MÉXICO: Avances..." class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none">
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
@@ -36,10 +36,9 @@
                 </div>
 
                 <div>
-    <label for="youtubeID" class="block text-red-400 text-xs font-bold mb-2 uppercase">ID del Video de YouTube</label>
-    <input type="text" id="youtubeID" placeholder="Ej: dQw4w9WgXcQ" 
-           class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-red-500 outline-none">
-</div>
+                    <label class="block text-red-400 text-xs font-bold mb-2 uppercase">ID del Video de YouTube (Ej: dQw4w9WgXcQ)</label>
+                    <input type="text" id="youtubeID" placeholder="Pega solo el ID aquí..." class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-red-500 outline-none">
+                </div>
 
                 <div>
                     <label class="block text-purple-400 text-xs font-bold mb-2 uppercase">Nombre de la Foto (static/images/noticias/...)</label>
@@ -47,26 +46,21 @@
                 </div>
 
                 <div>
-                    <label class="block text-red-400 text-xs font-bold mb-2 uppercase">ID del Video de YouTube (Ej: dQw4w9WgXcQ)</label>
-                    <input type="text" id="youtubeID" placeholder="Pega solo el ID del video..." class="w-full p-2 rounded bg-gray-900 text-white border border-red-900 focus:border-red-500 outline-none">
-                </div>
-
-                <div>
                     <label class="block text-purple-400 text-xs font-bold mb-2 uppercase">Resumen / Cuerpo Corto</label>
-                    <textarea id="resumen" rows="3" placeholder="Escribe el resumen aquí..." class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none"></textarea>
+                    <textarea id="resumen" rows="3" placeholder="Escribe el resumen..." class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none"></textarea>
                 </div>
             </div>
 
             <div class="space-y-6">
                 <h2 class="text-purple-400 font-bold uppercase text-sm tracking-widest flex items-center gap-2">
-                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> Vista Previa de la Nota
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> Vista Previa
                 </h2>
                 
                 <div id="cardPreview">
                     <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600">
-                        <<div id="videoPreviewBox" class="hidden mb-4 relative rounded-lg overflow-hidden border-2 border-purple-600 bg-black aspect-video">
-    <iframe id="iframePreview" class="w-full h-full" src="" frameborder="0" allowfullscreen></iframe>
-</div>
+                        <div id="videoPreviewBox" class="hidden mb-4 relative rounded-lg overflow-hidden border-2 border-purple-600 bg-black aspect-video">
+                            <iframe id="iframePreview" class="w-full h-full" src="" frameborder="0" allowfullscreen></iframe>
+                        </div>
                         
                         <img id="imgPreview" src="https://placehold.co/400x200/4c1d95/ffffff?text=Imagen+Noticia" class="w-full h-40 object-cover rounded-lg mb-3 shadow-md">
                         <span id="pSeccion" class="inline-block bg-purple-100 text-purple-800 text-[10px] font-bold px-2 py-1 rounded-full mb-2 uppercase">SECCIÓN</span>
@@ -76,7 +70,7 @@
                 </div>
 
                 <div class="relative group">
-                    <label class="block text-green-400 text-xs font-bold mb-2 uppercase font-mono">Código Generado para el Index</label>
+                    <label class="block text-green-400 text-xs font-bold mb-2 uppercase font-mono">Código para INDEX.HTML</label>
                     <textarea id="htmlOutput" readonly class="w-full h-40 p-3 rounded bg-black text-green-500 font-mono text-[10px] border border-green-900 outline-none"></textarea>
                     <button onclick="copiarAlPortapapeles()" class="absolute top-8 right-2 bg-green-600 hover:bg-green-500 text-white text-[10px] px-3 py-1 rounded font-black uppercase transition-all shadow-lg active:scale-95">
                         Copiar Código
@@ -105,6 +99,42 @@
             const seccion = document.getElementById('seccion').value || 'GENERAL';
             const resumen = document.getElementById('resumen').value || 'Resumen de la nota...';
             const url = document.getElementById('urlDestino').value || '#';
-            const
+            const foto = document.getElementById('nombreImagen').value || 'foto.jpg';
+            const videoID = document.getElementById('youtubeID').value;
+            const fecha = getFecha();
 
+            document.getElementById('pTitulo').innerText = titulo;
+            document.getElementById('pSeccion').innerText = seccion;
+            document.getElementById('pResumen').innerText = resumen;
 
+            const videoBox = document.getElementById('videoPreviewBox');
+            const iframe = document.getElementById('iframePreview');
+            let videoHtml = '';
+
+            if(videoID) {
+                videoBox.classList.remove('hidden');
+                iframe.src = `https://www.youtube.com/embed/${videoID}`;
+                videoHtml = `\n    <div class="my-4 relative shadow-xl rounded-xl overflow-hidden border-2 border-purple-600 bg-black aspect-video">\n        <iframe class="w-full h-full" src="https://www.youtube.com/embed/${videoID}" frameborder="0" allowfullscreen></iframe>\n    </div>`;
+            } else {
+                videoBox.classList.add('hidden');
+                iframe.src = '';
+            }
+
+            const html = `<article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
+    <a href="${url}" class="block group">
+        <img src="static/images/noticias/${foto}" alt="${titulo}" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
+        <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">${seccion}</span>
+        <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">${titulo}</h2>${videoHtml}
+        <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">${resumen}</p>
+        <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">${fecha}</span>
+    </a>
+</article>`;
+            
+            document.getElementById('htmlOutput').value = html;
+        }
+
+        inputs.forEach(id => document.getElementById(id).addEventListener('input', update));
+        window.onload = update;
+    </script>
+</body>
+</html>
