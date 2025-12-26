@@ -22,7 +22,7 @@
                 <div>
                     <label for="titulo" class="block text-purple-400 text-xs font-bold mb-2 uppercase">Título de la Noticia</label>
                     <input type="text" id="titulo" placeholder="Ej: MÉXICO: Avances en infraestructura..." 
-                           class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none transition-all">
+                           class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none">
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
@@ -32,49 +32,52 @@
                                class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none">
                     </div>
                     <div>
-                        <label for="urlDestino" class="block text-purple-400 text-xs font-bold mb-2 uppercase">Ruta del Archivo (HTML)</label>
-                        <input type="text" id="urlDestino" placeholder="content/bienestar/nota.html" 
+                        <label for="urlDestino" class="block text-purple-400 text-xs font-bold mb-2 uppercase">Ruta del Archivo (con-guiones-medios.html)</label>
+                        <input type="text" id="urlDestino" placeholder="content/bienestar/nota-ejemplo.html" 
                                class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none">
                     </div>
                 </div>
 
                 <div>
-                    <label for="nombreImagen" class="block text-purple-400 text-xs font-bold mb-2 uppercase">Nombre de la Foto (Ej: nota1.jpg)</label>
-                    <input type="text" id="nombreImagen" placeholder="claudia-sheinbaum.png" 
+                    <label for="nombreImagen" class="block text-purple-400 text-xs font-bold mb-2 uppercase">Nombre de la Foto (Ej: foto1.jpg)</label>
+                    <input type="text" id="nombreImagen" placeholder="mi-imagen.jpg" 
                            class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none">
                 </div>
 
                 <div>
-                    <label for="fileInput" class="block text-purple-400 text-xs font-bold mb-2 uppercase">Previsualizar Imagen Local</label>
-                    <input type="file" id="fileInput" accept="image/*" title="Seleccionar imagen local"
-                           class="w-full p-2 rounded bg-gray-900 text-gray-400 border border-gray-700 focus:border-purple-500 outline-none cursor-pointer">
+                    <label for="fileInput" class="block text-purple-400 text-xs font-bold mb-2 uppercase">Vista Previa Local</label>
+                    <input type="file" id="fileInput" accept="image/*" title="Seleccionar imagen"
+                           class="w-full p-2 rounded bg-gray-900 text-gray-400 border border-gray-700 focus:border-purple-500 cursor-pointer">
                 </div>
 
                 <div>
                     <label for="resumen" class="block text-purple-400 text-xs font-bold mb-2 uppercase">Resumen / Cuerpo Corto</label>
-                    <textarea id="resumen" rows="4" placeholder="Escribe un breve resumen..." 
+                    <textarea id="resumen" rows="4" placeholder="Escribe el resumen aquí..." 
                               class="w-full p-2 rounded bg-gray-900 text-white border border-gray-700 focus:border-purple-500 outline-none"></textarea>
                 </div>
             </div>
 
             <div class="space-y-6">
                 <h2 class="text-purple-400 font-bold uppercase text-sm tracking-widest flex items-center gap-2">
-                    <span class="w-2 h-2 bg-green-500 rounded-full"></span> Vista Previa
+                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> Vista Previa
                 </h2>
                 
                 <div id="cardPreview">
-                    <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300">
-                        <img id="imgPreview" src="" alt="Vista previa de noticia" class="hidden w-full h-48 object-cover rounded-lg mb-3 shadow-md">
+                    <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600">
+                        <img id="imgPreview" src="" alt="Vista previa" class="hidden w-full h-48 object-cover rounded-lg mb-3 shadow-md">
                         <span id="pSeccion" class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">SECCIÓN</span>
                         <h2 id="pTitulo" class="text-xl font-black text-white leading-tight">Título de la Noticia</h2>
-                        <p id="pResumen" class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">Tu resumen aparecerá aquí...</p>
-                        <span id="pFecha" class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter"></span>
+                        <p id="pResumen" class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">Resumen...</p>
+                        <span id="pFecha" class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic"></span>
                     </article>
                 </div>
 
-                <div class="relative">
-                    <label for="htmlOutput" class="block text-green-400 text-xs font-bold mb-2 uppercase">Código para INDEX.HTML</label>
+                <div class="relative group">
+                    <label for="htmlOutput" class="block text-green-400 text-xs font-bold mb-2 uppercase font-mono">Código para INDEX.HTML</label>
                     <textarea id="htmlOutput" readonly class="w-full h-44 p-3 rounded bg-black text-green-500 font-mono text-[10px] border border-green-900 outline-none" title="Código generado"></textarea>
+                    <button onclick="copiarAlPortapapeles()" class="absolute top-8 right-2 bg-green-600 hover:bg-green-500 text-white text-[10px] px-3 py-1 rounded font-black uppercase transition-all shadow-lg active:scale-95">
+                        Copiar Código
+                    </button>
                 </div>
             </div>
         </div>
@@ -85,6 +88,14 @@
         
         function getFecha() {
             return new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+        }
+
+        function copiarAlPortapapeles() {
+            const copyText = document.getElementById("htmlOutput");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // Para móviles
+            navigator.clipboard.writeText(copyText.value);
+            alert("¡Código copiado! Ahora pégalo en tu index.html");
         }
 
         function update() {
@@ -102,7 +113,7 @@
 
             const html = `<article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
     <a href="${url}" target="_blank" rel="noopener" class="block group">
-        <img src="static/images/noticias/${foto}" alt="${titulo}" class="w-full h-auto rounded-lg mb-3 shadow-md">
+        <img src="static/images/noticias/${foto}" alt="${titulo}" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
         <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">${seccion}</span>
         <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">${titulo}</h2>
         <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">${resumen}</p>
@@ -130,4 +141,5 @@
     </script>
 </body>
 </html>
+
 
