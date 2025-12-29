@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nación - Reporte México</title>
+    <link rel="stylesheet" href="../../static/css/style.css">
+</head>
+<body style="background-color: #0f172a; color: white; font-family: sans-serif; padding: 20px;">
+    <h1 style="color: #7c3aed; border-bottom: 2px solid #7c3aed; padding-bottom: 10px;">SECCIÓN: NACIÓN</h1>
+    
+    <ul style="list-style: none; padding: 0; margin-top: 30px;">
+        <li style="margin-bottom: 20px; border-bottom: 1px solid #1e293b; padding-bottom: 10px;">
+            <a href="../../nota_1766444883.html" style="color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold;">
+                Título de la Noticia de Nación Aquí
+            </a>
+        </li>
+    </ul>
+
+    <div style="margin-top: 50px; padding: 20px; border: 1px solid #7c3aed; border-radius: 8px; text-align: center;">
+        <h3 style="margin-top: 0;">LA RED</h3>
+        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+            <a href="https://reportetijuana.com" style="color: #aaa; text-decoration: none; font-size: 0.8rem;">TIJUANA</a>
+            <a href="https://codigorojomx.info" style="color: #aaa; text-decoration: none; font-size: 0.8rem;">SEGURIDAD</a>
+        </div>
+    </div>
+</body>
+</html>

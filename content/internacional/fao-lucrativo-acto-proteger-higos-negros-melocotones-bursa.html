@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAO: Un lucrativo acto de amor, proteger los higos negros y los melocotones de Bursa</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      rel="stylesheet"/>
+    <style>
+            /* Definición de la fuente principal */
+            body {
+              background-color: #111827; /* Fondo gris muy oscuro (Dark Mode) */
+      color: #1f2937; color: #f3f4f6; /* Color de texto claro */
+            }
+
+            /* --- ESTILOS PARA NOTICIAS DESTACADAS (Soluciona el problema de "no enlazan") --- */
+
+            /* El contenedor de la noticia debe ser relativo para que el enlace principal se posicione */
+            .link-expansivo {
+              position: relative;
+            }
+
+            /* El enlace principal que cubre toda la tarjeta */
+            .enlace-principal {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              z-index: 10; /* Asegura que esté por encima de otros elementos */
+              background-color: transparent; /* Es invisible */
+            }
+
+            /* Estilo para el botón de acción (visual) */
+            .boton-accion {
+              display: inline-block;
+              background-color: #8700a8; /* Púrpura */
+              color: white;
+              font-weight: bold;
+              padding: 0.5rem 1rem;
+              border-radius: 0.375rem; /* rounded-md */
+              margin-top: 0.5rem;
+              transition: background-color 0.15s ease-in-out;
+              pointer-events: none; /* Crucial: Previene que este span intercepte el clic */
+            }
+
+            /* Efecto hover en el botón dentro de la tarjeta */
+            .link-expansivo:hover .boton-accion {
+              background-color: #6d28d9; /* Púrpura más oscuro en hover */
+            }
+            /* --- FIN DE ESTILOS ADICIONALES --- */
+    </style>
+  </head>
+
+  <header class="bg-purple-600 py-8 shadow-md border-b-4 border-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase italic">
+            REPORTE MÉXICO
+        </h1>
+        <p class="text-purple-100 text-sm font-bold mt-2 tracking-widest uppercase">
+            Información en Tiempo Real
+        </p>
+    </div>
+    <div class="max-w-md mx-auto mt-6 px-4">
+    <form action="/buscar" method="GET" class="relative">
+        <input type="text" 
+               name="q" 
+               placeholder="Buscar noticias..." 
+               class="w-full bg-white text-purple-900 rounded-full py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-purple-400 shadow-lg border-none"
+               aria-label="Buscar en el sitio">
+        
+        <div class="absolute left-3 top-2.5 text-purple-600">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+        </div>
+        
+        <button type="submit" class="hidden">Buscar</button>
+    </form>
+</div>
+</header>
+
+  <!-- BARRA DE NAVEGACIÓN (MENÚ ACORDEÓN/COLAPSABLE RESPONSIVO) -->
+    <nav class="bg-purple-600 shadow-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+
+                <a href="/" class="text-white text-xl font-extrabold tracking-wide hover:text-gray-200 transition duration-150">
+                INICIO
+                </a>
+            
+            <button id="menu-toggle" aria-label="Abrir menú principal" title="Menú">
+            <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="nav-links" class="hidden lg:block w-full"> 
+            <div class="flex flex-col lg:flex-row lg:space-x-4 px-2 pt-2 pb-3 space-y-1 sm:px-3 lg:space-y-0 lg:p-0 lg:mx-auto lg:max-w-7xl">
+
+            <a href="/nacion.html" 
+            class="bg-white text-purple-700 border border-purple-700 font-bold px-4 py-2 rounded-md transition duration-150 hover:bg-purple-700 hover:text-white my-1 lg:my-0">NACIÓN</a>
+
+            <a href="/estados.html" 
+            class="bg-white text-purple-700 border border-purple-700 font-bold px-4 py-2 rounded-md transition duration-150 hover:bg-purple-700 hover:text-white my-1 lg:my-0">ESTADOS</a>
+            
+            <a href="/columnistas.html" 
+            class="bg-white text-purple-700 border border-purple-700 font-bold px-4 py-2 rounded-md transition duration-150 hover:bg-purple-700 hover:text-white my-1 lg:my-0">COLUMNISTAS</a>
+
+            <a href="/bienestar.html" 
+            class="bg-white text-purple-700 border border-purple-700 font-bold px-4 py-2 rounded-md transition duration-150 hover:bg-purple-700 hover:text-white my-1 lg:my-0">BIENESTAR</a>
+
+            <a href="/cultura.html" 
+            class="bg-white text-purple-700 border border-purple-700 font-bold px-4 py-2 rounded-md transition duration-150 hover:bg-purple-700 hover:text-white my-1 lg:my-0">CULTURA Y ESPECTÁCULO</a>
+
+            <a href="/internacional.html" 
+            class="bg-white text-purple-700 border border-purple-700 font-bold px-4 py-2 rounded-md transition duration-150 hover:bg-purple-700 hover:text-white my-1 lg:my-0">INTERNACIONAL</a>
+            </div>
+        </div>
+    </nav>
+    <!-- FIN BARRA DE NAVEGACIÓN -->
+    
+    <!-- CUERPO DEL ARTÍCULO -->
+   <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        
+        <!-- CONTENEDOR PRINCIPAL: Grid responsivo de 1 o 2 columnas (2/3 y 1/3) -->
+        <div class="grid grid-cols-1 lg:grid-cols- gap-8 w-full justify-center">
+            
+            <!-- COLUMNA 1: Contenido Principal del Artículo (Ocupa 2/3 en escritorio) -->
+            <div class="lg:col-span-2">
+                <article class="bg-white p-6 sm:p-8 rounded-xl shadow-2xl border-t-4 border-purple-600 mb-6 lg:mb-0">
+                    
+                    <!-- SECCIÓN DESTACADA / TÍTULO -->
+                    <div class="mb-6">
+                        <div class="text-center mb-4">
+                            <span class="inline-block px-4 py-1 rounded-full font-semibold text-white bg-purple-600 text-sm uppercase tracking-wider">
+                                INTERNACIONAL
+                            </span>
+                        </div>
+                        
+                        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 text-center leading-tight">
+                            FAO: Un lucrativo acto de amor, proteger los higos negros y los melocotones de Bursa
+                        </h2>
+
+                        <time datetime="2025-12-05">27 de Diciembre de 2025</time>                        
+                        
+                    </div>
+                    
+                    <!-- IMAGEN DESTACADA -->
+                    <figure class="my-6">
+                        <!-- LOGO/ICONO ADICIONAL: REPORTE MÉXICO -->
+                        <img src="../../static/images/noticias/fao-un-lucrativo-acto-de-amor.png" alt="Presidenta Sheinbaum" class="mx-auto mb-4 w-full h-auto rounded-lg shadow-md">
+
+                      
+                    </figure>
+
+                    <!-- PÁRRAFOS DEL CONTENIDO -->
+                    <div class="prose max-w-none text-lg leading-relaxed text-gray-700 space-y-4 pt-4 border-t">
+                        <p>
+                            El higo negro y el melocotón de Bursa, en Türkiye, son dos productos destacados en una región conocida por sus frutas y hortalizas. Se les concedió la IG nacional en 2018 y 2019, respectivamente, reconocida luego por la Unión Europea en 2024. 
+</p>
+<p>
+23/12/2025
+</p>
+<p>
+Hacer Şimşek se mueve con rapidez entre los árboles, recolectando higos maduros y llenando los cubos de metal que su hija lleva al cobertizo.
+</p>
+<p>
+Esta agricultora de 42 años lleva guantes de látex y manguitos rojos para protegerse la piel de la leche de los higos, que puede quemar y dejar cicatrices.
+</p>
+<p>
+Es la temporada de recolección de los famosos higos negros de Bursa, en Türkiye, y Hacer y su familia llevan en el campo desde el amanecer.
+</p>
+<p>
+Se despiertan a las 5 de la mañana y se dirigen a sus huertos, donde, según Hacer, “trabajan como robots durante dos meses”, examinando los casi 400 árboles de sus 3,1 hectáreas en busca de higos listos para el mercado.
+</p>
+<p>
+“Si no se recolectan los higos maduros en tres días, se pierden”, añade.
+</p>
+<p>
+La mayoría de los agricultores de la aldea de Karabalçık, en Bursa —un mosaico de colinas cubiertas de frutales, olivos y viñedos—, cultivan higos negros para la exportación.
+</p>
+<p>
+Es un mercado lucrativo. Cada higuera produce entre 100 y 120 kilos de fruta al año, y el precio en la explotación de este año es de 150 liras turcas (cerca de 3,50 USD) por kilo, lo que representa una buena cantidad de dinero, de acuerdo con Hacer.
+</p>
+<p>
+“Podemos ahorrar dinero e invertir”, añade. “El año pasado compramos un tractor nuevo y un coche”.
+</p>
+<p>
+Pero el trabajo exige mucho esfuerzo físico y es difícil encontrar temporeros para la recolección, que suele durar desde principios de agosto hasta septiembre. El cambio climático hace que todo ocurra antes de lo normal, asegura Hacer.
+</p>
+<p>
+Su marido, Sabahattin Şimşek, señala los tubos de riego por goteo que serpentean alrededor de las higueras, un colchón frente a los períodos secos cada vez más largos. 
+</p>
+<p>
+Aunque las higueras son relativamente resistentes al estrés climático, Hacer no lo da por hecho y las colma de “amor y cuidados” después de la cosecha. “Como si fueran mis hijos”.
+</p>
+<p>
+Unas cuidadosas prácticas de selección, clasificación y embalaje ayudan a preservar la vida útil de los frutos. Las IG permiten al consumidor saber que está comprando productos auténticos. © FAO/ Onur Coban
+</p>
+<p>
+El higo negro y el melocotón de Bursa de Türkiye son dos productos destacados en una región conocida por sus frutas y hortalizas.
+</p>
+<p>
+La agencia de patentes y marcas de Türkiye, Turk Patent, concedió la indicación geográfica (IG) nacional al higo negro en 2018 y al melocotón en 2019, reconociendo el vínculo entre su gran calidad y su origen. La Unión Europea reconoció la IG de estas frutas en 2024.
+</p>
+<p>
+La Asociación de Cooperativas Agrícolas de Bursa (Köy-Koop) encabezó el proceso de registro de la IG, en estrecha colaboración con productores locales, funcionarios gubernamentales, académicos y expertos técnicos.
+</p>
+<p>
+La Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO) y el Banco Europeo de Reconstrucción y Desarrollo (BERD) prestaron su apoyo a lo largo de todo el proceso.
+</p>
+<p>
+Compartieron conocimientos y sensibilizaron sobre el valor añadido de la IG, incluyendo la organización de un viaje de estudios a Francia para 15 productores, proveedores, investigadores, certificadores y representantes gubernamentales de Bursa sobre la protección y promoción de una IG.
+</p>
+<p>
+La FAO y el BERD también ayudaron a definir los criterios de producción de cada fruta basándose en las mejores prácticas internacionales en torno a los planes de certificación y control de calidad, y reforzaron la capacidad local para gestionar y mantener la reputación de las frutas.
+</p>
+<p>
+Para Osman Özkan, Presidente de Köy-Koop de Bursa, salvaguardar esta reputación era crucial.
+</p>
+<p>
+“La IG protege la marca ante un uso indebido”, afirma, ya que solo los higos negros y los melocotones cultivados en Bursa de acuerdo con criterios específicos de producción pueden ostentar la denominación.
+</p>
+<p>
+Según el Ministerio de Agricultura y Silvicultura, Türkiye produjo 356 000 toneladas de higos —negros y verdes— en 2025 y 822 000 toneladas de melocotones en 2024. De ellas, entre 30 000 y 50 000 toneladas fueron higos negros típicos de Bursa y unas 100 000 toneladas fueron melocotones de Bursa.
+</p>
+<p>
+Estos criterios —el microclima único del Mediterráneo y el mar Negro, las variedades utilizadas y las técnicas de polinización, producción y recolección empleadas— son los que distinguen a estas frutas.
+</p>
+<p>
+El pedúnculo del higo, o “botón”, por ejemplo, confiere al higo negro de Bursa, de piel morada oscura y pulpa carmesí, una vida útil más larga al evitar la pérdida de humedad.
+</p>
+<p>
+Aunque la obtención de la IG fue un gran logro, la protección y promoción de los frutos, desde el árbol a la mesa, son fundamentales para su éxito.
+</p>
+<p>
+Las autoridades locales apoyan a los agricultores con riego por goteo y sistemas de alerta temprana. Muchos agricultores invierten en seguros contra las inclemencias meteorológicas o en redes de protección contra el granizo, así como en plantones certificados. También se cuidan de proteger sus huertos ante cualquier elemento que pueda estropear la calidad de la fruta, incluidos los residuos de plaguicidas químicos procedentes de cultivos vecinos.
+</p>
+<p>
+Unas cuidadosas prácticas de selección, clasificación y embalaje y unas innovadoras tecnologías de almacenamiento en frío contribuyen a preservar la vida útil de la fruta. El envasado de gran calidad y la indicación geográfica contribuyen a su atractivo visual y reconocimiento, mientras que los sistemas de trazabilidad digital permiten a los consumidores saber que están comprando la fruta auténtica.
+</p>
+<p>
+La FAO y el BERD ayudaron a los productores de Bursa a registrar la IG, lo que incluyó sensibilizar y compartir las mejores prácticas internacionales en materia de IG, definir los criterios de producción y reforzar la capacidad local para mantener y promover la reputación de la fruta. © FAO/ Onur Coban
+</p>
+<p>
+Funcionarios de los gobiernos locales y provinciales, productores y minoristas trabajan para sensibilizar a los consumidores locales sobre las IG, desde la creación de un festival anual de las IG de Bursa hasta el posible desarrollo de una ruta de turismo rural.
+</p>
+<p>
+Varios minoristas de moda en Türkiye se están abasteciendo de productos agroalimentarios locales con IG de Bursa, y un destacado minorista entre empresas y entre empresas y consumidores ha creado un expositor especial con IG de Bursa en su tienda física.
+</p>
+<p>
+Sertaç Dokuzlu, una economista de la Universidad Uludağ de Bursa que participó en el proyecto de la IG de Bursa, destaca un importante efecto dominó: la confianza.
+</p>
+<p>
+“Los minoristas compran ahora otros productos, como peras y cerezas, a las cooperativas con indicación geográfica de Bursa porque saben que pueden confiar en que cumplen con las normas de calidad”, afirma.
+</p>
+<p>
+Y aunque se puede explicar a la gente lo que tienen de especial los higos negros y los melocotones de Bursa, “tienen que probarlos por sí mismos” para saberlo, añade.
+</p>
+<p>
+Por su parte, Osman, que considera la IG como “una inversión a largo plazo”, quiere también que los consumidores sean conscientes “del trabajo que conlleva producir estas frutas”. 
+</p>
+<p>
+Para obtener más información
+</p>
+<p>
+Sitio web: Centro de Inversiones de la FAO
+Sitio web: La FAO y las indicaciones geográficas
+Sitio web: La FAO en Türkiye
+Fotografías: Centro multimedia digital de la FAO
+
+                        </p>
+                    </div>
+                  <footer class="bg-white border-t border-purple-200 py-10 mt-10">
+            <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">        
+            <div class="flex justify-center my-8">
+            <a href="../../index.html" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg uppercase text-xs tracking-widest">
+                Volver al Inicio
+            </a>
+            </div>
+
+            <div class="flex space-x-4">
+            <a href="https://facebook.com" target="_blank" rel="noopener" 
+               class="bg-blue-700 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-800 shadow-md transition">
+               FACEBOOK
+            </a>
+            
+            <a href="https://wa.me/526648074047" target="_blank" rel="noopener" 
+               class="bg-green-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 shadow-md transition">
+               WHATSAPP
+            </a>
+            </div>
+
+            <p class="mt-8 text-purple-900 font-bold italic">REPORTE MÉXICO © 2025</p>
+            </div>
+        </footer>  
+                </article>
+            </div>
+            </main>
+            
+    <footer class="bg-gray-900 text-white mt-16 pt-10 pb-6 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap justify-between gap-8 text-sm">
+
+            <div class="w-full sm:w-1/2 lg:w-1/4 space-y-3">
+                <h3 class="text-xl font-extrabold text-red-500 mb-2">REPORTE MÉXICO</h3>
+                <p>Tu fuente de información confiable .</p>
+                <div class="space-y-1">
+                    <p class="flex items-center">
+                        <i class="fas fa-envelope mr-3 text-red-500"></i>
+                        <a href="mailto:prensametropoli@gmail.com" class="hover:underline">prensamexico5.8@gmail.com</a>
+                    </p>
+                    <p class="flex items-center">
+                        <i class="fab fa-whatsapp mr-3 text-green-400"></i>
+                        <span>WhatsApp: 564 575 8105</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="w-full sm:w-1/2 lg:w-1/4 space-y-2">
+                <h3 class="text-lg font-bold mb-3 border-b border-gray-700 pb-1">SECCIONES</h3>
+                <ul class="space-y-1">
+                    <li><a href="/" class="hover:text-red-500 transition duration-150">Inicio</a></li>
+                    <li><a href="/nacion.html" class="hover:text-red-500 transition duration-150">Nación</a></li>
+                    <li><a href="/columnistas.html" class="hover:text-red-500 transition duration-150">Columnistas</a></li>
+                    <li><a href="/estados.html" class="hover:text-red-500 transition duration-150">Estados</a></li>
+                </ul>
+            </div>
+
+            <div class="w-full lg:w-1/4 space-y-2">
+                <h3 class="text-lg font-bold mb-3 border-b border-gray-700 pb-1">INFORMACIÓN</h3>
+                <p class="text-xs opacity-75 leading-relaxed">
+                    &copy; 2025 reportemexico.info<br>
+                    Esta obra está bajo una licencia de Creative Commons Reconocimiento 4.0 Internacional.
+                    Se permite la reproducción citando la fuente.
+                </p>
+            </div>
+            
+        </div>
+    </div>
+    <div class="mt-8 pt-4 border-t border-gray-700 text-center text-xs">
+        <p class="opacity-75">Diseño y desarrollo | Reporte México</p>
+    </div>
+</footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Etiqueta 'DOMContentLoaded' completada
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.getElementById("nav-links");
+
+        if (menuToggle && navLinks) {
+          menuToggle.addEventListener("click", () => {
+            // Alterna la clase 'hidden' para mostrar u ocultar el menú de enlaces
+            navLinks.classList.toggle("hidden");
+          });
+        }
+      });
+    </script>
+    
+  </body>
+</html>
