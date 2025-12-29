@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A PUÑO Y LETRA: Agua: Corrupción sin límites</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      rel="stylesheet"/>
+    <style>
+            /* Definición de la fuente principal */
+            body {
+              background-color: #111827; /* Fondo gris muy oscuro (Dark Mode) */
+      color: #1f2937; color: #f3f4f6; /* Color de texto claro */
+            }
+
+            /* --- ESTILOS PARA NOTICIAS DESTACADAS (Soluciona el problema de "no enlazan") --- */
+
+            /* El contenedor de la noticia debe ser relativo para que el enlace principal se posicione */
+            .link-expansivo {
+              position: relative;
+            }
+
+            /* El enlace principal que cubre toda la tarjeta */
+            .enlace-principal {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              z-index: 10; /* Asegura que esté por encima de otros elementos */
+              background-color: transparent; /* Es invisible */
+            }
+
+            /* Estilo para el botón de acción (visual) */
+            .boton-accion {
+              display: inline-block;
+              background-color: #8700a8; /* Púrpura */
+              color: white;
+              font-weight: bold;
+              padding: 0.5rem 1rem;
+              border-radius: 0.375rem; /* rounded-md */
+              margin-top: 0.5rem;
+              transition: background-color 0.15s ease-in-out;
+              pointer-events: none; /* Crucial: Previene que este span intercepte el clic */
+            }
+
+            /* Efecto hover en el botón dentro de la tarjeta */
+            .link-expansivo:hover .boton-accion {
+              background-color: #6d28d9; /* Púrpura más oscuro en hover */
+            }
+            /* --- FIN DE ESTILOS ADICIONALES --- */
+    </style>
+  </head>
+
+  <header class="bg-purple-600 py-8 shadow-md border-b-4 border-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase italic">
+            REPORTE MÉXICO
+        </h1>
+        <p class="text-purple-100 text-sm font-bold mt-2 tracking-widest uppercase">
+            Información en Tiempo Real
+        </p>
+    </div>
+    <div class="max-w-md mx-auto mt-6 px-4">
+    <form action="/buscar" method="GET" class="relative">
+        <input type="text" 
+               name="q" 
+               placeholder="Buscar noticias..." 
+               class="w-full bg-white text-purple-900 rounded-full py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-purple-400 shadow-lg border-none"
+               aria-label="Buscar en el sitio">
+        
+        <div class="absolute left-3 top-2.5 text-purple-600">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+        </div>
+        
+        <button type="submit" class="hidden">Buscar</button>
+    </form>
+</div>
+</header>
+
+  <!-- BARRA DE NAVEGACIÓN (MENÚ ACORDEÓN/COLAPSABLE RESPONSIVO) -->
+    <nav class="bg-purple-600 shadow-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+
+                <a href="/" class="text-white text-xl font-extrabold tracking-wide hover:text-gray-200 transition duration-150">
+                INICIO
+                </a>
+            
+            <button id="menu-toggle" aria-label="Abrir menú principal" title="Menú">
+            <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="nav-links" class="hidden lg:block w-full"> 
+            <div class="flex flex-col lg:flex-row lg:space-x-4 px-2 pt-2 pb-3 space-y-1 sm:px-3 lg:space-y-0 lg:p-0 lg:mx-auto lg:max-w-7xl">
+
+            <a href="/nacion.html" 
+            class="bg-white text-purple-700 border border-purple-700 font-bold px-4 py-2 rounded-md transition duration-150 hover:bg-purple-700 hover:text-white my-1 lg:my-0">NACIÓN</a>
+
+            <a href="/estados.html" 
+            class="bg-white text-purple-700 border border-purple-700 font-bold px-4 py-2 rounded-md transition duration-150 hover:bg-purple-700 hover:text-white my-1 lg:my-0">ESTADOS</a>
+            
+            <a href="/columnistas.html" 
+            class="bg-white text-purple-700 border border-purple-700 font-bold px-4 py-2 rounded-md transition duration-150 hover:bg-purple-700 hover:text-white my-1 lg:my-0">COLUMNISTAS</a>
+
+            <a href="/bienestar.html" 
+            class="bg-white text-purple-700 border border-purple-700 font-bold px-4 py-2 rounded-md transition duration-150 hover:bg-purple-700 hover:text-white my-1 lg:my-0">BIENESTAR</a>
+
+            <a href="/cultura.html" 
+            class="bg-white text-purple-700 border border-purple-700 font-bold px-4 py-2 rounded-md transition duration-150 hover:bg-purple-700 hover:text-white my-1 lg:my-0">CULTURA Y ESPECTÁCULO</a>
+
+            <a href="/internacional.html" 
+            class="bg-white text-purple-700 border border-purple-700 font-bold px-4 py-2 rounded-md transition duration-150 hover:bg-purple-700 hover:text-white my-1 lg:my-0">INTERNACIONAL</a>
+            </div>
+        </div>
+    </nav>
+    <!-- FIN BARRA DE NAVEGACIÓN -->
+    
+    <!-- CUERPO DEL ARTÍCULO -->
+   <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        
+        <!-- CONTENEDOR PRINCIPAL: Grid responsivo de 1 o 2 columnas (2/3 y 1/3) -->
+        <div class="grid grid-cols-1 lg:grid-cols- gap-8 w-full justify-center">
+            
+            <!-- COLUMNA 1: Contenido Principal del Artículo (Ocupa 2/3 en escritorio) -->
+            <div class="lg:col-span-2">
+                <article class="bg-white p-6 sm:p-8 rounded-xl shadow-2xl border-t-4 border-purple-600 mb-6 lg:mb-0">
+                    
+                    <!-- SECCIÓN DESTACADA / TÍTULO -->
+                    <div class="mb-6">
+                        <div class="text-center mb-4">
+                            <span class="inline-block px-4 py-1 rounded-full font-semibold text-white bg-purple-600 text-sm uppercase tracking-wider">
+                                COLUMNISTAS
+                            </span>
+                        </div>
+                        
+                        <h2 class="text-3xl sm:text-4xl font-black text-gray-900 text-center leading-tight">
+                            A PUÑO Y LETRA: Agua: Corrupción sin límites
+                        </h2>
+
+                        <time datetime="2025-12-05">27 de Diciembre de 2025</time>                        
+                        
+                    </div>
+                    
+                    <!-- IMAGEN DESTACADA -->
+                    <figure class="my-6">
+                        <!-- LOGO/ICONO ADICIONAL: REPORTE MÉXICO -->
+                        <img src="../../static/images/noticias/raullaw.png" alt="Presidenta Sheinbaum" class="mx-auto mb-4 w-full h-auto rounded-lg shadow-md">
+
+                      
+                    </figure>
+
+                    <!-- PÁRRAFOS DEL CONTENIDO -->
+                    <div class="prose max-w-none text-lg leading-relaxed text-gray-700 space-y-4 pt-4 border-t">
+                        <p>
+                            A Puño y Letra: Por Raúl Law Z.
+</p>
+<p>
+En los tiempos de la comunicación moderna, donde proliferan los bots, las campañas negras para desacreditar a los enemigos políticos,la estrategia parasitaria a través del rumor se hace presente para denostrar y crear duda desde el anonimato de la fuente. 
+</p>
+<p>
+El expresidente AMLO y la Presidenta Claudia Sheinbaum Pardo, han dado a conocer que son campañas millonarias orquestadas por miles de cuentas falsas en plataformas digitales,y que detrás de ellas están quienes han tenido intereses económicos y políticos muy concretos.
+</p>
+<p>
+Son quienes se enriquecieron desde negocios del pasado, que se han visto afectados por la reforma de Estado efectuada por la Cuarta Transformación. 
+</p>
+<p>
+Desde luego, que en reacción por la reforma a la ley del agua, que toca intereses políticos y económicos, el Gerente de Cuenca de la CONAGUA Manuel Guerrero, se le está atacando en un rumor publicado en una columna política sin autor ni firma acreditada. 
+</p>
+<p>
+En efecto, el rumor es una voz subterránea, un instrumento de la  guerra mediática  cuyo objetivo es manipular y desacreditar desde el anonimato, acusando sin pruebas, llenando vacíos de información. 
+</p>
+<p>
+La lectura del rumor contra Manuel Guerrero,queda claro que es de  sus enemigos políticos y del movimiento que representa para  desacreditar. Pero ¿será conveniente hacerle caso a un escrito que nadie firma o se hace responsable?
+</p>
+<p>
+Evidentemente es una información falsa pero vale la pena aclarar que respecto a la ley del Agua, era necesaria una nueva Ley de Aguas Nacionales, pues expresidentes y exgobernadores, además de unos cuantos empresarios acapararon a través de concesiones miles de millones de metros públicos de agua, incluso construyeron presas en sus ranchos particulares causando sed y falta de desarrollo en pueblos enteros.
+</p>
+<p>
+La corrupción permitía que políticos y empresarios abusaran apropiándose de millones de metros cúbicos del vital líquido. 
+</p>
+<p>
+Se hizo público que el expresidente Vicente Fox se auto otorgó 14 concesiones para él y su familia apropiándose de millones.  de metros cúbicos de agua. De igual manera, los exgobernadores Javier Duarte de Chihuahua y Guillermo Padres de Sonora construyeron ilegalmente en sus ranchos presas de almacenamiento convirtiendo un bien de la nación  en propiedad privada. 
+</p>
+<p>
+En el mes de Julio de 2024, en mi artículo  “El Agua es Vida, No a la Cultura del Desperdicio”: se destaca  que para combatir  la crisis hídrica  que  padece  nuestro país, se hacía necesaria una  nueva Ley de Aguas Nacionales LAN, con el fin de suprimir el sentido mercantilista y comercial  de la Ley promulgada por Carlos Salinas de Gortari, pues  favorecía el saqueo y acaparamiento  de  las grandes empresas “ traga agua “ y en beneficio de unos cuantos  privilegiados ;  de tal manera,  que “ la  nueva ley, deberá  contener  un verdadero  sentido social , que  respete el derecho humano al agua,  garantice  el abasto y  propicie el desarrollo económico y social de  los mexicanos”.     
+</p>
+<p>
+ EXPRESIDENTES RESPONSABLES DEL SAQUEO DEL AGUA Y METALES PRECIOSOS. 
+</p>
+<p>
+En aquella ocasión enfatice que : “ Es de sobra conocido el daño que le hicieron a México  las administraciones  de los Presidentes neoliberales que entregaron  miles de concesiones para la explotación minera a empresas trasnacionales, con la indeseable consecuencia  de la escasez  del vital líquido  para nuestras comunidades. Hoy el futuro nos alcanzo  pues  debido a la crisis hídrica, estamos sufriendo por el agua en lugares donde se suponía  debería haber más que suficiente”.
+</p>
+<p>
+La concesiones a  empresas  refresqueras, cerveceras y mineras, entre otras,  representan miles de  millones de metros cúbicos de agua, que en lugar de quitar la sed  y propiciar el desarrollo de nuestros pueblos, solo sirven para engrosar los bolsillos de los ricos  concesionarios, a costa de  precarios e injustos  sueldos de  sus trabajadores. 
+</p>
+<p>
+La Comisión Nacional del Agua (Conagua) estaba diseñada  para promover el acaparamiento, el desperdicio, la sobrexplotación y la privatización del agua a fin de generar oportunidades de negocio mediante la mercantilización de este recurso”. 
+</p>
+<p>
+En efecto, basta observar el caso de la minería  donde  los presidentes PRIANISTAS  entregaron  65 mil 534,  concesiones mineras: Carlos Salinas  17 mil 267 concesiones, Ernesto Zedillo 11 mil 524, Vicente Fox 15 mil 753, Felipe Calderón 12 mil 864 y Enrique Peña Nieto 5 mil 396. 
+</p>
+<p> 
+Todas ellas abarcaron  una superficie de 117.6 millones de hectáreas: Carlos Salinas  concesionó  8.9 millones de  hectáreas, Ernesto Zedillo 34.6, Vicente Fox 24.9, Felipe Calderón 35.5, Enrique Peña Nieto 9.9 millones en tanto que Andrés Manuel López  aparte de  no otorgar ninguna concesión,  recuperó  más de 96 millones de hectáreas, de empresas irregulares que dejaron las tierras ociosas o sin aprovecharlas. 
+</p>
+<p> 
+El Presidente Andrés Manuel López Obrador , tomó importantes medidas,  pues decretó que las mineras pagaran  impuestos, también la protección a la extracción del litio, entre otras , de tal manera que de las 117. 6 millones de hectáreas    otorgadas desde el gobierno de Salinas de Gortari, se cancelaron 96.3 millones y actualmente  se redujeron a 25 mil 267, concesiones  mismas que explotan  una superficie de  21. 3 millones de hectáreas.   
+</p>
+<p>
+El promedio  de  consumo de agua de la mineras  es de 1.1 metros cúbicos metros cúbicos  por segundo,  es decir, es  un consumo exagerado por estas  empresas que antes del actual gobierno federal, no contribuían al erario público, pero si  producen una grave contaminación ,  saquean  la riqueza al llevarse  fuera del país  metales y minerales  con un alto valor en el mercado internacional; todo ello, con el falso argumento de que “generan  riqueza” a través de la generación de  empleos  con “salarios de hambre” a sus trabajadores quienes además arriesgan su salud y su  vida.        
+</p>
+<p>
+Que diferencia la visión y el objetivo del Presidente Lázaro Cárdenas, quien  en  el reparto agrario, entrego solo 18 millones de hectáreas  a  jornaleros pobres, fortaleció  el ejido y al  Banco Nacional de Crédito  Ejidal,  otorgándoles créditos  y  derechos de agua  para que cultivaran la tierra, además nacionalizó  la industria petrolera  pagando la respectiva indemnización a 4 empresas extranjeras. La venta de petróleo  llegó a representar el 40 ´por ciento del presupuesto público.  
+</p>
+<p>
+ El fin del presidente Cardenas, era  impulsar el desarrollo del país con la producción de alimentos  para  alcanzar  la soberanía alimentaria y sacar de la postración económica a una cantidad importante de mexicanos. Sin embargo, su proyecto de nación fue  detenido  por su sucesor Adolfo Ruiz Cortines, y otros Presidentes  neoliberales,  particularmente Enrique Peña Nieto, quien volvió  a privatizar el petróleo favoreciendo a capitalistas extranjeros.      
+</p>
+<p>
+La falta de agua en el territorio nacional no es casual, los expresidentes mediante  concesión autorizaron miles de millones de metros cúbicos de agua para la explotación minera, pero además ,  con exención de impuestos y sin ningún beneficio para nuestro país. A ello le sumamos el consumo de las  refresqueras, de fábricas de cerveza, manufactureras,  de agroquímicos, cadenas hoteleras e incluso concesiones de acuíferos que de 2 mil  aumentaron a 514 mil, a costa del desabasto y la sed obligada de millones de mexicanos:
+</p>
+<p>
+La abrogación de la Ley de Aguas Nacionales promulgada en 1992 era necesaria, pero  la situación de Baja California, debe ser una preocupación especial para el actual gerente de Cuenca Manuel Guerrero Luna y la gobernadora Marina del Pilar Ávila Olmeda, por la situación particular de los productores del Valle de Mexicali. 
+</p>
+<p>
+Una característica de toda Ley es que su aplicación es general, pero no sé debe perder de vista que el Tratado de Límites y Aguas de 1944, sólo beneficia y le da vida al Estado de Baja California. 
+</p>
+<p>
+EN BAJA CALIFORNIA TODAS LOS TIPOS DE SEQUÍAS CONOCIDAS 
+</p>
+<p>
+De acuerdo a un  estudio de CONAGUA, Baja California  padece  todos los tipos de sequías conocidos: La meteorológica y climática , ambas relacionadas con la falta de lluvia. La geológica, vinculada a la extracción exagerada de los acuíferos. La socioeconómica, causada por las actividades industrial, comercial, agropecuarias y domésticas, y por último. La sequía  Fluvial, que tiene que ver con el encementado con el Canal Todo Americano,  como por las actas signadas por las Comisiones de Límites y Aguas CILAS de México y Estados Unidos.
+</p>
+<p>
+Por lo tanto,entre otros factores   se debe sancionar severamente el robo a través de camiones que extraen agua de los canales alimentadores del sistema, asimismo tomar en cuenta que la ciudad de Mexicali ya absorbió alrededor de 45 mil hectáreas que eran de uso agrícola, de igual manera , los factores por los que las productores han dejado de sembrar, entre ellos,  el abuso de los empresarios que obtienen ganancias desproporcionadas mientras los productores han caído en cartera vencida, obligándolos año tras año  a pedir apoyo a los gobiernos para alcanzar los costos de producción. 
+</p>
+<p>
+Sin embargo, debido a que  las campañas políticas que cada vez están más cerca, nos hacen comprender que las descalificaciones a través de bots y perversas campañas negras, ya están presentes en redes para la manipulación social con el fin de  sacar “raja política”. 
+en la percepción social contra el gobierno y su partido, quienes han iniciado el proceso de poner orden en el recurso más valioso para la vida. El Agua. 
+</p>
+<p>
+La participación ciudadana ha sido fundamental en la defensa del agua, exigiendo transparencia y justicia en su uso. reparto y gestión. 
+</p>
+<p>
+El autor es Premio México de Periodismo, Ricardo Flores Magon 2016, en Reportaje Radiofónico y  en año 2019, por Artículo de Fondo, otorgado por  la Federación de Asociaciones de Periodistas Mexicanos, FAPERMEX, y el Colegio Nacional de Licenciados en Periodismo, CONALIPE. Es columnista, escritor, analista político y generador de contenidos.
+
+                        </p>
+                    </div>
+                  <footer class="bg-white border-t border-purple-200 py-10 mt-10">
+            <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">        
+            <div class="flex justify-center my-8">
+            <a href="../../index.html" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg uppercase text-xs tracking-widest">
+                Volver al Inicio
+            </a>
+            </div>
+
+            <div class="flex space-x-4">
+            <a href="https://facebook.com" target="_blank" rel="noopener" 
+               class="bg-blue-700 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-800 shadow-md transition">
+               FACEBOOK
+            </a>
+            
+            <a href="https://wa.me/526648074047" target="_blank" rel="noopener" 
+               class="bg-green-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 shadow-md transition">
+               WHATSAPP
+            </a>
+            </div>
+
+            <p class="mt-8 text-purple-900 font-bold italic">REPORTE MÉXICO © 2025</p>
+            </div>
+        </footer>
+                </article>
+            </div>
+            </main>
+            
+    <footer class="bg-gray-900 text-white mt-16 pt-10 pb-6 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap justify-between gap-8 text-sm">
+
+            <div class="w-full sm:w-1/2 lg:w-1/4 space-y-3">
+                <h3 class="text-xl font-extrabold text-red-500 mb-2">REPORTE MÉXICO</h3>
+                <p>Tu fuente de información confiable .</p>
+                <div class="space-y-1">
+                    <p class="flex items-center">
+                        <i class="fas fa-envelope mr-3 text-red-500"></i>
+                        <a href="mailto:prensametropoli@gmail.com" class="hover:underline">prensamexico5.8@gmail.com</a>
+                    </p>
+                    <p class="flex items-center">
+                        <i class="fab fa-whatsapp mr-3 text-green-400"></i>
+                        <span>WhatsApp: 564 575 8105</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="w-full sm:w-1/2 lg:w-1/4 space-y-2">
+                <h3 class="text-lg font-bold mb-3 border-b border-gray-700 pb-1">SECCIONES</h3>
+                <ul class="space-y-1">
+                    <li><a href="/" class="hover:text-red-500 transition duration-150">Inicio</a></li>
+                    <li><a href="/nacion.html" class="hover:text-red-500 transition duration-150">Nación</a></li>
+                    <li><a href="/columnistas.html" class="hover:text-red-500 transition duration-150">Columnistas</a></li>
+                    <li><a href="/estados.html" class="hover:text-red-500 transition duration-150">Estados</a></li>
+                </ul>
+            </div>
+
+            <div class="w-full lg:w-1/4 space-y-2">
+                <h3 class="text-lg font-bold mb-3 border-b border-gray-700 pb-1">INFORMACIÓN</h3>
+                <p class="text-xs opacity-75 leading-relaxed">
+                    &copy; 2025 reportemexico.info<br>
+                    Esta obra está bajo una licencia de Creative Commons Reconocimiento 4.0 Internacional.
+                    Se permite la reproducción citando la fuente.
+                </p>
+            </div>
+            
+        </div>
+    </div>
+    <div class="mt-8 pt-4 border-t border-gray-700 text-center text-xs">
+        <p class="opacity-75">Diseño y desarrollo | Reporte México</p>
+    </div>
+</footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Etiqueta 'DOMContentLoaded' completada
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.getElementById("nav-links");
+
+        if (menuToggle && navLinks) {
+          menuToggle.addEventListener("click", () => {
+            // Alterna la clase 'hidden' para mostrar u ocultar el menú de enlaces
+            navLinks.classList.toggle("hidden");
+          });
+        }
+      });
+    </script>
+    
+  </body>
+</html>
