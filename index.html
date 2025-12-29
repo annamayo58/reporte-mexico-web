@@ -4,140 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Información veraz y al momento en Reporte Tijuana. Noticias de los sucesos más importantes de la metrópoli Tijuana-Rosarito-Tecate y de Baja California">
-    <title>Reporte Tijuana | Noticias de Última Hora en Tijuana-Rosarito-Tecate y Baja California</title>
+    <title>Reporte Tijuana | Noticias de Última Hora</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
     <style>
-            /* Definición de la fuente principal */
-            body {
-              background-color: #111827; /* Fondo gris muy oscuro (Dark Mode) */
-      color: #1f2937; color: #f3f4f6; /* Color de texto claro */
-            }
-
-            /* --- ESTILOS PARA NOTICIAS DESTACADAS (Soluciona el problema de "no enlazan") --- */
-
-            /* El contenedor de la noticia debe ser relativo para que el enlace principal se posicione */
-            .link-expansivo {
-              position: relative;
-            }
-
-            /* El enlace principal que cubre toda la tarjeta */
-            .enlace-principal {
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              z-index: 10; /* Asegura que esté por encima de otros elementos */
-              background-color: transparent; /* Es invisible */
-            }
-
-            /* Estilo para el botón de acción (visual) */
-            .boton-accion {
-              display: inline-block;
-              background-color: #8700a8; /* Púrpura */
-              color: white;
-              font-weight: bold;
-              padding: 0.5rem 1rem;
-              border-radius: 0.375rem; /* rounded-md */
-              margin-top: 0.5rem;
-              transition: background-color 0.15s ease-in-out;
-              pointer-events: none; /* Crucial: Previene que este span intercepte el clic */
-            }
-
-            /* Efecto hover en el botón dentro de la tarjeta */
-            .link-expansivo:hover .boton-accion {
-              background-color: #6d28d9; /* Púrpura más oscuro en hover */
-            }
-            /* --- FIN DE ESTILOS ADICIONALES --- */
+        body { background-color: #111827; color: #f3f4f6; }
+        .link-expansivo { position: relative; }
+        .enlace-principal { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; background-color: transparent; }
     </style>
-  </head>
+</head>
 
-  
+<body class="flex flex-col min-h-screen">
 
-  <header class="bg-purple-600 py-8 shadow-md border-b-4 border-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase italic">
-            REPORTE TIJUANA
-        </h1>
-        <p class="text-purple-100 text-sm font-bold mt-2 tracking-widest uppercase">
-            Información en Tiempo Real
-        </p>
+<header class="bg-purple-600 py-8 shadow-md border-b-4 border-white">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase italic">REPORTE TIJUANA</h1>
+        <p class="text-purple-100 text-sm font-bold mt-2 tracking-widest uppercase">Información en Tiempo Real</p>
     </div>
-    <div class="max-w-md mx-auto mt-6 px-4">
-    <form action="/buscar" method="GET" class="relative">
-        <input type="text" 
-               name="q" 
-               placeholder="Buscar noticias..." 
-               class="w-full bg-white text-purple-900 rounded-full py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-purple-400 shadow-lg border-none"
-               aria-label="Buscar en el sitio">
-        
-        <div class="absolute left-3 top-2.5 text-purple-600">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-        </div>
-        
-        <button type="submit" class="hidden">Buscar</button>
-    </form>
-</div>
 </header>
 
-  <!-- BARRA DE NAVEGACIÓN (MENÚ ACORDEÓN/COLAPSABLE RESPONSIVO) -->
-    <nav class="bg-purple-600 shadow-xl sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-
-                <a href="/" class="text-white text-xl font-extrabold tracking-wide hover:text-gray-200 transition duration-150">
+<nav class="bg-purple-600 shadow-xl sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <a href="index.html" class="text-white text-xl font-extrabold tracking-wide hover:text-gray-200 transition duration-150">
                 INICIO
-                </a>
+            </a>
             
-            <button id="menu-toggle" aria-label="Abrir menú principal" title="Menú">
-            <i class="fas fa-bars"></i>
+            <button id="menu-toggle" aria-label="Abrir menú principal" title="Menú principal" class="text-white text-2xl lg:hidden focus:outline-none">
+                <i class="fas fa-bars"></i>
             </button>
         </div>
 
         <div id="nav-links" class="hidden lg:block w-full"> 
-            <div class="flex flex-col lg:flex-row lg:space-x-4 px-2 pt-2 pb-3 space-y-1 sm:px-3 lg:space-y-0 lg:p-0 lg:mx-auto lg:max-w-7xl">
+            <div class="flex flex-col lg:flex-row lg:flex-wrap lg:justify-center lg:space-x-2 px-2 pt-2 pb-3 space-y-1 lg:space-y-0 lg:p-4">
 
-            <a href="/nacion.html" 
-            class="bg-white text-purple-700 border border-purple-700 font-bold px-4 py-2 rounded-md transition duration-150 hover:bg-purple-700 hover:text-white my-1 lg:my-0">NACIÓN</a>
+                <a href="tijuana.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">TIJUANA</a>
 
-            <a href="/estados.html" 
-            class="bg-white text-purple-700 border border-purple-700 font-bold px-4 py-2 rounded-md transition duration-150 hover:bg-purple-700 hover:text-white my-1 lg:my-0">ESTADOS</a>
-            
-            <a href="/columnistas.html" 
-            class="bg-white text-purple-700 border border-purple-700 font-bold px-4 py-2 rounded-md transition duration-150 hover:bg-purple-700 hover:text-white my-1 lg:my-0">COLUMNISTAS</a>
+                <a href="baja.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">BAJA CALIFORNIA</a>
 
-            <a href="/bienestar.html" 
-            class="bg-white text-purple-700 border border-purple-700 font-bold px-4 py-2 rounded-md transition duration-150 hover:bg-purple-700 hover:text-white my-1 lg:my-0">BIENESTAR</a>
+                <a href="rosarito.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">ROSARITO</a>
+                
+                <a href="tecate.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">TECATE</a>
 
-            <a href="/cultura.html" 
-            class="bg-white text-purple-700 border border-purple-700 font-bold px-4 py-2 rounded-md transition duration-150 hover:bg-purple-700 hover:text-white my-1 lg:my-0">CULTURA Y ESPECTÁCULO</a>
+                <a href="codigo.html" class="bg-red-600 text-white border border-red-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-red-800 uppercase italic">CÓDIGO ROJO</a>
 
-            <a href="/internacional.html" 
-            class="bg-white text-purple-700 border border-purple-700 font-bold px-4 py-2 rounded-md transition duration-150 hover:bg-purple-700 hover:text-white my-1 lg:my-0">INTERNACIONAL</a>
+                <a href="desaparecidos.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">DESAPARECIDOS</a>
+
+                <a href="deportes.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">DEPORTES</a>
+
+                <a href="empleos.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">EMPLEOS</a>
             </div>
         </div>
-    </nav>
-    <!-- FIN BARRA DE NAVEGACIÓN -->
-    
-    <main class="flex-grow container mx-auto px-4 py-8 max-w-7xl">
+    </div>
+</nav>
+
+<main class="flex-grow container mx-auto px-4 py-8 max-w-7xl">
       
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
             <!--COPIAR-->
-                        
-<article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-    <a href="content/columnistas/a-puno-y-letra-agua-corrupcion-sin-limites.html" class="block group">
-        <img src="static/images/noticias/raullaw.png" alt="A PUÑO Y LETRA: Agua: Corrupción sin límites" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
+
+            <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
+    <a href="content/columnistas/martin-lazo-cuevas-construyendo-nuevo-contrato-social-diaspora-migrante.html" class="block group">
+        <img src="static/images/noticias/martinlazocuevas.png" alt="MARTÍN LAZO CUEVAS: Construyendo el nuevo contrato social de la diáspora migrante" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
         <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">Columnistas</span>
-        <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">A PUÑO Y LETRA: Agua: Corrupción sin límites</h2>
-        <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">En los tiempos de la comunicación moderna, donde proliferan los bots, las campañas negras para desacreditar a los enemigos políticos,la estrategia parasitaria a través del rumor se hace presente para denostrar y crear duda desde el anonimato de la fuente.</p>
-        <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">27 de diciembre de 2025</span>
+        <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">MARTÍN LAZO CUEVAS: Construyendo el nuevo contrato social de la diáspora migrante</h2>
+        <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">Enero no es únicamente el primer mes del año; es, en realidad, un umbral. Un punto simbólico donde las sociedades se miran al espejo para decidir —consciente o inconscientemente— si repetirán el ciclo o si están dispuestas a corregir el rumbo. Con demasiada frecuencia, el inicio de año se reduce a un ritual vacío: propósitos que se desvanecen, discursos estériles y promesas que no transforman la realidad. Cambia el calendario, pero la conciencia permanece estática.</p>
+        <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">29 de diciembre de 2025</span>
     </a>
 </article>
 
@@ -151,8 +85,7 @@
         <a href="https://reportemexico.info/" class="w-full bg-purple-700 hover:bg-purple-600 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Reporte México</a>
         <a href="https://reportetijuana.com/" class="w-full bg-purple-900 hover:bg-purple-800 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Reporte Tijuana</a>
         <a href="https://codigorojomx.info/" class="w-full bg-red-900 hover:bg-red-800 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Código Rojo MX</a>
-        <a href="https://emergenciasmexico.com/" class="w-full bg-orange-700 hover:bg-orange-600 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Emergencias</a>
-        
+        <a href="https://emergenciasmexico.com/" class="w-full bg-orange-700 hover:bg-orange-600 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Emergencias</a>        
         <div class="my-2 border-t border-gray-700"></div> <a href="https://directoriosdemexico.com/" class="w-full bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Directorio México</a>
         <a href="https://directorioscdmx.com/" class="w-full bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Directorio CDMX</a>
         <a href="https://directoriostijuana.com/" class="w-full bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Directorio Tijuana</a>
@@ -167,16 +100,6 @@
 <!--PEGAR-->
 
 <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-    <a href="content/columnistas/desde-mi-sofa-riesgos-para-morena-2026.html" class="block group">
-        <img src="static/images/noticias/obedsilva.png" alt="DESDE MI SOFÁ: Los riesgos para MORENA en el 2026" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-        <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">Columnistas</span>
-        <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">DESDE MI SOFÁ: Los riesgos para MORENA en el 2026</h2>
-        <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">Al cierre del año, la conjunción de hechos internacionales y nacionales generan un escenario en el que se vislumbra la posibilidad de que la elección del 2027 no sea un “paseo por el parque” para Morena.</p>
-        <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">27 de diciembre de 2025</span>
-    </a>
-</article>
-
-<article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
     <a href="content/columnistas/martin-lazo-cuevas-no-somos-iguales.html" class="block group">
         <img src="static/images/noticias/martinlazocuevas.png" alt="MARTÍN LAZO CUEVAS: No somos iguales, somos otra cosa" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
         <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">Columnistas</span>
@@ -185,84 +108,27 @@
         <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">27 de diciembre de 2025</span>
     </a>
 </article>
-
-<article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-    <a href="https://reportemexico.info/content/bienestar/renacimiento-movimiento-salud-bienestar-2026.html" class="block group">
-        <img src="static/images/noticias/bienestar.png" alt="El Renacimiento del Movimiento: Salud y Bienestar en 2026" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-        <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">BIENESTAR</span>
-        <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">El Renacimiento del Movimiento: Salud y Bienestar en 2026</h2>
-        <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">En la actualidad, el ejercicio físico ha dejado de ser visto únicamente como una herramienta para la estética, consolidándose como la medicina preventiva más poderosa disponible. En 2026, la ciencia ha reforzado que la actividad física no solo previene enfermedades crónicas como la diabetes tipo 2 o la hipertensión, sino que es el pilar fundamental para la salud cerebral.</p>
-        <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">27 de diciembre de 2025</span>
-    </a>
-</article>
-
-<article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-    <a href="https://reportemexico.info/content/internacional/fao-lucrativo-acto-proteger-higos-negros-melocotones-bursa.html" class="block group">
-        <img src="static/images/noticias/fao-un-lucrativo-acto-de-amor.png" alt="FAO: Un lucrativo acto de amor, roteger los higos negros y los melocotones de Bursa" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-        <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">INTERNACIONAL</span>
-        <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">FAO: Un lucrativo acto de amor, proteger los higos negros y los melocotones de Bursa</h2>
-        <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">El higo negro y el melocotón de Bursa, en Türkiye, son dos productos destacados en una región conocida por sus frutas y hortalizas. Se les concedió la IG nacional en 2018 y 2019, respectivamente, reconocida luego por la Unión Europea en 2024.</p>
-        <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">27 de diciembre de 2025</span>
-    </a>
-</article>
-
-<article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-    <a href="https://reportemexico.info/content/cultura/huayrapamushka-fusiones-urbanas-rap-zacatecano.html" class="block group">
-        <img src="static/images/noticias/huayrapamushka-fusiones-urbanas-rap-zacatecano.png" alt="“HUAYRAPAMUSHKA: Fusiones urbanas”, un diálogo entre la tradición latinoamericana y el rap zacatecano" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-        <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">CULTURA</span>
-        <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">“HUAYRAPAMUSHKA: Fusiones urbanas”, un diálogo entre la tradición latinoamericana y el rap zacatecano</h2>
-        <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">La propuesta plantea un encuentro creativo entre la música popular latinoamericana y las expresiones urbanas contemporáneas
-
-Desde Zacatecas, los hijos del viento soplan hacia nuevos horizontes musicales
-
-La iniciativa acerca la canción popular a nuevas generaciones y fortalece la identidad musical de la entidad
-</p>
-        <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">27 de diciembre de 2025</span>
-    </a>
-</article>
-
-<article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-    <a href="https://reportemexico.info/content/estados/jalisco-aprueban-actualizacion-tarifa-tecnica-transporte-publico.html" class="block group">
-        <img src="static/images/noticias/jalisco-aprueban-actualizacion-tarifa-tecnica-transporte-publico.png" alt="JALISCO: Aprueban actualización de la tarifa técnica del transporte público" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-        <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">ESTADOS</span>
-        <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">JALISCO: Aprueban actualización de la tarifa técnica del transporte público</h2>
-        <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">El Comité Técnico Tarifario aprobó una actualización del 7.72% en el costo del transporte público en Jalisco. La nueva tarifa técnica será de 14 pesos general y 7 pesos preferencial, entrando en vigor en 2026 con un blindaje multianual que impedirá nuevos aumentos durante los próximos cinco años</p>
-        <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">27 de diciembre de 2025</span>
-    </a>
-</article>
-
-<article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-    <a href="https://reportemexico.info/content/nacion/diputada-jimenez-vasquez-despenalizar-muerte-asistida-personas-mayores-18-soliciten-escrito.html" class="block group">
-        <img src="static/images/noticias/diputadajimenezvasquez.png" alt="DIPUTADA JIMÉNEZ VÁSQUEZ: Busca iniciativa despenalizar muerte asistida para personas mayores de 18 años cuando la soliciten por escrito" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-        <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">NACIÓN</span>
-        <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">DIPUTADA JIMÉNEZ VÁSQUEZ: Busca iniciativa despenalizar muerte asistida para personas mayores de 18 años cuando la soliciten por escrito</h2>
-        <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">La diputada Jiménez Vásquez de MORENA plantea reformar y adicionar la Ley General de Salud y el Código Penal Federal
-
-        Tendría que ser ejecutada conforme a protocolos de la Secretaría de Salud, por personal autorizado y en condiciones dignas</p>
-        <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">26 de diciembre de 2025</span>
-    </a>
-  </article>
             <!--DESPUES DE COPIAR Y PEGAR LA NOTA ELIMINAR ESTA ULTIMA-->            
           </div>
         </div>
         
     </main>
 
-    <footer class="bg-gray-900 text-white mt-16 pt-10 pb-6 shadow-2xl">
+<footer class="bg-gray-900 text-white mt-16 pt-10 pb-6 shadow-2xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-wrap justify-between gap-8 text-sm">
 
             <div class="w-full sm:w-1/2 lg:w-1/4 space-y-3">
-                <h3 class="text-xl font-extrabold text-red-500 mb-2">REPORTE MÉXICO</h3>
+                <h3 class="text-xl font-extrabold text-white mb-2">REPORTE TIJUANA</h3>
                 <p>Tu fuente de información confiable .</p>
                 <div class="space-y-1">
                     <p class="flex items-center">
                         <i class="fas fa-envelope mr-3 text-red-500"></i>
-                        <a href="mailto:prensametropoli@gmail.com" class="hover:underline">prensamexico5.8@gmail.com</a>
+                        <a href="mailto:prensametropoli@gmail.com" class="hover:underline">prensametropoli@gmail.com</a>
                     </p>
                     <p class="flex items-center">
                         <i class="fab fa-whatsapp mr-3 text-green-400"></i>
-                        <span>WhatsApp: 564 575 8105</span>
+                        <span>WhatsApp: 664 807 4047</span>
                     </p>
                 </div>
             </div>
@@ -271,16 +137,16 @@ La iniciativa acerca la canción popular a nuevas generaciones y fortalece la id
                 <h3 class="text-lg font-bold mb-3 border-b border-gray-700 pb-1">SECCIONES</h3>
                 <ul class="space-y-1">
                     <li><a href="/" class="hover:text-red-500 transition duration-150">Inicio</a></li>
-                    <li><a href="/informacion-total-tj.html" class="hover:text-red-500 transition duration-150">Reporte Total</a></li>
-                    <li><a href="/codigo-rojo-tijuana.html" class="hover:text-red-500 transition duration-150">Columnistas</a></li>
-                    <li><a href="/desaparecidos.html" class="hover:text-red-500 transition duration-150">Estados</a></li>
+                    <li><a href="/desaparecidos.html" class="hover:text-red-500 transition duration-150">DESAPARECIDOS</a></li>
+                    <li><a href="/empleos.html" class="hover:text-red-500 transition duration-150">EMPLEOS</a></li>
+                    <li><a href="/baja.html" class="hover:text-red-500 transition duration-150">BAJA CALIFORNIA</a></li>
                 </ul>
             </div>
 
             <div class="w-full lg:w-1/4 space-y-2">
                 <h3 class="text-lg font-bold mb-3 border-b border-gray-700 pb-1">INFORMACIÓN</h3>
                 <p class="text-xs opacity-75 leading-relaxed">
-                    &copy; 2025 reportemexico.info<br>
+                    &copy; 2025 reportetijuana.com<br>
                     Esta obra está bajo una licencia de Creative Commons Reconocimiento 4.0 Internacional.
                     Se permite la reproducción citando la fuente.
                 </p>
@@ -289,23 +155,15 @@ La iniciativa acerca la canción popular a nuevas generaciones y fortalece la id
         </div>
     </div>
     <div class="mt-8 pt-4 border-t border-gray-700 text-center text-xs">
-        <p class="opacity-75">Diseño y desarrollo | Reporte México</p>
+        <p class="opacity-75">Diseño y desarrollo | Reporte Tijuana</p>
     </div>
 </footer>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Etiqueta 'DOMContentLoaded' completada
-        const menuToggle = document.getElementById("menu-toggle");
-        const navLinks = document.getElementById("nav-links");
+<script>
+    document.getElementById("menu-toggle").addEventListener("click", () => {
+        document.getElementById("nav-links").classList.toggle("hidden");
+    });
+</script>
 
-        if (menuToggle && navLinks) {
-          menuToggle.addEventListener("click", () => {
-            // Alterna la clase 'hidden' para mostrar u ocultar el menú de enlaces
-            navLinks.classList.toggle("hidden");
-          });
-        }
-      });
-    </script>
-  </body>
+</body>
 </html>
