@@ -1,396 +1,170 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Información veraz y al momento en Reporte Tijuana. [RESUMEN DE LA NOTA AQUÍ]"
-    />
+    <meta name="description" content="Información veraz y al momento en Reporte Tijuana. [RESUMEN DE LA NOTA AQUÍ]">
     <title>Título de la Nota | Reporte Tijuana</title>
-
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      rel="stylesheet"
-    />
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+    
     <style>
-      body {
-        background-color: #111827;
-        color: #f3f4f6;
-      }
-      .prose p {
-        margin-bottom: 1.25rem;
-      }
+        body { background-color: #111827; color: #f3f4f6; }
+        .prose p { margin-bottom: 1.25rem; }
     </style>
-  </head>
+</head>
 
-  <body>
-    <header class="bg-purple-600 py-8 shadow-md border-b-4 border-white">
-      <div class="max-w-7xl mx-auto px-4 text-center">
-        <h1
-          class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase italic">
-          REPORTE TIJUANA
-        </h1>
-        <p
-          class="text-purple-100 text-sm font-bold mt-2 tracking-widest uppercase">
-          Información en Tiempo Real
-        </p>
-      </div>
-    </header>
+<body>
 
-    <nav class="bg-purple-600 shadow-xl sticky top-0 z-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
-          <a
-            href="/"
-            class="text-white text-xl font-extrabold tracking-wide hover:text-gray-200 transition duration-150"
-          >
+<header class="bg-purple-600 py-8 shadow-md border-b-4 border-white">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase italic">REPORTE TIJUANA</h1>
+        <p class="text-purple-100 text-sm font-bold mt-2 tracking-widest uppercase">Información en Tiempo Real</p>
+    </div>
+</header>
+
+<nav class="bg-purple-600 shadow-xl sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+        <a href="/" class="text-white text-xl font-extrabold tracking-wide hover:text-gray-200 transition duration-150">
             INICIO
-          </a>
-
-          <button
-            id="menu-toggle"
-            aria-label="Abrir menú principal"
-            title="Menú principal"
-            class="text-white text-2xl lg:hidden focus:outline-none"
-          >
-            <i class="fas fa-bars"></i>
-          </button>
+        </a>
+            
+            <button id="menu-toggle" aria-label="Abrir menú principal" title="Menú principal" class="text-white text-2xl lg:hidden focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
 
-        <div id="nav-links" class="hidden lg:block w-full">
-          <div
-            class="flex flex-col lg:flex-row lg:flex-wrap lg:justify-center lg:space-x-2 px-2 pt-2 pb-3 space-y-1 lg:space-y-0 lg:p-4"
-          >
-            <a
-              href="tijuana.html"
-              class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
-              >TIJUANA</a
-            >
-            <a
-              href="baja.html"
-              class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
-              >BAJA CALIFORNIA</a
-            >
-            <a
-              href="rosarito.html"
-              class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
-              >ROSARITO</a
-            >
-            <a
-              href="tecate.html"
-              class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
-              >TECATE</a
-            >
-            <a
-              href="codigo.html"
-              class="bg-red-600 text-white border border-red-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-red-800 uppercase italic"
-              >CÓDIGO ROJO</a
-            >
-            <a
-              href="desaparecidos.html"
-              class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
-              >DESAPARECIDOS</a
-            >
-            <a
-              href="deportes.html"
-              class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
-              >DEPORTES</a
-            >
-            <a
-              href="empleos.html"
-              class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
-              >EMPLEOS</a
-            >
-          </div>
-        </div>
-      </div>
-    </nav>
+        <div id="nav-links" class="hidden lg:block w-full"> 
+            <div class="flex flex-col lg:flex-row lg:flex-wrap lg:justify-center lg:space-x-2 px-2 pt-2 pb-3 space-y-1 lg:space-y-0 lg:p-4">
 
-    <main class="max-w-5xl mx-auto px-4 py-10">
-      <article
-        class="bg-white p-6 sm:p-10 rounded-xl shadow-2xl border-t-4 border-purple-600"
-      >
+                <a href="tijuana.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">TIJUANA</a>
+
+                <a href="baja.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">BAJA CALIFORNIA</a>
+
+                <a href="rosarito.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">ROSARITO</a>
+                
+                <a href="tecate.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">TECATE</a>
+
+                <a href="codigo.html" class="bg-red-600 text-white border border-red-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-red-800 uppercase italic">CÓDIGO ROJO</a>
+
+                <a href="desaparecidos.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">DESAPARECIDOS</a>
+
+                <a href="deportes.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">DEPORTES</a>
+
+                <a href="empleos.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">EMPLEOS</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="max-w-5xl mx-auto px-4 py-10">
+    <article class="bg-white p-6 sm:p-10 rounded-xl shadow-2xl border-t-4 border-purple-600">
         <header class="text-center mb-8">
-          <span
-            class="inline-block px-4 py-1 rounded-full font-semibold text-white bg-purple-600 text-xs uppercase tracking-widest"
-          >
-            ROSARITO
-          </span>
-          <h2
-            class="text-3xl sm:text-5xl font-black text-gray-900 mt-4 leading-tight"
-          >
-            Título impactante de la noticia
-          </h2>
-
-          <time
-            class="text-gray-400 text-sm font-bold mt-4 block uppercase"
-            datetime="2025-12-29"
-          >
-            30 de Diciembre de 2025
-          </time>
+            <span class="inline-block px-4 py-1 rounded-full font-semibold text-white bg-purple-600 text-xs uppercase tracking-widest">
+                ROSARITO
+            </span>
+            <h2 class="text-3xl sm:text-5xl font-black text-gray-900 mt-4 leading-tight">
+                Título impactante de la noticia
+            </h2>
+            <time class="text-gray-400 text-sm font-bold mt-4 block uppercase" datetime="2025-12-29">
+                30 de Diciembre de 2025
+            </time>
         </header>
 
         <figure class="mb-8">
-          <img
-            src="../../static/images/reporte-tijuana/tu-foto.png"
-            alt="Descripción de la foto"
-            class="w-full h-auto rounded-lg shadow-lg"
-          />
+            <img src="../../static/images/reporte-tijuana/tu-foto.png" alt="Descripción de la foto" class="w-full h-auto rounded-lg shadow-lg">
         </figure>
 
-        <div
-          class="prose max-w-none text-lg leading-relaxed text-gray-700 border-t pt-8"
-        >
-          <p>En 2025, el enfoque de la prevención se dirigió a la niñez, juventud, mujeres y familias de BC, con los temas de Ciberseguridad, Prevención a las adicciones, prevención a la violencia en las mujeres, Trata de personas, cultura a la legalidad y denuncia.
-
-Baja California, Diciembre 2025, Se llevaron a cabo actividades de prevención, que comprenden los meses de Enero a Diciembre 2025, en los Municipios de Baja California, con el propósito de dar a conocer información muy importante para la niñez, juventud, mujeres y Familias de BC.
-
-En los diversos temas de prevención, entre ellos, Ciberseguridad, Prevención a las adicciones, prevención a la violencia en las mujeres, Trata de personas, cultura a la legalidad y denuncia. Con la finalidad de evitar que sean víctimas de la delincuencia.
-
-Con la firme convicción de sumarse a la Estrategia Nacional de la Seguridad Pública en México, que comanda la Presidenta Dra. Claudia Sheinbaum Pardo., aportando un granito de arena.
-
-En coordinación con las Instituciones Federales, Fuerzas Armadas de México, Defensa, Ejército Mexicano, Fuerza Aérea Mexicana, Guardia Nacional, Secretaría de Marina-Armada de México:
-
-La coordinación Estatal de la Guardia Nacional en Baja California que dirige el Gral. de Brigada E.M. Héctor Jiménez Báez, Secretaría de Marina-Armada de México de la 2/a. Zona Naval, Ensenada, BC, que Dirige Vicealmirante CG, EM. Juan Carlos Vera Mijares, Secretaría de la Defensa Nacional 2/a. Zona Militar de Tijuana, BC. Gral. Brigadier EM, Cmte. Javier Juvencio Hernández Fernández. 28 Batallón del Ejército Mexicano de Tijuana Coronel José Guadalupe Gómez Salado y el 38 Batallón de la Guardia Nacional y la Compañía 431 de La GN de Playas de Rosarito Capitán Vicente Torres.
-
-Dentro de las actividades, se llevaron a cabo Conferencias, Seminarios de Prevención, Pláticas, mensajes,  Honores al lábaro Patrio y juramento a la bandera, Funciones gratuitas de Cine, Calistenia, Módulos Informativos de Instituciones Federales de Seguridad, Reforestaciones y Recuperación de espacios, Proximidad Social y Comunitaria, Juegos deportivos de Voleibol, Basquetbol, Futbol, asistencia de botargas institucionales, participación con propuestas de prevención en el Congreso Estatal en la Comisión de Seguridad y Protección Civil  y Comisión de discapacidad.
-
-Con el propósito de concientizar, enseñar, sensibilizar a los niños, jóvenes y familias de BC, en los temas de Prevención en contra de las mujeres, Prevención a las adicciones y el fentanilo, Ciberseguridad, Trata de personas, extorsión de llamadas y Secuestro exprés, Acoso escolar, cultura a la legalidad y cultura a la denuncia, valores universales, Valores Cívicos y Amor a México y proximidad social de Instituciones de Seguridad. Entre otros temas de interés para cada grupo beneficiado. Fomento a la cultura, cine y deporte. Conservación de espacios, parques, siembra de árboles florales, maderables y frutales.
-
-Con gran participación, muy nutrida en cada actividad, de los 61 grupos de la comunidad escolar y comunidad en general, con seminarios, conferencia, reforestación, etc., donde participaron niños de Preescolar, Primaria, Secundarias, Preparatoria, CAM niños con discapacidad, casas hogar, albergues infantiles, albergues de mujeres, albergues de migrantes, además comunidad en general, centros comunitarios, grupos de líderes, Institutos del deporte, cine, deporte.
-
-Módulos informativos:
-
-Guardia Nacional en BC, Módulo de exhibición y explicación de cada uno del equipo de los elementos e institución y servicio militar, convocatorias. Agentes Justo y paz, Botargas de Guardia Nacional. Exhibición Fotográfica de las actividades de la GN.
-
- Módulo interactivo de la Secretaría de Marina-Armada de México,
-
- Convocatorias de las diversas profesiones de la institución y servicio militar.
-
-Módulo informativo de la CESPT Tijuana
-
-Módulo interactivo de la Comisión Estatal del Agua en BC, conservación del agua.
-
-Activaciones:
-
-Promotores deportivos de la Guardia Nacional de BC
-
-Escoltas de Bandera y Bandas de Guerra: DEFENSA (Ejército Mexicano), Armada de México (Marina), Guardia Nacional (GN BC).
-
-Grupos beneficiados en la Prevención:
-
-Escuelas de BC:
-
-CAM Ensenada.
-
-Preescolar Tecate: Jardín de Niños Cámara Junior T.M., Jardín de Niños León Vigotsky T. V.
-
-Primarias Tecate: Emiliano Zapata, Club de Leones #2, José María Morelos y Pavón.
-
-Escuela primaria Tierra y Libertad, CAM laboral Club Rotario, CAM vespertino.
-
-CAM Rosarito
-
-Preescolar Rosarito: María La Valle Urbina de Rosarito,
-
-Secundarias: Rosarito:
-
-Secundaria Gral. 215, Forjadores de Rosarito, Secundaria Gral. "Lucio Blanco", Telesecundaria No. 18 "Wa-kuatay", Secundaria 32, Abraham Lincoln, Telesecundaria No. 15 "Frida Kahlo Calderón", Sec. Técnica. No. 13 "Micaela Aguilera Topete", Sec. Técnica. No. 52. Secundaria General No. 7, Emiliano Zapata, Playas de Rosarito. Telesecundaria Wa-Huatay No. 18, Playas de Rosarito. BC. Secundaria Gral. No. 18, Bicentenario de la Independencia, Secundaria Colegio Santa Lucia, Secundaria Colegio Royal Academy, Playas de Rosarito, Secundaria General No. 207, Turno Vespertino. Playas de Rosarito, Secundaria Colegio Milenio, Secundaria Gral. No. 18, Bicentenario de la Independencia, Secundaria Instituto de las Américas.
-
-Preparatorias:
-
-Preparatoria CECYTE PRIMO TAPIA, Playas de Rosarito.
-
-Primarias: Tijuana:
-
-Juan Ernesto Gamaliel Espinoza Saucedo, Jesús Cortez Limón, Elena Rivera Sánchez, Niños Héroes, Venustiano Carranza, Estado Número 29.
-
-Primarias Elena Rivera Sánchez, Niños Héroes, Venustiano Carranza, Estado 29, Cam Laboral Gilberto Rincón Gallardo, Lic., Agustín Yáñez,
-
-Parques y recuperación de espacio
-
-Parque Jesús Navarro de Primo Tapia, Rosarito BC.
-
-Grupos de la Comunidad: Grupos de la comunidad de Playas de Rosarito, de Comedor Comunitario Tonantzin Abuelitos, Grupo de la comunidad San Martín Tijuana, Centro Eudes Tijuana (centro ayuda a mujeres), Grupo de la comunidad de BC.
-
-Albergues y Casa Hogar de BC: Albergue temporal de DIF BC (Tijuana), Albergue de migrantes extensión Santuario (Tijuana), Albergue de migrantes de Mariano Matamoros (Tijuana), Rayito de Luz y esperanza (Tijuana), Niños con Fe (La Gloria Tijuana), Sonriendo juntos (Tijuana), Los Angelitos Orfanatorio (Tijuana), Hogar Hodeni ac (Tijuana), Morada de Jesús Casa Hogar (Tijuana), Casa Hogar Ciudad del Refugio en Rancho 40 (Rosarito), Centro Comunitario Castillo de Fe (Rosarito), Catherine Kids Niños con discapacidad (Rosarito), Rancho de sus niños (Tecate).
-
-Centro Eudes Promoción Integral de la Mujer, Albergue Corazón y Morada de Jesús. (Tijuana)
-
-Templo: Bethel de Rosarito.
-
-Centros deportivos: Tijuana Zonkeys - Zonkeycamp 2025, IMDET Instituto del deporte en Tijuana.
-
-Congreso del Estado de BC
-
-Comisión de Seguridad y Protección Civil en BC., donde se presentó la propuesta de incorporar a las leyes y reglamentos los delitos cibernéticos, ciberseguridad, policía cibernética y Fiscalía especializada en ciberseguridad.
-
-
-Comisión de discapacidad de BC.. Inclusión de las personas con discapacidad en la participación pública.
-
-Se extendió el agradecimiento a las Instituciones de Seguridad, Federales, Estatales y Municipales, además a los aliados de la inactiva privada.
-
-            La coordinación Estatal de la Guardia Nacional en Baja California que dirige el Gral. de Brigada E.M. Héctor Jiménez Báez, Secretaría de Marina-Armada de México de la 2/a. Zona Naval, Ensenada, BC, que Dirige Vicealmirante CG, EM. Juan Carlos Vera Mijares, Secretaría de la Defensa Nacional 2/a. Zona Militar de Tijuana, BC. Gral. Brigadier EM, Cmte. Javier Juvencio Hernández Fernández. 28 Batallón del Ejército Mexicano de Tijuana Coronel José Guadalupe Gómez Salado y el 38 Batallón de la Guardia Nacional y la Compañía 431 de La GN de Playas de Rosarito Capitán Vicente Torres.
-
-También agradeció, por sumarse al programa de “Unidos por la prevención en BC”, a los comités de vecinos y delegados de BC, Secretaría de Educación de BC, al Secretario y sus delegados de BC, directores de albergues y casas hogar de BC, CESPT Comisión Estatal del agua en BC, Directores de Escuelas de Preescolar, Primaria, Secundaria y CAM de BC. IMDET Instituto del deporte de Tijuana, DIF BC y voluntariado de la Fundación.
-
-A la Fundación Cinépolis, Coca Cola, Ciel, Powerade, entre otros aliados de BC.
-
-A los cuáles la Presidenta de la Fundación, agradeció su gran compromiso y disponibilidad de sumarse a los trabajos de la Prevención en BC.
-
-Además, agradeció a la Defensa, Ejército Mexicano del 28 Batallón de Infantería, la invitación al Paseo Dominical, en Marzo y Agosto 2025., donde pudieron disfrutar en compañía de las familias e invitados del Ejército Mexicano, también agradeció la invitación cordial de la Coordinación Estatal de Guardia Nacional en BC, al evento especial de niño con discapacidad-honorario de la GN en BC en Playas de Rosarito y de acto solemne de un adolescente con autismo como honorario de GN en BC. En Tijuana.
-
-“La educación y comunicación son clave para fortalecer el criterio de la niñez y juventud, para la toma de decisiones, para forjar excelentes ciudadanos, por esta razón, continuaremos trabajando en coordinación con las Instituciones de los tres niveles de Gobierno, Iniciativa Privada y la comunidad en general, para fortalecer los valores en las familias de BC”. Subrayó, la Presidenta de la Fundación Manos Unidas por Rosarito AC y Unidos por la Prevención en BC, CPMI Lorena Meléndez Yáñez.
-
-Además, hizo la invitación a sumarse al programa de Unidos por la prevención en BC, contactarse al teléfono celular y/o WhatsApp (661) 114-5483, o correo electrónico difusion.manosunidasbc2025@gmail.com
-
-En Diciembre 2025, la Fundación celebra su 12 Aniversario, con más de 600,000 ciudadanos de Baja California beneficiados del programa de “Unidos por la Prevención en BC”, con conferencias, pláticas, seminarios, foros, etc.,  con más ahínco dirigido a la niñez, juventud, mujeres y familias de BC, han recuperado áreas sembrando más de 7300 árboles en Parques, Áreas Verdes, En hogares de familias de BC, además Cine Gratuito, palomitas sodas y un gran mensaje de prevención a más de 42,000 niños, niñas, jóvenes con autismo, niños y niñas con discapacidad, familias vulnerables, grupo de abuelitos y abuelitas, casa hogar y albergues vulnerables.
-
-Han realizado más de 100 carreras atléticas en BC, de 10K, 5K, de diferentes distancias para niños y jóvenes, camitas familiares, festivales atléticos infantiles y juveniles, día del niño en la cultura, futbol, basquetbol, voleibol, carreras, etc.
-
-Entre otras actividades en beneficio del crecimiento y bienestar de las Familias de Baja California.
-</p>
+        <div class="prose max-w-none text-lg leading-relaxed text-gray-700 border-t pt-8">
+            <p>Escribe aquí el primer párrafo de la noticia...</p>
+            
         </div>
 
-        <footer class="bg-white border-t border-purple-200 py-10 mt-10">
-          <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">
-            <div class="flex justify-center my-8">
-              <a
-                href="index.html"
-                class="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 shadow-lg transform hover:scale-105 uppercase text-sm tracking-widest"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                  />
-                </svg>
-                Ir a la Portada
-              </a>
-            </div>
+<footer class="bg-white border-t border-purple-200 py-10 mt-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">        
+        <div class="flex justify-center my-8">
+        <a href="index.html" class="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 shadow-lg transform hover:scale-105 uppercase text-sm tracking-widest">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+            Ir a la Portada
+        </a>
+    </div>
 
-            <div class="flex space-x-4">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener"
-                class="bg-blue-700 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-800 shadow-md transition"
-              >
-                FACEBOOK
-              </a>
+    <div class="flex space-x-4">
+        <a href="https://facebook.com" target="_blank" rel="noopener" 
+               class="bg-blue-700 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-800 shadow-md transition">
+               FACEBOOK
+            </a>
+            
+            <a href="https://wa.me/526648074047" target="_blank" rel="noopener" 
+               class="bg-green-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 shadow-md transition">
+               WHATSAPP
+        </a>
+    </div>
 
-              <a
-                href="https://wa.me/526648074047"
-                target="_blank"
-                rel="noopener"
-                class="bg-green-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 shadow-md transition"
-              >
-                WHATSAPP
-              </a>
-            </div>
+        <p class="mt-8 text-purple-900 font-bold italic">REPORTE TIJUANA © 2025</p>
+    </div>
+</footer>
+    </article>
+</main>
 
-            <p class="mt-8 text-purple-900 font-bold italic">
-              REPORTE TIJUANA © 2025
-            </p>
-          </div>
-        </footer>
-      </article>
-    </main>
-
-    <footer class="bg-gray-900 text-white mt-16 pt-10 pb-6 shadow-2xl">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<footer class="bg-gray-900 text-white mt-16 pt-10 pb-6 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-wrap justify-between gap-8 text-sm">
-          <div class="w-full sm:w-1/2 lg:w-1/4 space-y-3">
-            <h3 class="text-xl font-extrabold text-white mb-2">
-              REPORTE TIJUANA
-            </h3>
-            <p>Tu fuente de información confiable .</p>
-            <div class="space-y-1">
-              <p class="flex items-center">
-                <i class="fas fa-envelope mr-3 text-red-500"></i>
-                <a
-                  href="mailto:prensametropoli@gmail.com"
-                  class="hover:underline"
-                  >prensametropoli@gmail.com</a
-                >
-              </p>
-              <p class="flex items-center">
-                <i class="fab fa-whatsapp mr-3 text-green-400"></i>
-                <span>WhatsApp: 664 807 4047</span>
-              </p>
+
+            <div class="w-full sm:w-1/2 lg:w-1/4 space-y-3">
+                <h3 class="text-xl font-extrabold text-white mb-2">REPORTE TIJUANA</h3>
+                <p>Tu fuente de información confiable .</p>
+                <div class="space-y-1">
+                    <p class="flex items-center">
+                        <i class="fas fa-envelope mr-3 text-red-500"></i>
+                        <a href="mailto:prensametropoli@gmail.com" class="hover:underline">prensametropoli@gmail.com</a>
+                    </p>
+                    <p class="flex items-center">
+                        <i class="fab fa-whatsapp mr-3 text-green-400"></i>
+                        <span>WhatsApp: 664 807 4047</span>
+                    </p>
+                </div>
             </div>
-          </div>
 
-          <div class="w-full sm:w-1/2 lg:w-1/4 space-y-2">
-            <h3 class="text-lg font-bold mb-3 border-b border-gray-700 pb-1">
-              SECCIONES
-            </h3>
-            <ul class="space-y-1">
-              <li>
-                <a href="/" class="hover:text-red-500 transition duration-150"
-                  >Inicio</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/desaparecidos.html"
-                  class="hover:text-red-500 transition duration-150"
-                  >DESAPARECIDOS</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/empleos.html"
-                  class="hover:text-red-500 transition duration-150"
-                  >EMPLEOS</a
-                >
-              </li>
-              <li>
-                <a 
-                  href="/baja.html"
-                  class="hover:text-red-500 transition duration-150"
-                  >BAJA CALIFORNIA</a
-                >
-              </li>
-            </ul>
-          </div>
+            <div class="w-full sm:w-1/2 lg:w-1/4 space-y-2">
+                <h3 class="text-lg font-bold mb-3 border-b border-gray-700 pb-1">SECCIONES</h3>
+                <ul class="space-y-1">
+                    <li><a href="/" class="hover:text-red-500 transition duration-150">Inicio</a></li>
+                    <li><a href="/desaparecidos.html" class="hover:text-red-500 transition duration-150">DESAPARECIDOS</a></li>
+                    <li><a href="/empleos.html" class="hover:text-red-500 transition duration-150">EMPLEOS</a></li>
+                    <li><a href="/baja.html" class="hover:text-red-500 transition duration-150">BAJA CALIFORNIA</a></li>
+                </ul>
+            </div>
 
-          <div class="w-full lg:w-1/4 space-y-2">
-            <h3 class="text-lg font-bold mb-3 border-b border-gray-700 pb-1">
-              INFORMACIÓN
-            </h3>
-            <p class="text-xs opacity-75 leading-relaxed">
-              &copy; 2025 reportetijuana.com<br />
-              Esta obra está bajo una licencia de Creative Commons
-              Reconocimiento 4.0 Internacional. Se permite la reproducción
-              citando la fuente.
-            </p>
-          </div>
+            <div class="w-full lg:w-1/4 space-y-2">
+                <h3 class="text-lg font-bold mb-3 border-b border-gray-700 pb-1">INFORMACIÓN</h3>
+                <p class="text-xs opacity-75 leading-relaxed">
+                    &copy; 2025 reportetijuana.com<br>
+                    Esta obra está bajo una licencia de Creative Commons Reconocimiento 4.0 Internacional.
+                    Se permite la reproducción citando la fuente.
+                </p>
+            </div>
+            
         </div>
-      </div>
-      <div class="mt-8 pt-4 border-t border-gray-700 text-center text-xs">
+    </div>
+    <div class="mt-8 pt-4 border-t border-gray-700 text-center text-xs">
         <p class="opacity-75">Diseño y desarrollo | Reporte Tijuana</p>
-      </div>
-    </footer>
+    </div>
+</footer>
 
-    <script>
-      // Script funcional para el menú móvil
-      const menuBtn = document.getElementById('menu-toggle');
-      const menuLinks = document.getElementById('nav-links');
-      menuBtn.addEventListener('click', () => {
-        menuLinks.classList.toggle('hidden');
-      });
-    </script>
-  </body>
+
+<script>
+    // Script funcional para el menú móvil
+    const menuBtn = document.getElementById("menu-toggle");
+    const menuLinks = document.getElementById("nav-links");
+    menuBtn.addEventListener("click", () => {
+        menuLinks.classList.toggle("hidden");
+    });
+</script>
+
+</body>
 </html>
