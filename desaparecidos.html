@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Información veraz y al momento en Reporte Tijuana. Noticias de los sucesos más importantes de la metrópoli Tijuana-Rosarito-Tecate y de Baja California">
+    <title>Reporte Tijuana | Noticias de Última Hora</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+    <style>
+        body { background-color: #111827; color: #f3f4f6; }
+        .link-expansivo { position: relative; }
+        .enlace-principal { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; background-color: transparent; }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+<header class="bg-purple-600 py-8 shadow-md border-b-4 border-white">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase italic">CÓDIGO ROJO TIJUANA</h1>
+        <p class="text-purple-100 text-sm font-bold mt-2 tracking-widest uppercase">Información en Tiempo Real</p>
+    </div>
+</header>
+
+<nav class="bg-red-700 shadow-xl sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+        <a href="/" class="text-white text-xl font-extrabold tracking-wide hover:text-gray-200 transition duration-150">
+            INICIO
+        </a>
+            
+            <button id="menu-toggle" aria-label="Abrir menú principal" title="Menú principal" class="text-white text-2xl lg:hidden focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="nav-links" class="hidden lg:block w-full"> 
+            <div class="flex flex-col lg:flex-row lg:flex-wrap lg:justify-center lg:space-x-2 px-2 pt-2 pb-3 space-y-1 lg:space-y-0 lg:p-4">
+
+                <a href="tijuana.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">TIJUANA</a>
+
+                <a href="baja.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">BAJA CALIFORNIA</a>
+
+                <a href="rosarito.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">ROSARITO</a>
+                
+                <a href="tecate.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">TECATE</a>
+
+                <a href="kodigo-rojo.html" 
+                class="bg-white text-red-600 border border-white font-bold px-3 py-1 rounded-md text-xs transition duration-150 hover:bg-red-50 hover:text-red-700 uppercase">
+                CÓDIGO ROJO
+                </a>
+
+                <a href="desaparecidos.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">DESAPARECIDOS</a>
+
+                <a href="deportes.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">DEPORTES</a>
+
+                <a href="empleos.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">EMPLEOS</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="flex-grow container mx-auto px-4 py-8 max-w-7xl">
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!--COPIAR-->
+
+    <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
+        <a href="content/bajacalifornia/fetraex-plantea-agenda-2026-enfoque-movilidad-datos-competitividad-humberto-valdes-romero.html" class="block group">
+            <img src="static/images/reporte-tijuana/fetraex-plantea-agenda-2026-enfoque-movilidad.webp" alt="imagen" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
+            <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">BAJA CALIFORNIA</span>
+            <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">La federación propone seguimiento técnico permanente, coordinación institucional y uso de información operativa para fortalecer la movilidad turística y productiva de Baja California.</h2>
+            <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">La Federación de Transporte y Experiencias en Rutas Vinícolas de Baja California (FETRAEX) definió su agenda de trabajo para 2026 con un enfoque en movilidad, infraestructura, seguridad vial y fortalecimiento de la competitividad regional, informó su presidente, Humberto Valdés Romero.
+            </p>
+            <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">31 de diciembre de 2025</span>
+        </a>
+    </article>
+
+<!--NO TOCAR-->
+
+<article class="bg-gray-800 p-6 rounded-xl shadow-lg border-t-4 border-purple-600 flex flex-col h-full">
+    <h2 class="text-xl font-black text-white mb-6 uppercase tracking-tighter border-b border-gray-700 pb-2 text-center">
+        Nuestra Red de Sitios
+    </h2>
+    <div class="flex flex-col gap-2">
+        <a href="https://reportemexico.info/" class="w-full bg-purple-700 hover:bg-purple-600 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Reporte México</a>
+        <a href="https://reportetijuana.com/" class="w-full bg-purple-900 hover:bg-purple-800 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Reporte Tijuana</a>
+        <a href="https://codigorojomx.info/" class="w-full bg-red-900 hover:bg-red-800 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Código Rojo MX</a>
+        <a href="https://emergenciasmexico.com/" class="w-full bg-orange-700 hover:bg-orange-600 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Emergencias</a>        
+        <div class="my-2 border-t border-gray-700"></div> <a href="https://directoriosdemexico.com/" class="w-full bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Directorio México</a>
+        <a href="https://directorioscdmx.com/" class="w-full bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Directorio CDMX</a>
+        <a href="https://directoriostijuana.com/" class="w-full bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Directorio Tijuana</a>
+        
+        <div class="my-2 border-t border-gray-700"></div> <a href="https://lacocinademexico.com/" class="w-full bg-green-800 hover:bg-green-700 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">La Cocina de México</a>
+        <a href="https://lacocinadetijuana.com/" class="w-full bg-green-800 hover:bg-green-700 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">La Cocina de Tijuana</a>
+        <a href="https://turismomx.info/" class="w-full bg-blue-800 hover:bg-blue-700 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Turismo MX</a>
+    </div>
+    <p class="text-gray-500 text-[10px] mt-auto pt-6 italic text-center uppercase font-bold tracking-widest">Información Global</p>
+    </article>
+  
+    <!--PEGAR-->
+
+    <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
+        <a href="content/bajacalifornia/fortalece-derecho-nines-vivir-familia-gobierno-marina-pilar-con-69-asignaciones-preadoptivas.html" class="block group">
+            <img src="static/images/reporte-tijuana/fortalece-derecho-nines-vivir-familia.webp" alt="imagen" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
+            <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">BAJA CALIFORNIA</span>
+            <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight"> Fortalece derecho de la niñez a vivir en familia gobierno de Marina
+            del pilar con 69 asignaciones preadoptivas</h2>
+            <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">Se han agilizado los procesos de adopción para garantizar entornos
+            integrales y seguros a niñas, niños y adolescentes
+            </p>
+            <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">31 de diciembre de 2025</span>
+        </a>
+    </article>
+
+            <!--DESPUES DE COPIAR Y PEGAR LA NOTA ELIMINAR ESTA ULTIMA-->            
+          </div>
+        </div>
+        
+    </main>
+
+    </div>
+      </div>
+    </main>
+
+    <div class="flex justify-center my-12">
+        <a href="archivo.html" 
+           class="group flex items-center gap-2 bg-gray-900 text-white font-bold py-4 px-10 rounded-full hover:bg-red-700 transition duration-300 shadow-xl transform hover:scale-105 uppercase tracking-widest text-sm">
+            <span>Ver más noticias</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+        </a>
+    </div>
+    <footer class="bg-white border-t border-purple-200 py-10 mt-10">
+
+<footer class="bg-gray-900 text-white mt-16 pt-10 pb-6 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap justify-between gap-8 text-sm">
+
+            <div class="w-full sm:w-1/2 lg:w-1/4 space-y-3">
+                <h3 class="text-xl font-extrabold text-white mb-2">REPORTE TIJUANA</h3>
+                <p>Tu fuente de información confiable .</p>
+                <div class="space-y-1">
+                    <p class="flex items-center">
+                        <i class="fas fa-envelope mr-3 text-red-500"></i>
+                        <a href="mailto:prensametropoli@gmail.com" class="hover:underline">prensametropoli@gmail.com</a>
+                    </p>
+                    <p class="flex items-center">
+                        <i class="fab fa-whatsapp mr-3 text-green-400"></i>
+                        <span>WhatsApp: 664 807 4047</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="w-full sm:w-1/2 lg:w-1/4 space-y-2">
+                <h3 class="text-lg font-bold mb-3 border-b border-gray-700 pb-1">SECCIONES</h3>
+                <ul class="space-y-1">
+                    <li><a href="/" class="hover:text-red-500 transition duration-150">Inicio</a></li>
+                    <li><a href="/desaparecidos.html" class="hover:text-red-500 transition duration-150">DESAPARECIDOS</a></li>
+                    <li><a href="/empleos.html" class="hover:text-red-500 transition duration-150">EMPLEOS</a></li>
+                    <li><a href="/baja.html" class="hover:text-red-500 transition duration-150">BAJA CALIFORNIA</a></li>
+                </ul>
+            </div>
+
+            <div class="w-full lg:w-1/4 space-y-2">
+                <h3 class="text-lg font-bold mb-3 border-b border-gray-700 pb-1">INFORMACIÓN</h3>
+                <p class="text-xs opacity-75 leading-relaxed">
+                    &copy; 2025 reportetijuana.com<br>
+                    Esta obra está bajo una licencia de Creative Commons Reconocimiento 4.0 Internacional.
+                    Se permite la reproducción citando la fuente.
+                </p>
+            </div>
+            
+        </div>
+    </div>
+    <div class="mt-8 pt-4 border-t border-gray-700 text-center text-xs">
+        <p class="opacity-75">Diseño y desarrollo | Reporte Tijuana</p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById("menu-toggle").addEventListener("click", () => {
+        document.getElementById("nav-links").classList.toggle("hidden");
+    });
+</script>
+
+</body>
+</html>
