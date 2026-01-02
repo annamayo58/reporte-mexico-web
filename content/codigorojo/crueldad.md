@@ -4,7 +4,11 @@
 Vinculan a proceso de Mario “N” por su probable responsabilidad en el delito de maltrato o crueldad animal
 Los hechos ocurrieron en Playas de Tijuana.
 
+
+
 TIJUANA, BAJA CALIFORNIA, 1 DE ENERO DE 2026.- La Fiscalía Regional de Tijuana, a través de la Unidad de Investigación de Robo de Vehículos Zona Tijuana, obtuvo la vinculación a proceso de Cristian Interino “N”, por su presunta responsabilidad en el delito de robo equiparado de vehículo de motor en su modalidad de poseer.
+
+
 
 De acuerdo con la carpeta de investigación, los hechos ocurrieron el 22 de diciembre de 2025, aproximadamente a las 20:40 horas, cuando el imputado se encontraba en posesión de un vehículo de motor tipo Honda Civic, color azul, sentado en el asiento del conductor, sobre el callejón Manzana, sección Costa Azul, en Playas de Tijuana.
 
