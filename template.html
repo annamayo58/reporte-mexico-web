@@ -10,90 +10,125 @@
     />
   </head>
   <body class="bg-slate-900 text-white">
-    <header
-      class="bg-purpure-700 py-8 text-center shadow-2xl border-b-4 border-red-900"
-    >
-      <h1
-        class="text-5xl font-black italic uppercase text-white drop-shadow-md"
-      >
-        CÓDIGO ROJO TIJUANA
-      </h1>
-      <nav class="bg-purple-600 shadow-xl sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex items-center justify-between h-16">
-            <a
-              href="/"
-              class="text-white text-xl font-extrabold tracking-wide hover:text-gray-200 transition duration-150"
+    <header class="bg-purple-600 py-8 shadow-md border-b-4 border-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1
+          class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase italic"
+        >
+          REPORTE TIJUANA
+        </h1>
+        <p
+          class="text-purple-100 text-sm font-bold mt-2 tracking-widest uppercase"
+        >
+          Información en Tiempo Real
+        </p>
+      </div>
+
+      <div class="max-w-md mx-auto mt-6 px-4">
+        <form action="/buscar" method="GET" class="relative">
+          <input
+            type="text"
+            name="q"
+            placeholder="Buscar noticias en Tijuana..."
+            class="w-full bg-white text-purple-900 rounded-full py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-purple-400 shadow-lg border-none"
+            aria-label="Buscar en el sitio"
+          />
+          <div class="absolute left-3 top-2.5 text-purple-600">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              INICIO
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
+          <button type="submit" class="hidden">Buscar</button>
+        </form>
+      </div>
+    </header>
+
+    <nav class="bg-purple-600 shadow-xl sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a
+            href="/"
+            class="text-white text-xl font-extrabold tracking-wide hover:text-gray-200 transition duration-150 uppercase italic"
+          >
+            INICIO
+          </a>
+          <button
+            id="menu-toggle"
+            class="text-white lg:hidden"
+            aria-label="Abrir menú"
+            title="Menú"
+          >
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
+
+        <div id="nav-links" class="hidden lg:block w-full pb-4 lg:pb-0">
+          <div
+            class="flex flex-col lg:flex-row lg:justify-center lg:space-x-2 space-y-2 lg:space-y-0 pb-4 lg:pb-3"
+          >
+            <a
+              href="/tijuana.html"
+              class="bg-white text-purple-700 border border-white font-black px-4 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-700 hover:text-white hover:border-white uppercase text-center"
+            >
+              TIJUANA
             </a>
 
-            <button
-              id="menu-toggle"
-              aria-label="Abrir menú principal"
-              title="Menú principal"
-              class="text-white text-2xl lg:hidden focus:outline-none"
+            <a
+              href="/bajacalifornia.html"
+              class="bg-white text-purple-700 border border-white font-black px-4 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-700 hover:text-white hover:border-white uppercase text-center"
             >
-              <i class="fas fa-bars"></i>
-            </button>
-          </div>
+              BAJA CALIFORNIA
+            </a>
 
-          <div id="nav-links" class="hidden lg:block w-full">
-            <div
-              class="flex flex-col lg:flex-row lg:flex-wrap lg:justify-center lg:space-x-2 px-2 pt-2 pb-3 space-y-1 lg:space-y-0 lg:p-4"
+            <a
+              href="/rosarito.html"
+              class="bg-white text-purple-700 border border-white font-black px-4 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-700 hover:text-white hover:border-white uppercase text-center"
             >
-              <a
-                href="tijuana.html"
-                class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
-                >TIJUANA</a
-              >
+              ROSARITO
+            </a>
 
-              <a
-                href="baja.html"
-                class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
-                >BAJA CALIFORNIA</a
-              >
+            <a
+              href="/tecate.html"
+              class="bg-white text-purple-700 border border-white font-black px-4 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-700 hover:text-white hover:border-white uppercase text-center"
+            >
+              TECATE
+            </a>
 
-              <a
-                href="rosarito.html"
-                class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
-                >ROSARITO</a
-              >
+            <a
+              href="/codigorojo.html"
+              class="bg-red-600 text-white border border-red-600 font-black px-4 py-2 rounded-md text-xs transition duration-150 hover:bg-white hover:text-red-600 uppercase text-center"
+            >
+              CÓDIGO ROJO
+            </a>
 
-              <a
-                href="tecate.html"
-                class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
-                >TECATE</a
-              >
+            <a
+              href="/desaparecidos.html"
+              class="bg-white text-purple-700 border border-white font-black px-4 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-700 hover:text-white hover:border-white uppercase text-center"
+            >
+              DESAPARECIDOS
+            </a>
 
-              <a
-                href="codigo.html"
-                class="bg-red-600 text-white border border-red-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-red-800 uppercase italic"
-                >CÓDIGO ROJO</a
-              >
-
-              <a
-                href="desaparecidos.html"
-                class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
-                >DESAPARECIDOS</a
-              >
-
-              <a
-                href="deportes.html"
-                class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
-                >DEPORTES</a
-              >
-
-              <a
-                href="empleos.html"
-                class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
-                >EMPLEOS</a
-              >
-            </div>
+            <a
+              href="/empleos.html"
+              class="bg-white text-purple-700 border border-white font-black px-4 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-700 hover:text-white hover:border-white uppercase text-center"
+            >
+              EMPLEOS
+            </a>
           </div>
         </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
 
     <main class="max-w-4xl mx-auto px-4 py-10">
       <article class="prose prose-invert prose-red max-w-none">
@@ -229,3 +264,4 @@
     </footer>
   </body>
 </html>
+
