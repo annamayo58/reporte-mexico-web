@@ -2,11 +2,13 @@
 2026-01-01-03-crueldad-animal.webp
 Vinculación a proceso de Mario “N” por el delito de maltrato o crueldad animal
 codigo-rojo
-ATIJUANA, BAJA CALIFORNIA, A 1 DE ENERO DE 2026.- La Fiscalía Especializada en Delitos Ambientales y Contra los Animales, en conjunto con la Unidad con Detenido de la Fiscalía Regional Tijuana, obtuvo la vinculación a proceso de Mario “N” por su probable responsabilidad en el delito de maltrato o crueldad animal, resultado del trabajo coordinado y comprometido del personal ministerial y de investigación.
-</p>
-<p>
-De acuerdo con la carpeta de investigación, los hechos ocurrieron el 17 de diciembre de 2025, alrededor de las 18:07 horas, en un domicilio ubicado en la calle Valle Escondido, casi esquina con Valle Las Palmas, en el fraccionamiento Los Valles, en esta ciudad. En dicho lugar, presuntamente se agredió con un objeto punzocortante a un canino macho, de color negro, raza mestiza y tamaño pequeño, causándole diversas lesiones. El imputado fue asegurado por elementos de la Policía Municipal, quienes realizaron la detención y lo pusieron a disposición de la autoridad correspondiente.
-</p>
-<p>
-La Fiscalía General del Estado refrenda su compromiso firme y permanente con la protección de los seres sintientes, actuando con determinación para que ningún acto de violencia o crueldad animal quede impune.
+Los hechos ocurrieron en Playas de Tijuana.
+
+TIJUANA, BAJA CALIFORNIA, 1 DE ENERO DE 2026.- La Fiscalía Regional de Tijuana, a través de la Unidad de Investigación de Robo de Vehículos Zona Tijuana, obtuvo la vinculación a proceso de Cristian Interino “N”, por su presunta responsabilidad en el delito de robo equiparado de vehículo de motor en su modalidad de poseer.
+
+De acuerdo con la carpeta de investigación, los hechos ocurrieron el 22 de diciembre de 2025, aproximadamente a las 20:40 horas, cuando el imputado se encontraba en posesión de un vehículo de motor tipo Honda Civic, color azul, sentado en el asiento del conductor, sobre el callejón Manzana, sección Costa Azul, en Playas de Tijuana.
+Dicho vehículo contaba con reporte de robo previo, de fecha 15 de diciembre de 2025, motivo por el cual el imputado fue detenido.
+
+En audiencia correspondiente, el Juez de Control dictó auto de vinculación a proceso, fijó un plazo de un mes para la investigación complementaria y determinó imponer la medida cautelar de prisión preventiva justificada. La Fiscalía General del Estado mantiene como prioridad la atención y el combate al robo de vehículos, reafirmando su deber de procurar justicia de manera eficiente y transparente.
+
 
