@@ -1,37 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="{{TITULO}} - Código Rojo Tijuana" />
-    <meta property="og:description" content="{{DESCRIPCION}}" />
-    <meta property="og:image" content="https://tu-dominio.com/static/images/{{IMAGEN}}" />
-    <meta property="og:url" content="https://tu-dominio.com/content/{{ARCHIVO}}.html" />
-    <meta property="og:site_name" content="Reporte Tijuana" />
-
-    <title>{{TITULO}} - Código Rojo Tijuana</title>
-</head>
-<body class="bg-slate-900 text-white">
-
+    <title>{{ title }} - Reporte Tijuana</title>
+  </head>
+  <body class="bg-slate-900 text-white">
     <header class="bg-[#7e22ce] py-8 text-center shadow-lg">
-        <h1 class="text-5xl font-black italic uppercase tracking-tighter text-white">CÓDIGO ROJO TIJUANA</h1>
-        <p class="text-sm font-bold tracking-[0.3em] mt-2 opacity-90 uppercase">Información en tiempo real</p>
+      <h1
+        class="text-5xl font-black italic uppercase tracking-tighter text-white"
+      >
+        CÓDIGO ROJO TIJUANA
+      </h1>
+      <p class="text-sm font-bold tracking-[0.3em] mt-2 opacity-90 uppercase">
+        Información en tiempo real
+      </p>
     </header>
 
     <main class="max-w-4xl mx-auto px-4 py-10">
-        <article class="prose prose-invert prose-red max-w-none">
-            {{CONTENIDO}}
-        </article>
+      <article class="prose prose-invert prose-red max-w-none">
+        <h1 class="text-4xl font-bold mb-6 text-white">{{ title }}</h1>
 
-        <div class="mt-10 text-center border-t border-gray-700 pt-8">
-            <a href="../../index.html" class="bg-white text-red-600 font-bold px-8 py-3 rounded-full hover:bg-red-50 transition uppercase text-sm shadow-xl">
-                Volver al Inicio
-            </a>
-        </div>
+        <img
+          src="https://reportetijuana.com/static/images/reporte-tijuana/{{ image }}"
+          alt="Noticia"
+          class="w-full h-auto rounded-lg mb-8 shadow-xl"
+        />
+
+        <div class="text-justify space-y-6">{{ content }}</div>
+      </article>
+
+      <div class="mt-10 text-center border-t border-gray-700 pt-8">
+        <a
+          href="../../index.html"
+          class="inline-block bg-red-600 text-white font-bold px-8 py-3 rounded-full hover:bg-red-700 transition"
+        >
+          Volver al Inicio
+        </a>
+      </div>
     </main>
-
-</body>
+  </body>
 </html>
