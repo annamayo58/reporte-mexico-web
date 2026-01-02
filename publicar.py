@@ -1,12 +1,18 @@
 import markdown
 import sys
+import os
 
 
-def generar_nota(archivo_md):
-    with open(archivo_md, "r", encoding="utf-8") as f:
+def generar_nota(ruta_archivo_md):
+    # Verificamos si el archivo existe en la ruta proporcionada
+    if not os.path.exists(ruta_archivo_md):
+        print(f"❌ Error: No se encontró el archivo en {ruta_archivo_md}")
+        return
+
+    with open(ruta_archivo_md, "r", encoding="utf-8") as f:
         lineas = f.readlines()
 
-    # Extraemos metadatos de las primeras 4 líneas
+    # Extraemos metadatos (Título, Imagen, Descripción, Sección)
     titulo = lineas[0].strip().replace("# ", "")
     imagen = lineas[1].strip()
     descripcion = lineas[2].strip()
@@ -24,25 +30,29 @@ def generar_nota(archivo_md):
     color_final = colores_nav.get(seccion, colores_nav["default"])
     contenido_html = markdown.markdown(cuerpo_md)
 
+    # Cargamos la plantilla
     with open("template.html", "r", encoding="utf-8") as f:
         plantilla = f.read()
 
-    # Realizamos los reemplazos en la plantilla
+    # Reemplazos en la plantilla
     final = plantilla.replace("{{CONTENIDO}}", contenido_html)
     final = final.replace("{{TITULO}}", titulo)
     final = final.replace("{{IMAGEN}}", imagen)
     final = final.replace("{{DESCRIPCION}}", descripcion)
     final = final.replace("{{NAV_COLOR}}", color_final)
-    final = final.replace("{{ARCHIVO}}", archivo_md.replace(".md", ""))
 
-    nombre_salida = archivo_md.replace(".md", ".html")
+    # Extraemos solo el nombre del archivo (sin carpetas) para el enlace
+    nombre_base = os.path.basename(ruta_archivo_md).replace(".md", "")
+    final = final.replace("{{ARCHIVO}}", nombre_base)
+
+    # Guardamos el HTML resultante SIEMPRE en la carpeta raíz
+    nombre_salida = nombre_base + ".html"
     with open(nombre_salida, "w", encoding="utf-8") as f:
         f.write(final)
 
-    print(f"✅ Nota generada con éxito: {nombre_salida}")
+    print(f"✅ Nota generada con éxito en la raíz: {nombre_salida}")
 
 
-# Esta parte es vital para que la terminal funcione:
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         generar_nota(sys.argv[1])
