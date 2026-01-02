@@ -1,5 +1,5 @@
 Vinculación a proceso por delito de crueldad animal
-2026-01-01-03-crueldad-animal.webp
+2026-01-02-01-crueldadanimal.webp
 Los hechos ocurrieron en Playas de Tijuana.
 
 TIJUANA, BAJA CALIFORNIA, 1 DE ENERO DE 2026.- La Fiscalía Regional de Tijuana, a través de la Unidad de Investigación de Robo de Vehículos Zona Tijuana, obtuvo la vinculación a proceso de Cristian Interino “N”, por su presunta responsabilidad en el delito de robo equiparado de vehículo de motor en su modalidad de poseer.
