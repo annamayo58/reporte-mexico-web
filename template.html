@@ -18,17 +18,80 @@
       >
         CÓDIGO ROJO TIJUANA
       </h1>
-      <nav class="mt-4 flex justify-center gap-6">
-        <a
-          href="/"
-          class="text-white hover:text-slate-900 font-bold uppercase transition-all bg-red-800/50 px-3 py-1 rounded"
-          >Inicio</a
-        >
-        <a
-          href="/tijuana.html"
-          class="text-white hover:text-slate-900 font-bold uppercase transition-all bg-red-800/50 px-3 py-1 rounded"
-          >Tijuana</a
-        >
+      <nav class="bg-purple-600 shadow-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16">
+            <a
+              href="/"
+              class="text-white text-xl font-extrabold tracking-wide hover:text-gray-200 transition duration-150"
+            >
+              INICIO
+            </a>
+
+            <button
+              id="menu-toggle"
+              aria-label="Abrir menú principal"
+              title="Menú principal"
+              class="text-white text-2xl lg:hidden focus:outline-none"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+
+          <div id="nav-links" class="hidden lg:block w-full">
+            <div
+              class="flex flex-col lg:flex-row lg:flex-wrap lg:justify-center lg:space-x-2 px-2 pt-2 pb-3 space-y-1 lg:space-y-0 lg:p-4"
+            >
+              <a
+                href="tijuana.html"
+                class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
+                >TIJUANA</a
+              >
+
+              <a
+                href="baja.html"
+                class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
+                >BAJA CALIFORNIA</a
+              >
+
+              <a
+                href="rosarito.html"
+                class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
+                >ROSARITO</a
+              >
+
+              <a
+                href="tecate.html"
+                class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
+                >TECATE</a
+              >
+
+              <a
+                href="codigo.html"
+                class="bg-red-600 text-white border border-red-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-red-800 uppercase italic"
+                >CÓDIGO ROJO</a
+              >
+
+              <a
+                href="desaparecidos.html"
+                class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
+                >DESAPARECIDOS</a
+              >
+
+              <a
+                href="deportes.html"
+                class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
+                >DEPORTES</a
+              >
+
+              <a
+                href="empleos.html"
+                class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase"
+                >EMPLEOS</a
+              >
+            </div>
+          </div>
+        </div>
       </nav>
     </header>
 
@@ -50,49 +113,133 @@
           {{CONTENIDO}}
         </div>
 
-        <div
-          class="mt-16 pt-8 border-t border-slate-800 flex flex-col items-center"
-        >
-          <a
-            href="/"
-            class="mb-10 inline-flex items-center gap-2 bg-slate-800 hover:bg-red-700 text-white px-10 py-3 rounded-md font-black uppercase tracking-widest transition-all border border-slate-600 shadow-lg"
-          >
-            <i class="fas fa-arrow-left"></i> AL INICIO
-          </a>
+        <footer class="bg-white border-t border-purple-200 py-10 mt-10">
+          <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">
+            <div class="flex justify-center my-8">
+              <a
+                href="../../index.html"
+                class="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 shadow-lg transform hover:scale-105 uppercase text-sm tracking-widest"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                  />
+                </svg>
+                Ir a la Portada
+              </a>
+            </div>
 
-          <p
-            class="text-center font-black uppercase tracking-widest mb-6 text-red-500"
-          >
-            Compartir Nota
-          </p>
+            <div class="flex space-x-4">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener"
+                class="bg-blue-700 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-800 shadow-md transition"
+              >
+                FACEBOOK
+              </a>
 
-          <div class="flex flex-wrap justify-center gap-4">
-            <a
-              href="https://www.facebook.com/sharer/sharer.php?u=https://reportetijuana.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center gap-2 bg-[#1877F2] hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold transition-all shadow-lg"
-            >
-              <i class="fab fa-facebook-f"></i> Facebook
-            </a>
+              <a
+                href="https://wa.me/526648074047"
+                target="_blank"
+                rel="noopener"
+                class="bg-green-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 shadow-md transition"
+              >
+                WHATSAPP
+              </a>
+            </div>
 
-            <a
-              href="https://api.whatsapp.com/send?text={{TITULO}} - https://reportetijuana.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center gap-2 bg-[#25D366] hover:bg-green-600 text-white px-8 py-3 rounded-full font-bold transition-all shadow-lg"
-            >
-              <i class="fab fa-whatsapp"></i> WhatsApp
-            </a>
+            <p class="mt-8 text-purple-900 font-bold italic">
+              REPORTE TIJUANA © 2025
+            </p>
           </div>
-        </div>
+        </footer>
       </article>
     </main>
 
-    <footer
-      class="bg-black py-10 mt-10 text-center text-gray-500 border-t border-red-900/30"
-    >
-      <p class="font-bold text-gray-300">REPORTE TIJUANA &copy; 2026</p>
+    <footer class="bg-gray-900 text-white mt-16 pt-10 pb-6 shadow-2xl">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap justify-between gap-8 text-sm">
+          <div class="w-full sm:w-1/2 lg:w-1/4 space-y-3">
+            <h3 class="text-xl font-extrabold text-white mb-2">
+              REPORTE TIJUANA
+            </h3>
+            <p>Tu fuente de información confiable .</p>
+            <div class="space-y-1">
+              <p class="flex items-center">
+                <i class="fas fa-envelope mr-3 text-red-500"></i>
+                <a
+                  href="mailto:prensametropoli@gmail.com"
+                  class="hover:underline"
+                  >prensametropoli@gmail.com</a
+                >
+              </p>
+              <p class="flex items-center">
+                <i class="fab fa-whatsapp mr-3 text-green-400"></i>
+                <span>WhatsApp: 664 807 4047</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="w-full sm:w-1/2 lg:w-1/4 space-y-2">
+            <h3 class="text-lg font-bold mb-3 border-b border-gray-700 pb-1">
+              SECCIONES
+            </h3>
+            <ul class="space-y-1">
+              <li>
+                <a href="/" class="hover:text-red-500 transition duration-150"
+                  >Inicio</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/desaparecidos.html"
+                  class="hover:text-red-500 transition duration-150"
+                  >DESAPARECIDOS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/empleos.html"
+                  class="hover:text-red-500 transition duration-150"
+                  >EMPLEOS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/baja.html"
+                  class="hover:text-red-500 transition duration-150"
+                  >BAJA CALIFORNIA</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="w-full lg:w-1/4 space-y-2">
+            <h3 class="text-lg font-bold mb-3 border-b border-gray-700 pb-1">
+              INFORMACIÓN
+            </h3>
+            <p class="text-xs opacity-75 leading-relaxed">
+              &copy; 2025 reportetijuana.com<br />
+              Esta obra está bajo una licencia de Creative Commons
+              Reconocimiento 4.0 Internacional. Se permite la reproducción
+              citando la fuente.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 pt-4 border-t border-gray-700 text-center text-xs">
+        <p class="opacity-75">Diseño y desarrollo | Reporte Tijuana</p>
+      </div>
     </footer>
   </body>
 </html>
