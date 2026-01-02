@@ -122,3 +122,10 @@ def generar_portadas(carpetas):
         f.write(plantilla.replace("{{TARJETAS}}", html_tarjetas))
 
     print("🏠 Portada principal (index.html) actualizada.")
+
+    # Dentro de tu función generar_nota:
+
+
+imagen = lineas[1].strip()
+if not imagen or imagen.lower() == "ninguna":
+    imagen = "logo-social.png"  # Tu logo púrpura cuadrado para redes
