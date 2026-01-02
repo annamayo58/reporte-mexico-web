@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>{{ title }} - Reporte Tijuana</title>
+</head>
+<body class="bg-slate-900 text-white">
+    <main class="max-w-4xl mx-auto px-4 py-10">
+        <article class="prose prose-invert prose-red max-w-none">
+            
+            <h1 class="text-4xl font-bold mb-6 text-white">{{ title }}</h1>
+            
+            <img src="https://reportetijuana.com/static/images/reporte-tijuana/{{ image }}" 
+                 alt="{{ title }}" 
+                 class="w-full h-auto rounded-lg mb-8 shadow-xl">
+
+            <div class="text-justify">
+                {{ content }}
+            </div>
+
+        </article>
+
+        <div class="mt-10 text-center border-t border-gray-700 pt-8">
+            <a href="../../index.html" class="inline-block bg-red-600 text-white font-bold px-8 py-3 rounded-full hover:bg-red-700 transition">
+                Volver al Inicio
+            </a>
+        </div>
+    </main>
+</body>
+</html>
