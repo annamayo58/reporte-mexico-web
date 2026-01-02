@@ -19,12 +19,17 @@ def generar_nota(ruta_archivo_md):
     seccion = lineas[3].strip().lower()
     cuerpo_md = "".join(lineas[4:])
 
-    # Diccionario de colores para la barra de navegación
+    # Diccionario de colores actualizado para todas las secciones
     colores_nav = {
-        "codigo-rojo": "bg-red-900",
-        "desaparecidos": "bg-slate-800",
-        "tijuana": "bg-blue-900",
-        "default": "bg-slate-900",
+        "codigo-rojo": "bg-red-900",  # Rojo oscuro
+        "desaparecidos": "bg-slate-800",  # Gris oscuro
+        "tijuana": "bg-blue-900",  # Azul oscuro
+        "baja-california": "bg-cyan-900",  # Cian oscuro
+        "rosarito": "bg-teal-800",  # Verde azulado
+        "tecate": "bg-orange-900",  # Naranja oscuro (estilo arcilla)
+        "deportes": "bg-green-800",  # Verde campo
+        "empleos": "bg-indigo-900",  # Índigo profesional
+        "default": "bg-slate-900",  # Color base
     }
 
     color_final = colores_nav.get(seccion, colores_nav["default"])
