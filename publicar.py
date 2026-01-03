@@ -3,6 +3,7 @@ import os
 from datetime import datetime
 
 
+# 1. Función para obtener datos de todas las carpetas
 def obtener_datos_notas(carpetas):
     notas = []
     for carpeta in carpetas:
@@ -28,6 +29,7 @@ def obtener_datos_notas(carpetas):
     return sorted(notas, key=lambda x: x["fecha"], reverse=True)
 
 
+# 2. Función para generar la nota individual
 def generar_nota(ruta_md, nombre_salida):
     with open(ruta_md, "r", encoding="utf-8") as f:
         lineas = [l.strip() for l in f.readlines() if l.strip()]
@@ -46,13 +48,14 @@ def generar_nota(ruta_md, nombre_salida):
         f.write(final)
 
 
+# 3. Bloque de ejecución principal
 if __name__ == "__main__":
     print("\n--- PUBLICADOR REPORTE TIJUANA ---")
     archivo_md = input("Nombre del archivo .md (ej: nota2.md): ")
     ruta_target = os.path.join("content", "codigorojo", archivo_md)
 
     if os.path.exists(ruta_target):
-        # 1. Crear Nota Individual
+        # A. Crear la nota
         fecha_hoy = datetime.now().strftime("%Y-%m-%d")
         nombre_html = f"{fecha_hoy}-01.html"
         contador = 1
@@ -62,7 +65,7 @@ if __name__ == "__main__":
         generar_nota(ruta_target, nombre_html)
         print(f"✅ Nota creada: {nombre_html}")
 
-        # 2. Actualizar Portada (Tarjetas Clicables y LEER MÁS grande)
+        # B. ACTUALIZAR PORTADA (Aquí es donde se crean las tarjetas clicables)
         carpetas_web = [
             "codigorojo",
             "tijuana",
@@ -75,6 +78,7 @@ if __name__ == "__main__":
 
         html_tarjetas = ""
         for n in notas_lista[:12]:
+            # La etiqueta <a> envuelve TODA la tarjeta
             html_tarjetas += f"""
             <a href="{n['url']}" class="group block bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:scale-[1.02] transition-all duration-300 border border-slate-700">
                 <div class="w-full h-48 bg-[#111827] overflow-hidden">
@@ -91,12 +95,11 @@ if __name__ == "__main__":
             </a>
             """
 
-        # 3. Guardar Index
-        if os.path.exists("template_portada.html"):
-            with open("template_portada.html", "r", encoding="utf-8") as f:
-                index_final = f.read().replace("{{TARJETAS}}", html_tarjetas)
-            with open("index.html", "w", encoding="utf-8") as f:
-                f.write(index_final)
-            print("✅ Portada 'index.html' actualizada.")
+        # C. Guardar index.html
+        with open("template_portada.html", "r", encoding="utf-8") as f:
+            index_final = f.read().replace("{{TARJETAS}}", html_tarjetas)
+        with open("index.html", "w", encoding="utf-8") as f:
+            f.write(index_final)
+        print("✅ Portada 'index.html' actualizada exitosamente.")
     else:
-        print(f"❌ No existe: {ruta_target}")
+        print(f"❌ Error: No se encontró el archivo {ruta_target}")
