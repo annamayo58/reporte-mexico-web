@@ -178,3 +178,68 @@ if __name__ == "__main__":
         f.write(plantilla_p.replace("{{TARJETAS}}", html_tarjetas))
 
     print(f"✅ ¡Éxito! Se generaron {len(notas_lista)} notas y la portada principal.")
+if __name__ == "__main__":
+    from datetime import datetime
+
+    # 1. Configuración de carpetas y recolección
+    carpetas_web = [
+        "codigorojo",
+        "tijuana",
+        "rosarito",
+        "tecate",
+        "desaparecidos",
+        "empleos",
+    ]
+    notas_lista = obtener_datos_notas(carpetas_web)
+
+    # 2. Generar Sidebar (Más Noticias)
+    sidebar_html = ""
+    for n in notas_lista[:6]:
+        sidebar_html += f"""
+        <a href="{n['url']}" class="group block border-b border-slate-800 pb-4 last:border-0">
+            <span class="text-purple-400 text-[10px] font-black uppercase tracking-tighter">{n['seccion']}</span>
+            <h4 class="text-white text-sm font-bold group-hover:text-purple-400 transition-colors mt-1">
+                {n['titulo']}
+            </h4>
+        </a>
+        """
+
+    # 3. Generar Notas con Formato YYYY-MM-DD-XX
+    fecha_hoy = datetime.now().strftime("%Y-%m-%d")  # Formato 2026-01-02
+    contador = 1
+
+    for n in notas_lista:
+        # Generamos el nombre: 2026-01-02-01.html
+        nuevo_nombre = f"{fecha_hoy}-{contador:02d}.html"
+        generar_nota(n["ruta_origen"], sidebar_html, nuevo_nombre)
+
+        n["url"] = nuevo_nombre  # El index usará este nuevo enlace
+        contador += 1
+
+    # 4. Generar la Portada (index.html) con el efecto Zoom
+    html_tarjetas = ""
+    for n in notas_lista:
+        html_tarjetas += f"""
+        <div class="group bg-slate-800 rounded-lg overflow-hidden shadow-lg border border-slate-700">
+            <div class="w-full h-48 bg-[#111827] flex items-center justify-center overflow-hidden">
+                <img src="static/images/{n['imagen']}" 
+                     class="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-110" 
+                     alt="{n['titulo']}">
+            </div>
+            <div class="p-4">
+                <span class="text-purple-400 text-[10px] font-black uppercase tracking-widest">{n['seccion']}</span>
+                <h3 class="text-white font-bold text-lg mt-1 leading-tight line-clamp-2">{n['titulo']}</h3>
+                <p class="text-slate-400 text-xs mt-2 line-clamp-2">{n['resumen']}</p>
+                <a href="{n['url']}" class="inline-block mt-4 text-purple-400 text-xs font-black uppercase hover:underline">Leer más →</a>
+            </div>
+        </div>
+        """
+
+    with open("template_portada.html", "r", encoding="utf-8") as f:
+        plantilla_p = f.read()
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(plantilla_p.replace("{{TARJETAS}}", html_tarjetas))
+
+    print(
+        f"✅ Éxito: Se generaron {len(notas_lista)} notas con formato {fecha_hoy}-XX.html"
+    )
