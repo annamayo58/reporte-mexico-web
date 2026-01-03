@@ -1,312 +1,117 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Información veraz y al momento en Reporte Tijuana. Noticias de los sucesos más importantes de la metrópoli Tijuana-Rosarito-Tecate y de Baja California">
-    <title>Reporte Tijuana | Noticias de Última Hora</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="{{TITULO}}" />
+    <meta property="og:description" content="{{DESCRIPCION}}" />
+    <meta
+      property="og:image"
+      content="https://reportetijuana.com/static/images/{{IMAGEN}}"
+    />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Reporte Tijuana | Información en Tiempo Real</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <style>
-        body { background-color: #111827; color: #f3f4f6; }
-        .link-expansivo { position: relative; }
-        .enlace-principal { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; background-color: transparent; }
+      body {
+        background-color: #111827;
+        color: #f3f4f6;
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+      }
     </style>
-</head>
+  </head>
+  <body>
+    <header class="bg-purple-600 py-10 shadow-md border-b-4 border-white">
+      <div class="max-w-7xl mx-auto px-4 text-center">
+        <h1
+          class="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase italic drop-shadow-lg"
+        >
+          REPORTE TIJUANA
+        </h1>
+        <p
+          class="text-purple-100 text-sm font-bold mt-2 tracking-widest uppercase"
+        >
+          Información en Tiempo Real
+        </p>
+      </div>
+    </header>
 
-<body class="flex flex-col min-h-screen">
-
-<header class="bg-purple-600 py-8 shadow-md border-b-4 border-white">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-6xl font-black text-white tracking-tighter uppercase italic">REPORTE TIJUANA</h1>
-        <p class="text-purple-100 text-sm font-bold mt-2 tracking-widest uppercase">Información en Tiempo Real</p>
-    </div>
-</header>
-
-<nav class="bg-purple-600 shadow-xl sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-        <a href="/" class="text-white text-xl font-extrabold tracking-wide hover:text-gray-200 transition duration-150">
-            INICIO
-        </a>
-            
-            <button id="menu-toggle" aria-label="Abrir menú principal" title="Menú principal" class="text-white text-2xl lg:hidden focus:outline-none">
-                <i class="fas fa-bars"></i>
-            </button>
+    <nav
+      class="bg-purple-600 sticky top-0 z-50 shadow-xl border-b border-purple-500"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between"
+      >
+        <a href="index.html" class="text-white font-black italic text-xl"
+          >INICIO</a
+        >
+        <div class="hidden lg:flex space-x-2">
+          <a
+            href="tijuana.html"
+            class="bg-white text-purple-700 px-3 py-1 rounded font-bold text-xs uppercase hover:bg-purple-100"
+            >Tijuana</a
+          >
+          <a
+            href="codigorojo.html"
+            class="bg-red-600 text-white px-3 py-1 rounded font-bold text-xs uppercase hover:bg-red-700"
+            >Código Rojo</a
+          >
+          <a
+            href="empleos.html"
+            class="bg-white text-purple-700 px-3 py-1 rounded font-bold text-xs uppercase hover:bg-purple-100"
+            >Empleos</a
+          >
         </div>
+      </div>
+    </nav>
 
-        <div id="nav-links" class="hidden lg:block w-full"> 
-            <div class="flex flex-col lg:flex-row lg:flex-wrap lg:justify-center lg:space-x-2 px-2 pt-2 pb-3 space-y-1 lg:space-y-0 lg:p-4">
+    <main class="max-w-7xl mx-auto px-4 py-12">
+      <h2
+        class="text-2xl font-black uppercase mb-8 border-l-8 border-purple-600 pl-4 italic"
+      >
+        Últimas Noticias
+      </h2>
 
-                <a href="tijuana.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">TIJUANA</a>
-
-                <a href="baja.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">BAJA CALIFORNIA</a>
-
-                <a href="rosarito.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">ROSARITO</a>
-                
-                <a href="tecate.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">TECATE</a>
-
-                <a href="codigo.html" class="bg-red-600 text-white border border-red-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-red-800 uppercase italic">CÓDIGO ROJO</a>
-
-                <a href="desaparecidos.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">DESAPARECIDOS</a>
-
-                <a href="deportes.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">DEPORTES</a>
-
-                <a href="empleos.html" class="bg-white text-purple-700 border border-purple-700 font-bold px-3 py-2 rounded-md text-xs transition duration-150 hover:bg-purple-800 hover:text-white uppercase">EMPLEOS</a>
+      <div class="grid-container">
+        <div class="bg-slate-800 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform border border-slate-700">
+            <div class="w-full h-48 bg-[#111827] flex items-center justify-center overflow-hidden">
+                <img src="static/images/2026-01-02-01-crueldadanimal.webp" class="max-h-full max-w-full object-contain" alt="Vinculación a proceso por delito de crueldad animal">
+            </div>
+            <div class="p-4">
+                <span class="text-purple-400 text-[10px] font-black uppercase tracking-widest">codigorojo</span>
+                <h3 class="text-white font-bold text-lg mt-1 leading-tight line-clamp-2">Vinculación a proceso por delito de crueldad animal</h3>
+                <p class="text-slate-400 text-xs mt-2 line-clamp-2">Los hechos ocurrieron en Playas de Tijuana.</p>
+                <a href="crueldad.html" class="inline-block mt-4 text-purple-400 text-xs font-black uppercase hover:underline">Leer más →</a>
             </div>
         </div>
-    </div>
-</nav>
-
-<main class="flex-grow container mx-auto px-4 py-8 max-w-7xl">
-
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-            <!--COPIAR-->
-
-    <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-        <a href="content/codigorojo/rosarito-dos-detenidos-durante-cateo.html" class="block group">
-            <img src="static/images/reporte-tijuana/2026-01-01-02-rosarito-dos-detenidos-durante-cateo.webp" alt="imagen" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-            <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">CÓDIGO ROJO</span>
-            <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">ROSARITO: Dos detenidos durante cateo</h2>
-            <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">Detienen a un hombre y una mujer durante un cateo en Rosarito
-            </p>
-            <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">01 de enero de 2026</span>
-        </a>
-    </article>
-
-<!--NO TOCAR-->
-
-<article class="bg-gray-800 p-6 rounded-xl shadow-lg border-t-4 border-purple-600 flex flex-col h-full">
-    <h2 class="text-xl font-black text-white mb-6 uppercase tracking-tighter border-b border-gray-700 pb-2 text-center">
-        Nuestra Red de Sitios
-    </h2>
-    <div class="flex flex-col gap-2">
-        <a href="https://reportemexico.info/" class="w-full bg-purple-700 hover:bg-purple-600 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Reporte México</a>
-        <a href="https://reportetijuana.com/" class="w-full bg-purple-900 hover:bg-purple-800 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Reporte Tijuana</a>
-        <a href="https://codigorojomx.info/" class="w-full bg-red-900 hover:bg-red-800 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Código Rojo MX</a>
-        <a href="https://emergenciasmexico.com/" class="w-full bg-orange-700 hover:bg-orange-600 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Emergencias</a>        
-        <div class="my-2 border-t border-gray-700"></div> <a href="https://directoriosdemexico.com/" class="w-full bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Directorio México</a>
-        <a href="https://directorioscdmx.com/" class="w-full bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Directorio CDMX</a>
-        <a href="https://directoriostijuana.com/" class="w-full bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Directorio Tijuana</a>
         
-        <div class="my-2 border-t border-gray-700"></div> <a href="https://lacocinademexico.com/" class="w-full bg-green-800 hover:bg-green-700 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">La Cocina de México</a>
-        <a href="https://lacocinadetijuana.com/" class="w-full bg-green-800 hover:bg-green-700 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">La Cocina de Tijuana</a>
-        <a href="https://turismomx.info/" class="w-full bg-blue-800 hover:bg-blue-700 text-white text-xs font-bold py-3 px-4 rounded text-center transition-all uppercase shadow-md hover:scale-[1.02]">Turismo MX</a>
-    </div>
-    <p class="text-gray-500 text-[10px] mt-auto pt-6 italic text-center uppercase font-bold tracking-widest">Información Global</p>
-    </article>
-  
-    <!--PEGAR-->
-
-    <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-        <a href="content/codigorojo/vinculan-a-proceso-a-mujer-por-robo-equiparado-de-vehiculo.html" class="block group">
-            <img src="static/images/reporte-tijuana/2026-01-01-01-vinculan-a-proceso-a-mujer-por-robo.webp" alt="imagen" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-            <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">CÓDIGO ROJO</span>
-            <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">Vinculan a proceso a mujer por robo equiparado de vehículo</h2>
-            <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">Los hechos ocurrieron en la colonia Ejido Francisco Villa.
-            </p>
-            <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">31 de diciembre de 2025</span>
-        </a>
-    </article>
-
-    <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-        <a href="content/bajacalifornia/martha-elizabeth-moreno-garcia-nueva-presidenta-comite-participacion-ciudadano--sistema-estatal-anticorrupcion.html " class="block group">
-            <img src="static/images/reporte-tijuana/martha-elizabeth-moreno-garcia-comite-participacion-ciudadano.webp" alt="imagen" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-            <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">BAJA CALIFORNIA</span>
-            <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">Martha Elizabeth Moreno García, nueva presidenta del Comité de
-            participación ciudadano del Sistema estatal anticorrupción</h2>
-            <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2"> Mexicali, B.C., a lunes 15 de diciembre del 2025.- Martha Elizabeth
-            Moreno García, asumió el cargo de presidenta del Comité Coordinador
-            y de Participación Ciudadana (CPC), ambos del Sistema Estatal
-            Anticorrupción de Baja California.
-            </p>
-            <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">31 de diciembre de 2025</span>
-        </a>
-    </article>
-
-    <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-        <a href="content/bajacalifornia/fortalece-derecho-nines-vivir-familia-gobierno-marina-pilar-con-69-asignaciones-preadoptivas.html" class="block group">
-            <img src="static/images/reporte-tijuana/fortalece-derecho-nines-vivir-familia.webp" alt="imagen" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-            <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">BAJA CALIFORNIA</span>
-            <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight"> Fortalece derecho de la niñez a vivir en familia gobierno de Marina
-            del pilar con 69 asignaciones preadoptivas</h2>
-            <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">Se han agilizado los procesos de adopción para garantizar entornos
-            integrales y seguros a niñas, niños y adolescentes
-            </p>
-            <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">31 de diciembre de 2025</span>
-        </a>
-    </article>
-
-    <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-        <a href="content/bajacalifornia/ofrece-gobierno-descuento-pronto-pago-trámite-refrendo-tarjeta-circulación.html" class="block group">
-            <img src="static/images/reporte-tijuana/ofrece-gobierno-descuento-pronto-pago.webp" alt="imagen" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-            <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">BAJA CALIFORNIA</span>
-            <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">Ofrece gobierno de Baja California descuento por pronto pago en el trámite de refrendo de tarjeta de circulación</h2>
-            <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">Promueve el gobierno estímulos a personas contribuyentes que hacen el trámite del refrendo de la tarjeta de circulación durante los primeros tres meses del año.
--Refrendo de la tarjeta de circulación será totalmente digital.
-            </p>
-            <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">30 de diciembre de 2025</span>
-        </a>
-    </article>
-
-    <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-        <a href="content/bajacalifornia/reconoce-smads-universitarias-ganadoras-rally-fotografico-expo-ambiente-2025.html" class="block group">
-            <img src="static/images/reporte-tijuana/reconoce-smads-universitarias-ganadoras.webp" alt="imagen" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-            <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">TIJUANA</span>
-            <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">Reconoce SMADS a universitarias ganadoras del Rally fotográfico de la Expo ambiente 2025</h2>
-            <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">TIJUANA. Con el propósito de fomentar la convivencia social, fortalecer el tejido comunitario y preservar las tradiciones culturales, la Secretaría de Cultura de Baja California, a través de la Dirección de Artes Escénicas y Festivales, en coordinación con el Centro Histórico de Tijuana y Foro Cultural, invita a la ciudadanía a participar en el evento “Reyes en Comunidad: Encuentro y Tradición ".
-            </p>
-            <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">30 de diciembre de 2025</span>
-        </a>
-    </article>
-
-    <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-        <a href="content/tijuana/cecut-concluyo-festival-internacional-cine-sobre-migracion.html" class="block group">
-            <img src="static/images/reporte-tijuana/arte-tradicion-llegaran-centro-historico.webp" alt="imagen" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-            <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">TIJUANA</span>
-            <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">CECUT: Concluyó el festival internacional de cine sobre migración</h2>
-            <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">En 2025, el enfoque de ue en la Sala Carlos Monsiváis del Centro Cultural Tijuana (Cecut), recinto de la Secretaría de Cultura del Gobierno de México, que se proyectó la última película de este ciclo, La Raya de la cineasta oaxaqueña Yolanda Cruz justamente en el marco del Día Internacional del Migrante.
-            </p>
-            <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">30 de diciembre de 2025</span>
-        </a>
-    </article>
-
-    <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-        <a href="content/tijuana/cecut-concluyo-festival-internacional-cine-sobre-migracion.html" class="block group">
-            <img src="static/images/reporte-tijuana/cecut-concluyo-festival-internacional-cine.webp" alt="imagen" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-            <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">TIJUANA</span>
-            <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">CECUT: Concluyó el festival internacional de cine sobre migración</h2>
-            <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">En 2025, el enfoque de ue en la Sala Carlos Monsiváis del Centro Cultural Tijuana (Cecut), recinto de la Secretaría de Cultura del Gobierno de México, que se proyectó la última película de este ciclo, La Raya de la cineasta oaxaqueña Yolanda Cruz justamente en el marco del Día Internacional del Migrante.
-            </p>
-            <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">30 de diciembre de 2025</span>
-        </a>
-    </article>
-
-    <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-        <a href="content/rosarito/lorena-melendez-yanez-informe-actividades-prevencion-baja-california-2025.html" class="block group">
-            <img src="static/images/reporte-tijuana/lorena-melendez-yanez-informe-actividades.webp" alt="imagen" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-            <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">ROSARITO</span>
-            <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">LORENA MELÉNDEZ YÁÑEZ: Presenta Informe de actividades de Prevención
-            en Baja California del 2025</h2>
-            <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">En 2025, el enfoque de la prevención se dirigió a la niñez,
-            juventud, mujeres y familias de BC, con los temas de Ciberseguridad,
-            Prevención a las adicciones, prevención a la violencia en las
-            mujeres, Trata de personas, cultura a la legalidad y denuncia.
-            </p>
-            <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">30 de diciembre de 2025</span>
-        </a>
-    </article>
-
-     <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-        <a href="content/bajacalifornia/ensenada-emite-gobierno-municpal-convocatoria-comite-ciudadano-seguridad-publica.html" class="block group">
-            <img src="static/images/reporte-tijuana/reportebc1.webp" alt="imagen" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-            <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">TIJUANA</span>
-            <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">ENSENADA: Emite gobierno municpal convocatoria para integrar Comité Ciudadano de Seguridad Pública</h2>
-            <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">Ensenada, B.C.-Lunes 29 de diciembre de 2025.- La presidenta municipal Claudia Agatón Muñiz dio a conocer que este lunes se emitió la convocatoria para la integración del Comité Ciudadano de Seguridad Pública de Ensenada, instancia colegiada de consulta y participación ciudadana en materia de seguridad.
-            </p>
-            <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">30 de diciembre de 2025</span>
-        </a>
-    </article>
-
-    <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-        <a href="content/tijuana/experto-cetys-aumento-salario-minimo-frontera-requiere-enfoque-regional-sostenibilidad-largo-plazo.html" class="block group">
-            <img src="static/images/reporte-tijuana/alfredo-valadez.webp" alt="imagen" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-            <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">TIJUANA</span>
-            <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">EXPERTO CETYS: Aumento al salario mínimo en la frontera requiere enfoque regional y sostenibilidad a largo plazo</h2>
-            <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">Tijuana, Baja California a 29 de diciembre de 2026.- El incremento al salario mínimo que entrará en vigor a partir del 1 de enero de 2026 representa un avance en el fortalecimiento del poder adquisitivo de los trabajadores; sin embargo, su impacto debe analizarse desde una perspectiva regional, particularmente en la Zona Libre de la Frontera Norte, donde las dinámicas económicas difieren del resto del país, señaló el Dr. Alfredo Valadez García, investigador de la Escuela de Administración y Negocios de CETYS Universidad, Campus Tijuana.
-            </p>
-            <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">30 de diciembre de 2025</span>
-        </a>
-    </article>
-
-    <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-        <a href="content/tijuana/ilse-estefania-campos-garcia-cuando-quienes-debian-cuidar-lastiman.html" class="block group">
-            <img src="static/images/reporte-tijuana/ilse-estefania-campos-garcia.png" alt="ILSE ESTEFANIA CAMPOS GARCIA: Cuando quienes debían cuidar, lastiman: el interés superior de la infancia exige justicia" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-            <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">TIJUANA</span>
-            <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">ILSE ESTEFANIA CAMPOS GARCIA: Cuando quienes debían cuidar, lastiman: el interés superior de la infancia exige justicia</h2>
-            <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">Como Barra de Abogadas Lic. María Sandoval de Zarco A.C., y desde nuestra responsabilidad como juristas, nos duele profundamente el reciente caso en el que un niño de apenas un año de edad perdió la vida tras haber sido brutalmente agredido por su madre y su abuela, personas que tenían la obligación legal y moral de protegerlo.
-            </p>
-            <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">30 de diciembre de 2025</span>
-        </a>
-    </article>
-
-
-    <article class="bg-gray-800 p-4 rounded-xl shadow-lg border-t-4 border-purple-600 transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-    <a href="content/tijuana/sindica-procuradora-atiende-denuncias-abogados-animalistas.html" class="block group">
-        <img src="static/images/reporte-tijuana/sindica-procuradora.png" alt="SÍNDICA PROCURADORA: Atiende denuncias de abogados animalistas" class="w-full h-auto rounded-lg mb-3 shadow-md" onerror="this.src='https://placehold.co/400x200/4c1d95/ffffff?text=Cargar+Imagen'">
-        <span class="inline-block bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">TIJUANA</span>
-        <h2 class="text-xl font-black text-white group-hover:text-purple-400 transition-colors leading-tight">SÍNDICA PROCURADORA: Atiende denuncias de abogados animalistas</h2>
-        <p class="text-gray-400 mt-2 text-sm italic border-t border-gray-700 pt-2">Tijuana, Baja California, a 23 de diciembre de 2025. La síndica procuradora, Teresita Balderas Beltrán, atendió al director de Litigio de Abogados Animalistas México, Frank Ortiz González y a la abogada Carmen Villarreal, quienes manifestaron su inquietud por la operatividad de la Unidad de Manejo para la Conservación de la Vida Silvestre (UMA) del Parque Morelos.</p>
-        <span class="block text-gray-500 text-[10px] mt-2 uppercase font-bold italic tracking-tighter">29 de diciembre de 2025</span>
-    </a>
-</article>
-            <!--DESPUES DE COPIAR Y PEGAR LA NOTA ELIMINAR ESTA ULTIMA-->            
-          </div>
+        <div class="bg-slate-800 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform border border-slate-700">
+            <div class="w-full h-48 bg-[#111827] flex items-center justify-center overflow-hidden">
+                <img src="static/images/2026-01-02-01-lafoto.webp" class="max-h-full max-w-full object-contain" alt="Título de la nota">
+            </div>
+            <div class="p-4">
+                <span class="text-purple-400 text-[10px] font-black uppercase tracking-widest">codigorojo</span>
+                <h3 class="text-white font-bold text-lg mt-1 leading-tight line-clamp-2">Título de la nota</h3>
+                <p class="text-slate-400 text-xs mt-2 line-clamp-2">Resumen</p>
+                <a href="notacodigo.html" class="inline-block mt-4 text-purple-400 text-xs font-black uppercase hover:underline">Leer más →</a>
+            </div>
         </div>
-        
+        </div>
     </main>
 
-    <div class="flex justify-center my-12">
-    <a href="archivo.html" 
-       class="group flex items-center gap-2 bg-gray-900 text-white font-bold py-4 px-10 rounded-full hover:bg-red-700 transition duration-300 shadow-xl transform hover:scale-105 uppercase tracking-widest text-sm">
-        <span>Ver más noticias</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="outward" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-        </svg>
-    </a>
-</div>
-
-<footer class="bg-gray-900 text-white mt-16 pt-10 pb-6 shadow-2xl">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-wrap justify-between gap-8 text-sm">
-
-            <div class="w-full sm:w-1/2 lg:w-1/4 space-y-3">
-                <h3 class="text-xl font-extrabold text-white mb-2">REPORTE TIJUANA</h3>
-                <p>Tu fuente de información confiable .</p>
-                <div class="space-y-1">
-                    <p class="flex items-center">
-                        <i class="fas fa-envelope mr-3 text-red-500"></i>
-                        <a href="mailto:prensametropoli@gmail.com" class="hover:underline">prensametropoli@gmail.com</a>
-                    </p>
-                    <p class="flex items-center">
-                        <i class="fab fa-whatsapp mr-3 text-green-400"></i>
-                        <span>WhatsApp: 664 807 4047</span>
-                    </p>
-                </div>
-            </div>
-
-            <div class="w-full sm:w-1/2 lg:w-1/4 space-y-2">
-                <h3 class="text-lg font-bold mb-3 border-b border-gray-700 pb-1">SECCIONES</h3>
-                <ul class="space-y-1">
-                    <li><a href="/" class="hover:text-red-500 transition duration-150">Inicio</a></li>
-                    <li><a href="/desaparecidos.html" class="hover:text-red-500 transition duration-150">DESAPARECIDOS</a></li>
-                    <li><a href="/empleos.html" class="hover:text-red-500 transition duration-150">EMPLEOS</a></li>
-                    <li><a href="/baja.html" class="hover:text-red-500 transition duration-150">BAJA CALIFORNIA</a></li>
-                </ul>
-            </div>
-
-            <div class="w-full lg:w-1/4 space-y-2">
-                <h3 class="text-lg font-bold mb-3 border-b border-gray-700 pb-1">INFORMACIÓN</h3>
-                <p class="text-xs opacity-75 leading-relaxed">
-                    &copy; 2025 reportetijuana.com<br>
-                    Esta obra está bajo una licencia de Creative Commons Reconocimiento 4.0 Internacional.
-                    Se permite la reproducción citando la fuente.
-                </p>
-            </div>
-            
-        </div>
-    </div>
-    <div class="mt-8 pt-4 border-t border-gray-700 text-center text-xs">
-        <p class="opacity-75">Diseño y desarrollo | Reporte Tijuana</p>
-    </div>
-</footer>
-
-<script>
-    document.getElementById("menu-toggle").addEventListener("click", () => {
-        document.getElementById("nav-links").classList.toggle("hidden");
-    });
-</script>
-
-</body>
+    <footer class="bg-black py-10 mt-20 text-center border-t border-slate-800">
+      <p class="text-slate-500 text-xs font-bold uppercase tracking-widest">
+        &copy; 2026 Reporte Tijuana - Todos los derechos reservados
+      </p>
+    </footer>
+  </body>
 </html>
