@@ -8,35 +8,42 @@ def generar_nota(ruta_archivo_md, recientes_html, nombre_salida):
         return
 
     with open(ruta_archivo_md, "r", encoding="utf-8") as f:
-        lineas = f.readlines()
+        # Leemos todas las líneas y eliminamos espacios en blanco accidentales
+        todas_las_lineas = [l.strip() for l in f.readlines()]
+        # Filtramos para quedarnos solo con las que tienen contenido real
+        lineas = [l for l in todas_las_lineas if l]
 
     if len(lineas) < 4:
         return
 
-    # Extraemos los datos del .md
-    titulo = lineas[0].strip().replace("# ", "")
-    imagen = lineas[1].strip()
-    descripcion = lineas[2].strip()
-    seccion = lineas[3].strip().lower()
-    cuerpo_md = "".join(lineas[4:])
+    # Extraemos datos basándonos en tu nuevo formato de texto plano
+    titulo = lineas[0]
+    imagen = lineas[1]
+    descripcion = lineas[2]
+    seccion = lineas[3].lower()
 
-    if not imagen or imagen.lower() == "ninguna":
-        imagen = "logo-social.webp"
-
-    colores_nav = {"codigo-rojo": "bg-red-600", "default": "bg-purple-600"}
-    color_final = colores_nav.get(seccion, colores_nav["default"])
+    # El cuerpo es todo lo que sobra después de los datos básicos
+    # Buscamos dónde empieza el cuerpo real en el archivo original
+    indice_cuerpo = (
+        todas_las_lineas.index(seccion) + 1 if seccion in todas_las_lineas else 4
+    )
+    cuerpo_md = "\n\n".join(todas_las_lineas[indice_cuerpo:])
     contenido_html = markdown.markdown(cuerpo_md)
 
     with open("template.html", "r", encoding="utf-8") as f:
         plantilla = f.read()
 
-    # Reemplazos, incluyendo la barra lateral y el contenido
-    final = plantilla.replace("{{CONTENIDO}}", contenido_html)
-    final = final.replace("{{TITULO}}", titulo)
-    final = final.replace("{{IMAGEN}}", imagen)
-    final = final.replace("{{DESCRIPCION}}", descripcion)
-    final = final.replace("{{NAV_COLOR}}", color_final)
-    final = final.replace("{{RECIENTES}}", recientes_html)
+    # Reemplazo de etiquetas
+    final = (
+        plantilla.replace("{{TITULO}}", titulo)
+        .replace("{{IMAGEN}}", imagen)
+        .replace("{{DESCRIPCION}}", descripcion)
+        .replace("{{CONTENIDO}}", contenido_html)
+        .replace("{{RECIENTES}}", recientes_html)
+    )
+
+    with open(nombre_salida, "w", encoding="utf-8") as f:
+        f.write(final)
 
     # AQUÍ USAMOS EL NOMBRE AUTOMÁTICO (2026-01-02-01.html)
     with open(nombre_salida, "w", encoding="utf-8") as f:
