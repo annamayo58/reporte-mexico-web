@@ -192,27 +192,34 @@ if __name__ == "__main__":
     print(f"✅ ¡Éxito! Se generaron {len(notas_lista)} notas y la portada principal.")
 if __name__ == "__main__":
     from datetime import datetime
+    import os
 
-    # 1. Preguntar qué archivo quieres publicar
-    archivo_objetivo = input("Introduce el nombre del .md (ej: nota2.md): ")
-    ruta_md = f"content/codigorojo/{archivo_objetivo}"
+    # 1. El script te pregunta qué nota quieres procesar
+    print("--- GENERADOR DE NOTA INDIVIDUAL ---")
+    archivo_objetivo = input(
+        "Nombre del archivo .md en 'content/codigorojo/' (ej: nota2.md): "
+    )
+    ruta_md = os.path.join("content", "codigorojo", archivo_objetivo)
 
     if os.path.exists(ruta_md):
-        # 2. Configurar la fecha para el nombre del archivo
+        # 2. Generar nombre con fecha automática (YYYY-MM-DD-01.html)
         fecha_hoy = datetime.now().strftime("%Y-%m-%d")
-        # Buscamos un número para no sobrescribir (ej: 2026-01-03-01.html)
+        
         contador = 1
         nombre_salida = f"{fecha_hoy}-{contador:02d}.html"
+
+        # Evita sobrescribir si generas varias el mismo día
         while os.path.exists(nombre_salida):
             contador += 1
             nombre_salida = f"{fecha_hoy}-{contador:02d}.html"
 
-        # 3. Generar la nota individual (sin barra lateral)
+        # 3. Llamada a la función (sin barra lateral)
         generar_nota(ruta_md, "", nombre_salida)
 
-        print(f"✅ ¡Éxito! Nota generada: {nombre_salida}")
+        print(f"\n✅ ¡ÉXITO! Se ha creado: {nombre_salida}")
+        print(f"📂 Ruta: {os.path.abspath(nombre_salida)}")
     else:
-        print(f"❌ Error: El archivo {ruta_md} no existe.")
+        print(f"\n❌ ERROR: No se encontró el archivo '{ruta_md}'")
 
     # 2. Generar Sidebar (Más Noticias)
     sidebar_html = ""

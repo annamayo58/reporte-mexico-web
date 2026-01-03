@@ -131,25 +131,33 @@
     </nav>
 
     <main class="max-w-5xl mx-auto mt-12 px-6">
-    <header class="text-center mb-10">
-        <h1 class="text-4xl md:text-6xl font-black leading-tight text-white mb-6 uppercase">
-            {{TITULO}}
+      <header class="text-center mb-10">
+        <h1
+          class="text-4xl md:text-6xl font-black leading-tight text-white mb-6 uppercase italic"
+        >
+          {{TITULO}}
         </h1>
         <div class="w-24 h-1 bg-purple-600 mx-auto rounded-full"></div>
-    </header>
+      </header>
 
-    <div class="w-full max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl mb-12 bg-slate-900 border border-slate-800">
-        <img src="static/images/{{IMAGEN}}" 
-             class="w-full h-auto object-contain mx-auto" 
-             alt="{{TITULO}}">
-    </div>
+      <div
+        class="w-full max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl mb-12 bg-slate-900 border border-slate-800"
+      >
+        <img
+          src="static/images/{{IMAGEN}}"
+          class="w-full h-auto object-contain mx-auto"
+          alt="{{TITULO}}"
+        />
+      </div>
 
-    <div class="max-w-3xl mx-auto">
-        <div class="prose prose-invert prose-xl max-w-none text-slate-200 leading-loose space-y-8 text-justify">
-            {{CONTENIDO}}
+      <div class="max-w-3xl mx-auto">
+        <div
+          class="prose prose-invert prose-xl max-w-none text-slate-200 leading-loose space-y-8 text-justify"
+        >
+          {{CONTENIDO}}
         </div>
-    </div>
-</main>
+      </div>
+    </main>
 
     <footer class="bg-gray-900 text-white mt-16 pt-10 pb-6 shadow-2xl">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
