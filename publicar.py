@@ -73,7 +73,10 @@ if __name__ == "__main__":
 
         html_tarjetas = ""
         for n in notas_lista[:12]:  # Tomamos las últimas 12 para la portada
-            # Aquí generamos la TARJETA TOTALMENTE CLICABLE
+           # --- 2. Generar el HTML de las tarjetas clicables ---
+        html_tarjetas = ""
+        # Tomamos las últimas 12 notas para la portada
+        for n in notas_lista[:12]:
             html_tarjetas += f"""
             <a href="{n['url']}" class="group block bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:scale-[1.02] transition-all duration-300 border border-slate-700">
                 <div class="w-full h-48 bg-[#111827] overflow-hidden">
@@ -93,13 +96,14 @@ if __name__ == "__main__":
             </a>
             """
 
-        # --- 3. Guardar el index.html final ---
+        # --- 3. Actualizar físicamente el archivo index.html ---
         with open("template_portada.html", "r", encoding="utf-8") as f:
-            index_final = f.read().replace("{{TARJETAS}}", html_tarjetas)
-
+            plantilla_p = f.read()
+            
+        index_final = plantilla_p.replace("{{TARJETAS}}", html_tarjetas)
+        
         with open("index.html", "w", encoding="utf-8") as f:
             f.write(index_final)
-
+            
         print(f"✅ ¡Éxito! Nota '{nombre_html}' e 'index.html' actualizados.")
-    else:
-        print("❌ Archivo .md no encontrado.")
+        
