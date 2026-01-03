@@ -193,16 +193,26 @@ if __name__ == "__main__":
 if __name__ == "__main__":
     from datetime import datetime
 
-    # 1. Configuración de carpetas y recolección
-    carpetas_web = [
-        "codigorojo",
-        "tijuana",
-        "rosarito",
-        "tecate",
-        "desaparecidos",
-        "empleos",
-    ]
-    notas_lista = obtener_datos_notas(carpetas_web)
+    # 1. Preguntar qué archivo quieres publicar
+    archivo_objetivo = input("Introduce el nombre del .md (ej: nota2.md): ")
+    ruta_md = f"content/codigorojo/{archivo_objetivo}"
+
+    if os.path.exists(ruta_md):
+        # 2. Configurar la fecha para el nombre del archivo
+        fecha_hoy = datetime.now().strftime("%Y-%m-%d")
+        # Buscamos un número para no sobrescribir (ej: 2026-01-03-01.html)
+        contador = 1
+        nombre_salida = f"{fecha_hoy}-{contador:02d}.html"
+        while os.path.exists(nombre_salida):
+            contador += 1
+            nombre_salida = f"{fecha_hoy}-{contador:02d}.html"
+
+        # 3. Generar la nota individual (sin barra lateral)
+        generar_nota(ruta_md, "", nombre_salida)
+
+        print(f"✅ ¡Éxito! Nota generada: {nombre_salida}")
+    else:
+        print(f"❌ Error: El archivo {ruta_md} no existe.")
 
     # 2. Generar Sidebar (Más Noticias)
     sidebar_html = ""
