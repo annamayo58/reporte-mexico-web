@@ -81,7 +81,31 @@
         Últimas Noticias
       </h2>
 
-      <div class="grid-container">{{TARJETAS}}</div>
+      <a
+        href="{{url}}"
+        class="group block bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:scale-[1.05] transition-all duration-300 border border-slate-700"
+      >
+        <div class="w-full h-48 bg-[#111827] overflow-hidden">
+          <img
+            src="static/images/{{imagen}}"
+            class="w-full h-full object-cover group-hover:opacity-80 transition-opacity"
+            alt="{{titulo}}"
+          />
+        </div>
+
+        <div class="p-5">
+          <span
+            class="text-purple-400 text-[10px] font-black uppercase tracking-widest"
+            >{{seccion}}</span
+          >
+          <h3
+            class="text-white font-bold text-xl mt-2 leading-tight group-hover:text-purple-400 transition-colors"
+          >
+            {{titulo}}
+          </h3>
+          <p class="text-slate-400 text-sm mt-3 line-clamp-2">{{resumen}}</p>
+        </div>
+      </a>
     </main>
 
     <footer class="bg-black py-10 mt-20 text-center border-t border-slate-800">
