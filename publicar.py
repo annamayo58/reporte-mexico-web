@@ -3,7 +3,7 @@ import sys
 import os
 
 
-def generar_nota(ruta_archivo_md, recientes_html=""):
+def generar_nota(ruta_archivo_md, recientes_html, nombre_salida):
     if not os.path.exists(ruta_archivo_md):
         return
 
@@ -13,6 +13,7 @@ def generar_nota(ruta_archivo_md, recientes_html=""):
     if len(lineas) < 4:
         return
 
+    # Extraemos los datos del .md
     titulo = lineas[0].strip().replace("# ", "")
     imagen = lineas[1].strip()
     descripcion = lineas[2].strip()
@@ -29,13 +30,17 @@ def generar_nota(ruta_archivo_md, recientes_html=""):
     with open("template.html", "r", encoding="utf-8") as f:
         plantilla = f.read()
 
-    # Reemplazos, incluyendo la nueva barra lateral
+    # Reemplazos, incluyendo la barra lateral y el contenido
     final = plantilla.replace("{{CONTENIDO}}", contenido_html)
     final = final.replace("{{TITULO}}", titulo)
     final = final.replace("{{IMAGEN}}", imagen)
     final = final.replace("{{DESCRIPCION}}", descripcion)
     final = final.replace("{{NAV_COLOR}}", color_final)
     final = final.replace("{{RECIENTES}}", recientes_html)
+
+    # AQUÍ USAMOS EL NOMBRE AUTOMÁTICO (2026-01-02-01.html)
+    with open(nombre_salida, "w", encoding="utf-8") as f:
+        f.write(final)
 
     nombre_base = os.path.basename(ruta_archivo_md).replace(".md", "")
     with open(f"{nombre_base}.html", "w", encoding="utf-8") as f:
