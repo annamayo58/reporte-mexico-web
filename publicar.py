@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 
-# 1. Función para extraer datos de los archivos .md para la portada
+# 1. Función para extraer datos de los archivos .md y crear la lista de noticias
 def obtener_datos_notas(carpetas):
     notas = []
     for carpeta in carpetas:
@@ -30,7 +30,7 @@ def obtener_datos_notas(carpetas):
     return sorted(notas, key=lambda x: x["fecha"], reverse=True)
 
 
-# 2. Función para generar la nota individual (Título centrado arriba)
+# 2. Función para generar la nota individual con el diseño centrado
 def generar_nota(ruta_md, nombre_salida):
     with open(ruta_md, "r", encoding="utf-8") as f:
         lineas = [l.strip() for l in f.readlines() if l.strip()]
@@ -42,7 +42,6 @@ def generar_nota(ruta_md, nombre_salida):
     with open("template.html", "r", encoding="utf-8") as f:
         plantilla = f.read()
 
-    # Reemplazo de etiquetas en la plantilla de la nota
     final = (
         plantilla.replace("{{TITULO}}", titulo)
         .replace("{{IMAGEN}}", imagen)
@@ -54,17 +53,18 @@ def generar_nota(ruta_md, nombre_salida):
         f.write(final)
 
 
-# 3. Bloque Principal: Publicación de una nota y actualización de portada
+# 3. Bloque Principal: Generación de nota y actualización automática de portada
 if __name__ == "__main__":
-    print("\n--- GENERADOR QUIRÚRGICO DE NOTICIAS ---")
-    archivo_objetivo = input("Nombre del archivo .md (ej: nota2.md): ")
-    ruta_target = os.path.join("content", "codigorojo", archivo_objetivo)
+    print("\n--- PUBLICADOR AUTOMÁTICO REPORTE TIJUANA ---")
+    archivo_md = input("Nombre del archivo .md (ej: nota2.md): ")
+    ruta_target = os.path.join("content", "codigorojo", archivo_md)
 
     if os.path.exists(ruta_target):
-        # A. Generar la Nota Individual
+        # A. Crear la Nota Individual
         fecha_hoy = datetime.now().strftime("%Y-%m-%d")
         nombre_html = f"{fecha_hoy}-01.html"
-        # Evitar sobrescribir si publicas varias el mismo día
+
+        # Lógica para no sobrescribir notas si publicas varias el mismo día
         contador = 1
         while os.path.exists(nombre_html):
             contador += 1
@@ -73,7 +73,7 @@ if __name__ == "__main__":
         generar_nota(ruta_target, nombre_html)
         print(f"✅ Nota creada: {nombre_html}")
 
-        # B. Actualizar Portada Automáticamente (Tarjetas Clicables)
+        # B. Actualizar Portada con Tarjetas Cliqueables
         carpetas_web = [
             "codigorojo",
             "tijuana",
@@ -85,8 +85,9 @@ if __name__ == "__main__":
         notas_lista = obtener_datos_notas(carpetas_web)
 
         html_tarjetas = ""
+        # Generamos las últimas 12 tarjetas
         for n in notas_lista[:12]:
-            # Diseño de Tarjeta: TODO el bloque <a> es clicable
+            # La etiqueta <a> envuelve TODO el bloque para que sea clicable
             html_tarjetas += f"""
             <a href="{n['url']}" class="group block bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:scale-[1.02] transition-all duration-300 border border-slate-700">
                 <div class="w-full h-48 bg-[#111827] overflow-hidden">
@@ -102,6 +103,7 @@ if __name__ == "__main__":
                     <p class="text-slate-400 text-sm mt-3 line-clamp-2 leading-relaxed">
                         {n['resumen']}
                     </p>
+                    
                     <div class="mt-4 text-purple-400 text-lg font-black uppercase tracking-wider flex items-center group-hover:translate-x-2 transition-transform">
                         LEER MÁS <span class="ml-2">→</span>
                     </div>
@@ -109,7 +111,7 @@ if __name__ == "__main__":
             </a>
             """
 
-        # C. Escribir el index.html final
+        # C. Escribir el nuevo index.html
         with open("template_portada.html", "r", encoding="utf-8") as f:
             plantilla_p = f.read()
 
@@ -118,6 +120,8 @@ if __name__ == "__main__":
         with open("index.html", "w", encoding="utf-8") as f:
             f.write(index_final)
 
-        print(f"✅ Portada 'index.html' actualizada con tarjetas clicables.")
+        print(f"✅ Portada 'index.html' actualizada exitosamente.")
     else:
-        print(f"❌ Error: El archivo '{ruta_target}' no existe.")
+        print(
+            f"❌ Error: El archivo '{archivo_md}' no existe en la carpeta codigorojo."
+        )
