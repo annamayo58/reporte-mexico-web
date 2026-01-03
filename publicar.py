@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 
-# 1. Función para extraer datos de los archivos .md y crear la lista de noticias
+# 1. Función para obtener datos de todas las notas para la portada
 def obtener_datos_notas(carpetas):
     notas = []
     for carpeta in carpetas:
@@ -26,11 +26,10 @@ def obtener_datos_notas(carpetas):
                             "fecha": os.path.getmtime(ruta_completa),
                         }
                     )
-    # Ordenar por fecha (la más reciente primero)
     return sorted(notas, key=lambda x: x["fecha"], reverse=True)
 
 
-# 2. Función para generar la nota individual con el diseño centrado
+# 2. Función para generar la nota individual
 def generar_nota(ruta_md, nombre_salida):
     with open(ruta_md, "r", encoding="utf-8") as f:
         lineas = [l.strip() for l in f.readlines() if l.strip()]
@@ -53,18 +52,17 @@ def generar_nota(ruta_md, nombre_salida):
         f.write(final)
 
 
-# 3. Bloque Principal: Generación de nota y actualización automática de portada
+# 3. Bloque Principal de Ejecución
 if __name__ == "__main__":
-    print("\n--- PUBLICADOR AUTOMÁTICO REPORTE TIJUANA ---")
+    print("\n--- PUBLICADOR REPORTE TIJUANA ---")
     archivo_md = input("Nombre del archivo .md (ej: nota2.md): ")
     ruta_target = os.path.join("content", "codigorojo", archivo_md)
 
     if os.path.exists(ruta_target):
-        # A. Crear la Nota Individual
+        # A. Crear la Nota
         fecha_hoy = datetime.now().strftime("%Y-%m-%d")
         nombre_html = f"{fecha_hoy}-01.html"
 
-        # Lógica para no sobrescribir notas si publicas varias el mismo día
         contador = 1
         while os.path.exists(nombre_html):
             contador += 1
@@ -85,9 +83,9 @@ if __name__ == "__main__":
         notas_lista = obtener_datos_notas(carpetas_web)
 
         html_tarjetas = ""
-        # Generamos las últimas 12 tarjetas
+        # Bucle corregido para evitar errores de "n is not defined"
         for n in notas_lista[:12]:
-            # La etiqueta <a> envuelve TODO el bloque para que sea clicable
+            # El enlace <a> envuelve TODO el bloque para que toda la tarjeta sea clicable
             html_tarjetas += f"""
             <a href="{n['url']}" class="group block bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:scale-[1.02] transition-all duration-300 border border-slate-700">
                 <div class="w-full h-48 bg-[#111827] overflow-hidden">
@@ -111,17 +109,15 @@ if __name__ == "__main__":
             </a>
             """
 
-        # C. Escribir el nuevo index.html
-        with open("template_portada.html", "r", encoding="utf-8") as f:
-            plantilla_p = f.read()
+        # C. Escribir el index.html
+        if os.path.exists("template_portada.html"):
+            with open("template_portada.html", "r", encoding="utf-8") as f:
+                index_final = f.read().replace("{{TARJETAS}}", html_tarjetas)
 
-        index_final = plantilla_p.replace("{{TARJETAS}}", html_tarjetas)
-
-        with open("index.html", "w", encoding="utf-8") as f:
-            f.write(index_final)
-
-        print(f"✅ Portada 'index.html' actualizada exitosamente.")
+            with open("index.html", "w", encoding="utf-8") as f:
+                f.write(index_final)
+            print(f"✅ Portada 'index.html' actualizada exitosamente.")
+        else:
+            print("⚠️ Advertencia: No se encontró 'template_portada.html'")
     else:
-        print(
-            f"❌ Error: El archivo '{archivo_md}' no existe en la carpeta codigorojo."
-        )
+        print(f"❌ Error: El archivo '{archivo_md}' no existe.")
