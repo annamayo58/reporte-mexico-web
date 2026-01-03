@@ -65,31 +65,41 @@ if __name__ == "__main__":
         )
         generar_nota(ruta_target, nombre_html)
 
-        # 2. Actualizar Portada Automáticamente
+        # --- 2. Actualizar Portada Automáticamente ---
         carpetas_web = ["codigorojo", "tijuana", "rosarito", "tecate"]
-        notas_lista = obtener_datos_notas(carpetas_web)
+        notas_lista = obtener_datos_notas(
+            carpetas_web
+        )  # Esta función debe estar definida arriba
 
         html_tarjetas = ""
-        for n in notas_lista[:12]:  # Mostramos las últimas 12
-            # TARJETA TOTALMENTE CLICABLE
+        for n in notas_lista[:12]:  # Tomamos las últimas 12 para la portada
+            # Aquí generamos la TARJETA TOTALMENTE CLICABLE
             html_tarjetas += f"""
             <a href="{n['url']}" class="group block bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:scale-[1.02] transition-all duration-300 border border-slate-700">
                 <div class="w-full h-48 bg-[#111827] overflow-hidden">
-                    <img src="static/images/{n['imagen']}" class="w-full h-full object-cover group-hover:opacity-80 transition-opacity">
+                    <img src="static/images/{n['imagen']}" 
+                         class="w-full h-full object-cover group-hover:opacity-80 transition-opacity" 
+                         alt="{n['titulo']}">
                 </div>
                 <div class="p-5">
                     <span class="text-purple-400 text-[10px] font-black uppercase tracking-widest">{n['seccion']}</span>
-                    <h3 class="text-white font-bold text-xl mt-2 leading-tight group-hover:text-purple-400 transition-colors">{n['titulo']}</h3>
-                    <p class="text-slate-400 text-sm mt-3 line-clamp-2">{n['resumen']}</p>
+                    <h3 class="text-white font-bold text-xl mt-2 leading-tight group-hover:text-purple-400 transition-colors">
+                        {n['titulo']}
+                    </h3>
+                    <p class="text-slate-400 text-sm mt-3 line-clamp-2 leading-relaxed">
+                        {n['resumen']}
+                    </p>
                 </div>
             </a>
             """
 
+        # --- 3. Guardar el index.html final ---
         with open("template_portada.html", "r", encoding="utf-8") as f:
             index_final = f.read().replace("{{TARJETAS}}", html_tarjetas)
+
         with open("index.html", "w", encoding="utf-8") as f:
             f.write(index_final)
 
         print(f"✅ ¡Éxito! Nota '{nombre_html}' e 'index.html' actualizados.")
     else:
-        print("❌ Archivo no encontrado.")
+        print("❌ Archivo .md no encontrado.")
