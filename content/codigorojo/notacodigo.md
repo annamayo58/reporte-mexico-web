@@ -1,6 +1,8 @@
-Título de la nota
-2026-01-02-01-lafoto.webp
-Resumen
+---
+title: 'Título Impactante de la Nota'
+imagen: 'nombre-de-la-imagen.webp'
+seccion: 'tijuana'
+resumen: 'Este es el resumen corto que aparecerá en la portada.'
+---
 
-Cuerpo de la nota
-
+Aquí va todo el cuerpo de la nota...
