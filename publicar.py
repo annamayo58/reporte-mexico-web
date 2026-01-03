@@ -3,9 +3,8 @@ import sys
 import os
 
 
-def generar_nota(ruta_archivo_md):
+def generar_nota(ruta_archivo_md, recientes_html=""):
     if not os.path.exists(ruta_archivo_md):
-        print(f"❌ Error: No se encontró {ruta_archivo_md}")
         return
 
     with open(ruta_archivo_md, "r", encoding="utf-8") as f:
@@ -20,7 +19,6 @@ def generar_nota(ruta_archivo_md):
     seccion = lineas[3].strip().lower()
     cuerpo_md = "".join(lineas[4:])
 
-    # Si la línea de imagen está vacía, usamos el logo por defecto
     if not imagen or imagen.lower() == "ninguna":
         imagen = "logo-social.webp"
 
@@ -31,22 +29,21 @@ def generar_nota(ruta_archivo_md):
     with open("template.html", "r", encoding="utf-8") as f:
         plantilla = f.read()
 
-    final = plantilla.replace("{{CONTENIDO}}", contenido_html).replace(
-        "{{TITULO}}", titulo
-    )
-    final = final.replace("{{IMAGEN}}", imagen).replace("{{DESCRIPCION}}", descripcion)
+    # Reemplazos, incluyendo la nueva barra lateral
+    final = plantilla.replace("{{CONTENIDO}}", contenido_html)
+    final = final.replace("{{TITULO}}", titulo)
+    final = final.replace("{{IMAGEN}}", imagen)
+    final = final.replace("{{DESCRIPCION}}", descripcion)
     final = final.replace("{{NAV_COLOR}}", color_final)
+    final = final.replace("{{RECIENTES}}", recientes_html)
 
     nombre_base = os.path.basename(ruta_archivo_md).replace(".md", "")
-    nombre_salida = nombre_base + ".html"
-
-    with open(nombre_salida, "w", encoding="utf-8") as f:
+    with open(f"{nombre_base}.html", "w", encoding="utf-8") as f:
         f.write(final)
-    print(f"✅ Nota: {nombre_salida}")
 
 
-def generar_portadas(carpetas):
-    todas_las_notas = []
+def obtener_datos_notas(carpetas):
+    notas = []
     for carpeta in carpetas:
         ruta = os.path.join("content", carpeta)
         if not os.path.exists(ruta):
@@ -57,53 +54,68 @@ def generar_portadas(carpetas):
                     lineas = f.readlines()
                     if len(lineas) < 3:
                         continue
-                    img_nota = lineas[1].strip()
-                    if not img_nota or img_nota.lower() == "ninguna":
-                        img_nota = "logo-social.webp"
-
-                    todas_las_notas.append(
+                    img = lineas[1].strip()
+                    notas.append(
                         {
                             "titulo": lineas[0].strip().replace("# ", ""),
-                            "imagen": img_nota,
+                            "imagen": (
+                                img
+                                if img and img.lower() != "ninguna"
+                                else "logo-social.webp"
+                            ),
                             "resumen": lineas[2].strip(),
                             "url": archivo.replace(".md", ".html"),
                             "seccion": carpeta,
+                            "ruta_origen": os.path.join(ruta, archivo),
                         }
                     )
+    return notas
 
+
+def generar_sitio():
+    carpetas_web = ["codigorojo", "tijuana", "rosarito", "tecate", "empleos"]
+    todas_las_notas = obtener_datos_notas(carpetas_web)
+
+    # Ordenar por las más nuevas (si quieres) o simplemente tomar las últimas 5
+    recientes_html = ""
+    for n in todas_las_notas[:6]:  # Mostramos las últimas 6 en la barra lateral
+        recientes_html += f"""
+        <a href="{n['url']}" class="group block border-b border-slate-800 pb-4 last:border-0">
+            <span class="text-purple-400 text-[10px] font-black uppercase tracking-tighter">{n['seccion']}</span>
+            <h4 class="text-white text-sm font-bold group-hover:text-purple-400 transition-colors leading-tight mt-1">
+                {n['titulo']}
+            </h4>
+        </a>
+        """
+
+    # 1. Generar Notas Individuales
+    for n in todas_las_notas:
+        generar_nota(n["ruta_origen"], recientes_html)
+
+    # 2. Generar Portada Principal (index.html)
     html_tarjetas = ""
-    for nota in todas_las_notas:
+    for n in todas_las_notas:
         html_tarjetas += f"""
         <div class="bg-slate-800 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform border border-slate-700">
             <div class="w-full h-48 bg-[#111827] flex items-center justify-center overflow-hidden">
-                <img src="static/images/{nota['imagen']}" class="max-h-full max-w-full object-contain" alt="{nota['titulo']}">
+                <img src="static/images/{n['imagen']}" class="max-h-full max-w-full object-contain">
             </div>
             <div class="p-4">
-                <span class="text-purple-400 text-[10px] font-black uppercase tracking-widest">{nota['seccion']}</span>
-                <h3 class="text-white font-bold text-lg mt-1 leading-tight line-clamp-2">{nota['titulo']}</h3>
-                <p class="text-slate-400 text-xs mt-2 line-clamp-2">{nota['resumen']}</p>
-                <a href="{nota['url']}" class="inline-block mt-4 text-purple-400 text-xs font-black uppercase hover:underline">Leer más →</a>
+                <span class="text-purple-400 text-[10px] font-black uppercase tracking-widest">{n['seccion']}</span>
+                <h3 class="text-white font-bold text-lg mt-1 leading-tight line-clamp-2">{n['titulo']}</h3>
+                <p class="text-slate-400 text-xs mt-2 line-clamp-2">{n['resumen']}</p>
+                <a href="{n['url']}" class="inline-block mt-4 text-purple-400 text-xs font-black uppercase hover:underline text-white">Leer más →</a>
             </div>
         </div>
         """
 
     with open("template_portada.html", "r", encoding="utf-8") as f:
-        plantilla = f.read()
-
+        plantilla_p = f.read()
     with open("index.html", "w", encoding="utf-8") as f:
-        f.write(plantilla.replace("{{TARJETAS}}", html_tarjetas))
-    print("🏠 Portadas actualizadas.")
+        f.write(plantilla_p.replace("{{TARJETAS}}", html_tarjetas))
+
+    print("✅ Sitio completo actualizado con barra lateral.")
 
 
 if __name__ == "__main__":
-    carpetas_web = ["codigorojo", "tijuana", "rosarito", "tecate", "empleos"]
-    if len(sys.argv) > 1:
-        generar_nota(sys.argv[1])
-    else:
-        for c in carpetas_web:
-            ruta_c = os.path.join("content", c)
-            if os.path.exists(ruta_c):
-                for f in os.listdir(ruta_c):
-                    if f.endswith(".md"):
-                        generar_nota(os.path.join(ruta_c, f))
-        generar_portadas(carpetas_web)
+    generar_sitio()
