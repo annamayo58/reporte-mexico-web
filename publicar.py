@@ -66,13 +66,23 @@ if __name__ == "__main__":
         generar_nota(ruta_target, nombre_html)
 
         # --- 2. Actualizar Portada Automáticamente ---
-        carpetas_web = ["codigorojo", "tijuana", "rosarito", "tecate"]
-        notas_lista = obtener_datos_notas(carpetas_web)
+        # Definimos las carpetas para buscar todas las notas
+        carpetas_web = [
+            "codigorojo",
+            "tijuana",
+            "rosarito",
+            "tecate",
+            "desaparecidos",
+            "empleos",
+        ]
+        notas_lista = obtener_datos_notas(
+            carpetas_web
+        )  # Esto genera la lista que te faltaba
 
         html_tarjetas = ""
-        # Generamos el HTML para las últimas 12 notas
+        # Generamos el HTML para las últimas 12 notas (Tarjetas Clicables)
         for n in notas_lista[:12]:
-            # TARJETA TOTALMENTE CLICABLE (Toda el área lleva a la nota)
+
             html_tarjetas += f"""
             <a href="{n['url']}" class="group block bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:scale-[1.02] transition-all duration-300 border border-slate-700">
                 <div class="w-full h-48 bg-[#111827] overflow-hidden">
