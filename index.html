@@ -1,162 +1,132 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="{{TITULO}}" />
-    <meta property="og:description" content="{{DESCRIPCION}}" />
-    <meta
-      property="og:image"
-      content="https://reportetijuana.com/static/images/{{IMAGEN}}"
-    />
-    <meta property="og:type" content="article" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <title>Reporte Tijuana | Información en Tiempo Real</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte Tijuana - Inicio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <style>
-      body {
-        background-color: #111827;
-        color: #f3f4f6;
-      }
-      .grid-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 2rem;
-      }
-    </style>
-  </head>
-  <body>
-    <header class="bg-purple-600 py-10 shadow-md border-b-4 border-white">
-      <div class="max-w-7xl mx-auto px-4 text-center">
-        <h1
-          class="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase italic drop-shadow-lg"
-        >
-          REPORTE TIJUANA
-        </h1>
-        <p
-          class="text-purple-100 text-sm font-bold mt-2 tracking-widest uppercase"
-        >
-          Información en Tiempo Real
-        </p>
-      </div>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body class="bg-[#0f172a] text-white">
+
+    <header class="bg-purple-600 py-10 shadow-md border-b-4 border-white text-center">
+        <h1 class="text-5xl md:text-7xl font-black italic uppercase tracking-tighter drop-shadow-lg">REPORTE TIJUANA</h1>
+        <p class="text-purple-100 text-sm font-bold mt-2 tracking-widest uppercase">Información en Tiempo Real</p>
+        
+        <div class="mt-6 max-w-md mx-auto px-4">
+            <input type="text" placeholder="Buscar noticias en Tijuana..." class="w-full py-2 px-4 rounded-full bg-white text-black text-sm outline-none shadow-lg">
+        </div>
     </header>
 
-    <nav
-      class="bg-purple-600 sticky top-0 z-50 shadow-xl border-b border-purple-500"
-    >
-      <div
-        class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between"
-      >
-        <a href="index.html" class="text-white font-black italic text-xl"
-          >INICIO</a
-        >
-        <div class="hidden lg:flex space-x-2">
-          <a
-            href="tijuana.html"
-            class="bg-white text-purple-700 px-3 py-1 rounded font-bold text-xs uppercase hover:bg-purple-100"
-            >Tijuana</a
-          >
-          <a
-            href="codigorojo.html"
-            class="bg-red-600 text-white px-3 py-1 rounded font-bold text-xs uppercase hover:bg-red-700"
-            >Código Rojo</a
-          >
-          <a
-            href="empleos.html"
-            class="bg-white text-purple-700 px-3 py-1 rounded font-bold text-xs uppercase hover:bg-purple-100"
-            >Empleos</a
-          >
+    <header class="bg-[#9333ea] pt-12 pb-10 text-center border-b-4 border-white shadow-lg">
+    <h1 class="text-white text-5xl md:text-7xl font-black italic uppercase tracking-tighter drop-shadow-xl">
+        REPORTE TIJUANA
+    </h1>
+    <p class="text-purple-100 text-[11px] font-bold mt-2 tracking-[0.3em] uppercase">
+        Información en Tiempo Real
+    </p>
+    
+    <div class="mt-8 max-w-lg mx-auto px-6 relative">
+        <span class="absolute left-10 top-3.5 text-purple-600 z-10">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        </span>
+        <input type="text" placeholder="Buscar noticias en Tijuana..." 
+               class="w-full py-3.5 pl-14 pr-6 rounded-full bg-white text-black font-bold shadow-2xl outline-none border-none ring-offset-2 focus:ring-4 focus:ring-purple-300 transition-all">
+    </div>
+</header>
+
+<nav class="bg-[#9333ea] py-5 sticky top-0 z-50 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-between gap-4">
+        
+        <a href="index.html" class="text-white text-2xl font-black italic uppercase tracking-tighter shrink-0 hover:text-purple-200 transition">
+            INICIO
+        </a>
+
+        <button id="menu-btn" aria-label="Abrir menú" class="md:hidden text-white hover:bg-purple-700 p-2 rounded-lg transition">
+            <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+
+        <div id="menu-mobile" class="hidden w-full md:flex md:w-auto md:items-center mt-4 md:mt-0">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-2 w-full">
+                <a href="#" class="w-full md:w-auto px-5 py-2 bg-white text-[#9333ea] rounded-lg text-[11px] font-black uppercase text-center shadow-md hover:bg-purple-50 transition">TIJUANA</a>
+                <a href="#" class="w-full md:w-auto px-5 py-2 bg-white text-[#9333ea] rounded-lg text-[11px] font-black uppercase text-center shadow-md hover:bg-purple-50 transition">BAJA CALIFORNIA</a>
+                <a href="#" class="w-full md:w-auto px-5 py-2 bg-white text-[#9333ea] rounded-lg text-[11px] font-black uppercase text-center shadow-md hover:bg-purple-50 transition">ROSARITO</a>
+                <a href="#" class="w-full md:w-auto px-5 py-2 bg-white text-[#9333ea] rounded-lg text-[11px] font-black uppercase text-center shadow-md hover:bg-purple-50 transition">TECATE</a>
+                
+                <a href="#" class="w-full md:w-auto px-5 py-2 bg-[#e11d48] text-white rounded-lg text-[11px] font-black uppercase text-center shadow-md hover:bg-red-700 transition">CÓDIGO ROJO</a>
+                
+                <a href="#" class="w-full md:w-auto px-5 py-2 bg-white text-[#9333ea] rounded-lg text-[11px] font-black uppercase text-center shadow-md hover:bg-purple-50 transition">DESAPARECIDOS</a>
+                <a href="#" class="w-full md:w-auto px-5 py-2 bg-white text-[#9333ea] rounded-lg text-[11px] font-black uppercase text-center shadow-md hover:bg-purple-50 transition">EMPLEOS</a>
+            </div>
         </div>
-      </div>
-    </nav>
+    </div>
+</nav>
+
+<script>
+    // Script funcional para el menú plegable
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu-mobile');
+    btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+    });
+</script>
 
     <main class="max-w-7xl mx-auto px-4 py-12">
-      <h2
-        class="text-2xl font-black uppercase mb-8 border-l-8 border-purple-600 pl-4 italic"
-      >
-        Últimas Noticias
-      </h2>
-      <div class="grid-container">
-            <a href="nota4.html" class="group block bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:scale-[1.02] transition-all duration-300 border border-slate-700">
-                <div class="w-full h-48 bg-[#111827] overflow-hidden">
-                    <img src="static/images/2026-01-03-03.webp" class="w-full h-full object-cover group-hover:opacity-80 transition-opacity">
-                </div>
-                <div class="p-5">
-                    <span class="text-purple-400 text-[10px] font-black uppercase tracking-widest">TIJUANA, BAJA CALIFORNIA, A 31 DE DICIEMBRE DE 2025.– La Fiscalía Regional de Tijuana, a través de la Unidad de Investigación con Detenido, obtuvo la vinculación a proceso y la imposición de la medida cautelar de prisión preventiva justificada en contra de Javier “N”, por los delitos de lesiones y violencia familiar.</span>
-                    <h3 class="text-white font-bold text-xl mt-2 leading-tight group-hover:text-purple-400 transition-colors">El borracho de Javier golpeó a su pareja solo porque ella le pidió conducir el vehiculo</h3>
-                    <p class="text-slate-400 text-sm mt-3 line-clamp-2 leading-relaxed">Los hechos ocurrieron en una gasolinera, en la colonia Cañón del Sainz.</p>
-                    <div class="mt-4 text-purple-400 text-lg font-black uppercase tracking-wider">
-                        LEER MÁS →
-                    </div>
-                </div>
-            </a>
+        <h2 class="text-3xl font-black uppercase italic mb-8 border-l-8 border-purple-600 pl-4">Últimas Noticias</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <a href="nota3.html" class="group block bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:scale-[1.02] transition-all duration-300 border border-slate-700">
-                <div class="w-full h-48 bg-[#111827] overflow-hidden">
-                    <img src="static/images/2026-01-03-02.webp" class="w-full h-full object-cover group-hover:opacity-80 transition-opacity">
-                </div>
-                <div class="p-5">
-                    <span class="text-purple-400 text-[10px] font-black uppercase tracking-widest">TIJUANA, BAJA CALIFORNIA, 2 DE ENERO DE 2026.– La Fiscalía Regional de Tijuana, a través de la Unidad de Investigación de Robo de Vehículos Zona Tijuana, obtuvo la vinculación a proceso de Sergio Alejandro “N”, por su presunta responsabilidad en el delito de robo equiparado de vehículo de motor, en su modalidad de uso.</span>
-                    <h3 class="text-white font-bold text-xl mt-2 leading-tight group-hover:text-purple-400 transition-colors">Es vinculado a proceso por robo de vehículo</h3>
-                    <p class="text-slate-400 text-sm mt-3 line-clamp-2 leading-relaxed">El imputado permanecerá en prisión preventiva justificada</p>
-                    <div class="mt-4 text-purple-400 text-lg font-black uppercase tracking-wider">
-                        LEER MÁS →
-                    </div>
+            <a href="2026-01-03-01.html" class="group block bg-white rounded-xl overflow-hidden shadow-2xl hover:scale-[1.02] transition-all duration-300">
+                <img src="static/images/FOTO1.jpg" alt="Nota 1" class="w-full h-64 object-cover">
+                <div class="p-6 text-black">
+                    <span class="bg-purple-600 text-white text-[10px] font-black px-3 py-1 rounded uppercase tracking-widest">CÓDIGO ROJO</span>
+                    <h3 class="font-black text-xl mt-3 leading-tight group-hover:text-purple-600 transition-colors">Enfrenta proceso penal por disparar contra un policía municipal</h3>
+                    <div class="mt-6 bg-purple-600 text-white text-center py-2 rounded font-black uppercase text-sm group-hover:bg-purple-700">LEER MÁS →</div>
                 </div>
             </a>
-            
-            <a href="nota2.html" class="group block bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:scale-[1.02] transition-all duration-300 border border-slate-700">
-                <div class="w-full h-48 bg-[#111827] overflow-hidden">
-                    <img src="static/images/2026-01-03-01.webp" class="w-full h-full object-cover group-hover:opacity-80 transition-opacity">
-                </div>
-                <div class="p-5">
-                    <span class="text-purple-400 text-[10px] font-black uppercase tracking-widest">codigorojo</span>
-                    <h3 class="text-white font-bold text-xl mt-2 leading-tight group-hover:text-purple-400 transition-colors">Enfrenta proceso penal por disparar contra un policía municipal</h3>
-                    <p class="text-slate-400 text-sm mt-3 line-clamp-2 leading-relaxed">Fiscalía de Tijuana logra prisión preventiva contra imputado por ataque armado.</p>
-                    <div class="mt-4 text-purple-400 text-lg font-black uppercase tracking-wider">
-                        LEER MÁS →
-                    </div>
+
+            <a href="nota-ejemplo-2.html" class="group block bg-white rounded-xl overflow-hidden shadow-2xl hover:scale-[1.02] transition-all duration-300">
+                <img src="static/images/FOTO2.jpg" alt="Nota 2" class="w-full h-64 object-cover">
+                <div class="p-6 text-black">
+                    <span class="bg-purple-600 text-white text-[10px] font-black px-3 py-1 rounded uppercase tracking-widest">TIJUANA</span>
+                    <h3 class="font-black text-xl mt-3 leading-tight group-hover:text-purple-600 transition-colors">Es vinculado a proceso por robo de vehículo en zona centro</h3>
+                    <div class="mt-6 bg-purple-600 text-white text-center py-2 rounded font-black uppercase text-sm group-hover:bg-purple-700">LEER MÁS →</div>
                 </div>
             </a>
-            
-            <a href="notacodigo.html" class="group block bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:scale-[1.02] transition-all duration-300 border border-slate-700">
-                <div class="w-full h-48 bg-[#111827] overflow-hidden">
-                    <img src="static/images/nombre-de-la-imagen.webp" class="w-full h-full object-cover group-hover:opacity-80 transition-opacity">
-                </div>
-                <div class="p-5">
-                    <span class="text-purple-400 text-[10px] font-black uppercase tracking-widest">codigorojo</span>
-                    <h3 class="text-white font-bold text-xl mt-2 leading-tight group-hover:text-purple-400 transition-colors">Título Impactante de la Nota</h3>
-                    <p class="text-slate-400 text-sm mt-3 line-clamp-2 leading-relaxed">Este es el resumen corto para la portada.</p>
-                    <div class="mt-4 text-purple-400 text-lg font-black uppercase tracking-wider">
-                        LEER MÁS →
-                    </div>
+
+            <a href="nota-ejemplo-3.html" class="group block bg-white rounded-xl overflow-hidden shadow-2xl hover:scale-[1.02] transition-all duration-300">
+                <img src="static/images/FOTO3.jpg" alt="Nota 3" class="w-full h-64 object-cover">
+                <div class="p-6 text-black">
+                    <span class="bg-purple-600 text-white text-[10px] font-black px-3 py-1 rounded uppercase tracking-widest">CÓDIGO ROJO</span>
+                    <h3 class="font-black text-xl mt-3 leading-tight group-hover:text-purple-600 transition-colors">Sujeto es detenido tras riña en gasolinera de la colonia Cañón del Sainz</h3>
+                    <div class="mt-6 bg-purple-600 text-white text-center py-2 rounded font-black uppercase text-sm group-hover:bg-purple-700">LEER MÁS →</div>
                 </div>
             </a>
-            
-            <a href="notacodigo.html" class="group block bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:scale-[1.02] transition-all duration-300 border border-slate-700">
-                <div class="w-full h-48 bg-[#111827] overflow-hidden">
-                    <img src="static/images/2026-01-02-01-lafoto.webp" class="w-full h-full object-cover group-hover:opacity-80 transition-opacity">
-                </div>
-                <div class="p-5">
-                    <span class="text-purple-400 text-[10px] font-black uppercase tracking-widest">Cuerpo de la nota</span>
-                    <h3 class="text-white font-bold text-xl mt-2 leading-tight group-hover:text-purple-400 transition-colors">Título de la nota</h3>
-                    <p class="text-slate-400 text-sm mt-3 line-clamp-2 leading-relaxed">Resumen</p>
-                    <div class="mt-4 text-purple-400 text-lg font-black uppercase tracking-wider">
-                        LEER MÁS →
-                    </div>
-                </div>
-            </a>
-            </div>
+
+        </div>
     </main>
 
-    <footer class="bg-black py-10 mt-20 text-center border-t border-slate-800">
-      <p class="text-slate-500 text-xs font-bold uppercase tracking-widest">
-        &copy; 2026 Reporte Tijuana - Todos los derechos reservados
-      </p>
+    <footer class="bg-black py-12 mt-20 border-t border-slate-800 text-center">
+        <div class="max-w-4xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+            <div>
+                <h4 class="font-black text-white uppercase mb-4 italic">Reporte Tijuana</h4>
+                <p class="text-xs text-slate-400">Tu fuente de información confiable en tiempo real.</p>
+            </div>
+            <div>
+                <h4 class="font-black text-white uppercase mb-4 italic">Secciones</h4>
+                <ul class="text-xs text-slate-400 space-y-2">
+                    <li>Inicio</li>
+                    <li>Código Rojo</li>
+                    <li>Tijuana</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-black text-white uppercase mb-4 italic">Contacto</h4>
+                <p class="text-xs text-slate-400">Email: contacto@reportetijuana.com</p>
+            </div>
+        </div>
+        <p class="text-[10px] font-bold text-slate-500 mt-12 uppercase tracking-widest italic">REPORTE TIJUANA &copy; 2026</p>
     </footer>
-  </body>
+
+</body>
 </html>
