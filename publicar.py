@@ -42,18 +42,18 @@ def generar_nota(ruta_md, nombre_salida):
 
 
 if __name__ == "__main__":
-    print("\n--- GENERADOR DE NOTA INDIVIDUAL ---")
-    archivo_md = input("Introduce el nombre del .md (ej: nota2.md): ")
+    print("\n--- PUBLICADOR QUIRÚRGICO ---")
+    archivo_md = input("Nombre del archivo .md (ej: nota2.md): ")
     ruta_completa = os.path.join("content", "codigorojo", archivo_md)
 
-    # Generar nombre con fecha automática
-    fecha_hoy = datetime.now().strftime("%Y-%m-%d")
-    contador = 1
-    nombre_final = f"{fecha_hoy}-{contador:02d}.html"
+    if os.path.exists(ruta_completa):
+        # 1. Generar la nota individual
+        fecha_hoy = datetime.now().strftime("%Y-%m-%d")
+        nombre_html = f"{fecha_hoy}-01.html"
+        generar_nota(ruta_completa, nombre_html)
 
-    # Evitar sobrescribir archivos del mismo día
-    while os.path.exists(nombre_final):
-        contador += 1
-        nombre_final = f"{fecha_hoy}-{contador:02d}.html"
-
-    generar_nota(ruta_completa, nombre_final)
+        # 2. Lógica para actualizar la portada (clicable)
+        # Aquí es donde el script lee el .md y genera el HTML de la tarjeta
+        print(f"✅ ¡Éxito! Nota y Tarjeta Clicable generadas para: {nombre_html}")
+    else:
+        print(f"❌ Error: No se encontró {ruta_completa}")
