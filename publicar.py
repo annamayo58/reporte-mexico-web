@@ -95,13 +95,11 @@ def generar_sitio():
     # 2. Generar Portada Principal (index.html)
     html_tarjetas += f"""
         <div class="bg-slate-800 rounded-lg overflow-hidden shadow-lg hover:scale-105 transition-transform border border-slate-700">
-            
             <div class="w-full h-48 bg-[#111827] flex items-center justify-center overflow-hidden">
                 <img src="static/images/{n['imagen']}" 
                      class="max-h-full max-w-full object-contain" 
                      alt="{n['titulo']}">
             </div>
-
             <div class="p-4">
                 <span class="text-purple-400 text-[10px] font-black uppercase tracking-widest">{n['seccion']}</span>
                 <h3 class="text-white font-bold text-lg mt-1 leading-tight line-clamp-2">{n['titulo']}</h3>
