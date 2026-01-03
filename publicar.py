@@ -66,7 +66,7 @@ if __name__ == "__main__":
         generar_nota(ruta_target, nombre_html)
 
         # --- 2. Actualizar Portada Automáticamente ---
-        carpetas_web = ["codigorojo", "tijuana", "rosarito", "tecate"]
+        carpetas_web = ["bajacalifornia", "codigorojo", "tijuana", "rosarito", "tecate"]
         notas_lista = obtener_datos_notas(
             carpetas_web
         )  # Esta función debe estar definida arriba
