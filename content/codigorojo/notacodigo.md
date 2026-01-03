@@ -1,8 +1,6 @@
----
-title: 'Título Impactante de la Nota'
-imagen: 'nombre-de-la-imagen.webp'
-seccion: 'tijuana'
-resumen: 'Este es el resumen corto que aparecerá en la portada.'
----
+Título Impactante de la Nota
+nombre-de-la-imagen.webp
+Este es el resumen corto para la portada.
+codigorojo
 
-Aquí va todo el cuerpo de la nota...
+Aquí comienza el cuerpo de la noticia. Puedes escribir todo el texto que quieras después de la sección.

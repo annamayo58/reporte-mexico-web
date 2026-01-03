@@ -1,9 +1,7 @@
----
-title: Vinculado a proceso por robo de vehículo y daño en propiedad ajena
-imagen: 2026-01-02-02.webp
-seccion: codigorojo
+Vinculado a proceso por robo de vehículo y daño en propiedad ajena
+2026-01-02-02.webp
 resumen: Hechos ocurrieron en la carretera libre Tecate–Tijuana.
----
+codigorojo
 
 TIJUANA, BAJA CALIFORNIA, A 2 DE ENERO DE 2026.– La Fiscalía Regional de Tijuana, a través de la Unidad de Investigación de Robo de Vehículos Zona Tijuana, obtuvo la vinculación a proceso de Cristian “N”, por su presunta responsabilidad en los delitos de robo equiparado de vehículo de motor, en su modalidad de uso, y daño en propiedad ajena doloso.
 
