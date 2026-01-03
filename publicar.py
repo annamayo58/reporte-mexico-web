@@ -66,17 +66,13 @@ if __name__ == "__main__":
         generar_nota(ruta_target, nombre_html)
 
         # --- 2. Actualizar Portada Automáticamente ---
-        carpetas_web = ["bajacalifornia", "codigorojo", "tijuana", "rosarito", "tecate"]
-        notas_lista = obtener_datos_notas(
-            carpetas_web
-        )  # Esta función debe estar definida arriba
+        carpetas_web = ["codigorojo", "tijuana", "rosarito", "tecate"]
+        notas_lista = obtener_datos_notas(carpetas_web)
 
         html_tarjetas = ""
-        for n in notas_lista[:12]:  # Tomamos las últimas 12 para la portada
-           # --- 2. Generar el HTML de las tarjetas clicables ---
-        html_tarjetas = ""
-        # Tomamos las últimas 12 notas para la portada
+        # Generamos el HTML para las últimas 12 notas
         for n in notas_lista[:12]:
+            # TARJETA TOTALMENTE CLICABLE (Toda el área lleva a la nota)
             html_tarjetas += f"""
             <a href="{n['url']}" class="group block bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:scale-[1.02] transition-all duration-300 border border-slate-700">
                 <div class="w-full h-48 bg-[#111827] overflow-hidden">
@@ -96,14 +92,12 @@ if __name__ == "__main__":
             </a>
             """
 
-        # --- 3. Actualizar físicamente el archivo index.html ---
+        # --- 3. Guardar el index.html final ---
         with open("template_portada.html", "r", encoding="utf-8") as f:
-            plantilla_p = f.read()
-            
-        index_final = plantilla_p.replace("{{TARJETAS}}", html_tarjetas)
-        
+            index_final = f.read().replace("{{TARJETAS}}", html_tarjetas)
+
         with open("index.html", "w", encoding="utf-8") as f:
             f.write(index_final)
-            
+
         print(f"✅ ¡Éxito! Nota '{nombre_html}' e 'index.html' actualizados.")
-        
+
